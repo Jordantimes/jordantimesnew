@@ -63,37 +63,44 @@ if (isset($_POST['submit'])){
 
 
 if (isset($_POST["login"])){
-    $email = $_POST["email"];
+    $loggedEmail = $_POST["email"];
     $psssword = $_POST["password"];
     $hashed_password= password_hash($password,PASSWORD_DEFAULT);
-    $_SESSION['Name'] = $name;
+  
+    
 
   
 
-$sql_company="select * from users where email like '{$email}' and passwords like '{$hashed_password}' and roles like 'company' ";
-$sql_user ="select * from users where email like '{$email}' and passwords like '{$hashed_password}' and roles like 'user'";
-$sql_admin ="select * from users where email like '{$email}' and passwords like '{$hashed_password}' and roles like 'admin'";
-$sql_gov ="select * from users where email like '{$email}' and passwords like '{$hashed_password}' and roles like 'gov'";
-if (mysqli_query($conn, $sql_company)){
+$sql_company="select * from users where email = '$loggedEmail' and passwords = '$hashed_password' and roles = 'company'";
+$sql_user ="select * from users where email = '$loggedEmail' and passwords = '$hashed_password' and roles = 'user'";
+$sql_admin ="select * from users where email = '$loggedEmail' and passwords = '$hashed_password' and roles = 'admin'";
+$sql_gov ="select * from users where email = '$loggedEmail' and passwords = '$hashed_password' and roles = 'gov'";
+
+$_resultComp =mysqli_query($conn, $sql_company);
+$_resultUser =mysqli_query($conn, $sql_user);
+$_resultAdmin =mysqli_query($conn, $sql_admin);
+$_resultGov =mysqli_query($conn, $sql_gov);
+
+if (mysqli_num_rows($_resultComp) == 1) {
     echo"<p>Login successfully</p>";
     header("Location:company_page.php");
     
     
 
 }
-elseif(mysqli_query($conn, $sql_user)){
+elseif (mysqli_num_rows($_resultUser) == 1) {
     echo"<p>Login successfully</p>";
     header("Location:user_page.php");
    
 
 }
-elseif(mysqli_query($conn, $sql_admin)){
+elseif (mysqli_num_rows($_resultAdmin) == 1){
     echo"<p>Login successfully</p>";
     header("Location:admin_page.php");
    
 
 }
-elseif (mysqli_query($conn, $sql_gov)){
+elseif (mysqli_num_rows($_resultGov) == 1){
     echo"<p>Login successfully</p>";
     header("Location:gov_page.php");
 
