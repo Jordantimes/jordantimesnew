@@ -23,7 +23,7 @@
 .jumbotron {
   padding: 0px 0px 0px 0px;
   margin: 0px auto;
-  color: floralwhite !important;
+  color: floralwhite;
 }
 .address {
   font-size: 80%;
@@ -37,11 +37,12 @@ body {
 
 .navbar-dark {
   background-color: #ac0d0d;
+  margin-top: -10px;
 }
 
 select {
   background-color: #ac0d0d;
-  color: floralwhite !important;
+  color: floralwhite;
   margin-left: 10px;
   border: none;
 }
@@ -118,6 +119,7 @@ select {
 #offers {
   position: relative;
   top: 30px;
+  left: 20%;
 }
 
 .stakeholder {
@@ -143,6 +145,9 @@ select {
   );
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  width: 593px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .card.border-secondary {
@@ -178,55 +183,61 @@ select {
 #ammanOffer {
   background-image: url("../images/ammanOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 #omqaisOffer {
-  background-image: url("/images/omqaisOffer.png");
+  background-image: url("../images/omqaisOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 #rumOffer {
-  background-image: url("/images/rumOffer.png");
+  background-image: url("../images/rumOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 #rumOffer {
-  background-image: url("/images/rumOffer.png");
+  background-image: url("../images/rumOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 #deadseaOffer {
-  background-image: url("/images/deadseaOffer.png");
+  background-image: url("../images/deadseaOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 #petraOffer {
-  background-image: url("/images/petraOffer.png");
+  background-image: url("../images/petraOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 #alsaltOffer {
-  background-image: url("/images/alsaltOffer.png");
+  background-image: url("../images/alsaltOffer.png");
   background-position: inherit;
-  width: 283px;
-  height: 283px;
+  width: 200px;
+  height: 233px;
 }
 
 tr {
   position: relative;
   left: 80px;
+}
+
+.btnModal{
+  background-color: #AC0D0D !important;
+  margin-top: 10px;
+  float: right;
 }
 
 .btn-secondary {
@@ -328,3 +339,11 @@ tr {
   font-size: 13px;
   opacity: 0.6;
 }
+
+video{
+  margin-top: -20px;
+}
+
+
+
+

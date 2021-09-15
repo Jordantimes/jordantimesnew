@@ -1,5 +1,5 @@
 <?php include 'server.php';?>
-<form action="goverment_page.php" method="POST">
+<form action="home_page.php" method="POST">
 <div>
 <label>Company No</label>
 <input type="text" name ="No" for="companyNo">  

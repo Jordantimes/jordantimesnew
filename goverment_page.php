@@ -56,7 +56,7 @@ include 'server.php';
 
 
     <div>
-        <img id="background_img" style="width:1273px;"src ="images/madababack.png">
+        <img id="background_img" style="width:1273px;"src ="images/rumback.png">
         </div>
         
         

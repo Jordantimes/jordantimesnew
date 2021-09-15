@@ -2,7 +2,7 @@
 
 <html>
     
-<form action="" method="POST">
+<form  method="POST">
 <div>
     <label>email</label>
     <input type="email" name="email" for ="email">

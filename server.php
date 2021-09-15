@@ -2,7 +2,7 @@
 include 'database.php';
 
 if (isset($_POST['submit'])){
-    session_start();
+    
     $no = $_POST['No'];
     $name = $_POST['Name'];
     $email = $_POST ['Email'];
@@ -29,9 +29,11 @@ if (isset($_POST['submit'])){
     if(strlen($password) > 8 && $number && $uppercase && $lowercase && $specialChars) {
     if (mysqli_query($conn, $sql)){
         echo "new record has been added successfully";
-        $_SESSION['Username'] = $name;
-        $_SESSION ['ID']= $no ;
-    
+          
+           $_SESSION['username'] = $name;
+         
+           // Welcome message
+           $_SESSION['success'] = "You have logged in";
         
    
        }
@@ -82,6 +84,12 @@ $_resultAdmin =mysqli_query($conn, $sql_admin);
 $_resultGov =mysqli_query($conn, $sql_gov);
 
 if (mysqli_num_rows($_resultComp) == 1) {
+     // Storing username in session variable
+     $_SESSION['username'] = $name;
+             
+     // Welcome message
+     $_SESSION['success'] = "You have logged in!";
+      
     echo"<p>Login successfully</p>";
     header("Location:company_page.php");
     
@@ -89,18 +97,36 @@ if (mysqli_num_rows($_resultComp) == 1) {
 
 }
 elseif (mysqli_num_rows($_resultUser) == 1) {
+     // Storing username in session variable
+     $_SESSION['username'] = $name;
+             
+     // Welcome message
+     $_SESSION['success'] = "You have logged in!";
+      
     echo"<p>Login successfully</p>";
     header("Location:user_page.php");
    
 
 }
 elseif (mysqli_num_rows($_resultAdmin) == 1){
+     // Storing username in session variable
+     $_SESSION['username'] = $name;
+             
+     // Welcome message
+     $_SESSION['success'] = "You have logged in!";
+      
     echo"<p>Login successfully</p>";
     header("Location:admin_page.php");
    
 
 }
 elseif (mysqli_num_rows($_resultGov) == 1){
+     // Storing username in session variable
+     $_SESSION['username'] = $name;
+             
+     // Welcome message
+     $_SESSION['success'] = "You have logged in!";
+      
     echo"<p>Login successfully</p>";
     header("Location:gov_page.php");
 

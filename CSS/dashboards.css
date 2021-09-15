@@ -207,7 +207,14 @@ select{
 
   #createdCard{
     position: relative;
+   
     
+  }
+
+  .tab-content{
+    position: relative;
+    top: 500px;
+  
   }
 
 
