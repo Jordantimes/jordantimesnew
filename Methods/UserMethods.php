@@ -14,7 +14,7 @@ function InsertCompany($CompanyARR){
 
 function InsertCustomer($CustomerARR){
     $table = "users";
-    $columns = "name,email,phone,password,role,CreatedAt,UpdatedAt";
+    $columns = "name,email,phone,password,role,CreatedAt,UpdatedAt,verified";
     $values = NormalCombine($CustomerARR);
 
     return Insert($table,$columns,$values);
