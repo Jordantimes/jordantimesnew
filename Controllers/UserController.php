@@ -115,14 +115,15 @@ elseif(isset($_POST["login_Submit"])){
         exit;
     }
 
+    if(!password_verify($Password , $user["password"])){
+        header("location: ../Views/User/LogIn.html?Error=True");
+        exit;
+    }
+    
+    
     if($user["verified"] == false){
         SendVerificationMail($Email,$user["name"]);
         header("location: ../Views/User/LogIn.html?Error=NotVerified");
-        exit;
-    }
-
-    if(!password_verify($Password , $user["password"])){
-        header("location: ../Views/User/LogIn.html?Error=True");
         exit;
     }
 
