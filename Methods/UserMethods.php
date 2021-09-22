@@ -172,7 +172,7 @@ function SendVerificationMail($To,$Name){
         </div>
 
         <div style='width: 100%;display: flex;justify-content: center;padding-bottom:72px;'>
-            <a href='http://localhost/JordanTimes/Methods/VerifiyEmail.php?Code=".$Code."' style='text-decoration: none; text-align: center;width: 100%;display: block;padding: 18px 12px;background-color:#f05d5e;color: #ffffff;font-size: 18px;'>Verify Account</a>
+            <a href='http://localhost/JordanTimes/Methods/VerifyEmail.php?Code=".$Code."' style='text-decoration: none; text-align: center;width: 100%;display: block;padding: 18px 12px;background-color:#f05d5e;color: #ffffff;font-size: 18px;'>Verify Account</a>
         </div>
 
         <div>
