@@ -1,5 +1,5 @@
 <?php 
-include '../Configration/SendGrid/vendor/autoload.php';
+include '../Services/SendGrid/vendor/autoload.php'; 
 
 function NormalCombine($ARR){
     $string = "";
