@@ -13,7 +13,7 @@ $Phone = $_POST["Phone"];
 $Email = strtolower($_POST["email"]);
 $Password = $_POST["password"];
 $Repeat_Password = $_POST["repeat_password"];
-$Role = $_POST["role"];
+$Role = strtolower($_POST["role"]);
 $Code=$_POST["Code"];
 $Company_ID;
 $Company_ID_State = true;
@@ -23,17 +23,17 @@ $UpdatedAt = $Date;
 //Sign up code
 if(isset($_POST["SignUp_Submit"])){
     if(empty($Name) || empty($Phone) || empty($Email) || empty($Password) || empty($Repeat_Password) || empty($Role)){
-        header("location: ../Views/User/SignUp.html?Error=True");
+        header("location: ../Views/User/SignUp.php?Error=True");
         exit;
     }
 
     if($Password !== $Repeat_Password){
-        header("location: ../Views/User/SignUp.html?Error=True");
+        header("location: ../Views/User/SignUp.php?Error=True");
         exit;
     }
 
     if(CheckEmail($Email)){
-        header("location: ../Views/User/SignUp.html?Error=True");
+        header("location: ../Views/User/SignUp.php?Error=True");
         exit;
     }
     
@@ -51,23 +51,21 @@ if(isset($_POST["SignUp_Submit"])){
             0
         ];
 
-        $CustomerARR[count($CustomerARR)] = 0;
-
         if(InsertCustomer($CustomerARR)){
             SendVerificationMail($Email,$Name);
-            header("location: ../Views/User/SignUp.html");
+            header("location: ../Views/User/SignUp.php");
             exit;
         }
 
         else{
-            header("location: ../Views/User/SignUp.html?Error=True");
+            header("location: ../Views/User/SignUp.php?Error=True");
             exit;
         }
     }
 
     elseif($Role === "company"){
         if(CheckName($Name,$Role)){
-            header("location: ../Views/User/SignUp.html?Error=True");
+            header("location: ../Views/User/SignUp.php?Error=True");
             exit;
         }
         
@@ -89,12 +87,12 @@ if(isset($_POST["SignUp_Submit"])){
         ];
         
         if(InsertCompany($CompanyARR)){
-            header("location: ../Views/User/SignUp.html");
+            header("location: ../Views/User/SignUp.php");
             exit;
         }
 
         else{
-            header("location: ../Views/User/SignUp.html?Error=True");
+            header("location: ../Views/User/SignUp.php?Error=True");
             exit;
         }
     }
@@ -104,28 +102,27 @@ if(isset($_POST["SignUp_Submit"])){
 //Log in code
 elseif(isset($_POST["login_Submit"])){
     if(empty($Email) || empty($Password)){
-        header("location: ../Views/User/LogIn.html?Error=True");
+        header("location: ../Views/User/LogIn.php?Error=True");
         exit;
     }
 
     $user = GetUserByEmail($Email);
 
     if(empty($user["id"])){
-        header("location: ../Views/User/LogIn.html?Error=True");
+        header("location: ../Views/User/LogIn.php?Error=True");
         exit;
     }
 
     if(!password_verify($Password , $user["password"])){
-        header("location: ../Views/User/LogIn.html?Error=True");
+        header("location: ../Views/User/LogIn.php?Error=True");
         exit;
     }
-    
-    
+
     if($user["verified"] == false){
         SendVerificationMail($Email,$user["name"]);
-        header("location: ../Views/User/LogIn.html?Error=NotVerified");
+        header("location: ../Views/User/LogIn.php?Error=NotVerified");
         exit;
-    }
+    }   
 
     session_start();
 
@@ -159,19 +156,19 @@ elseif(isset($_POST["login_Submit"])){
 
 elseif(isset($_POST["PasswordRestoreSubmit"])){
     if(empty($Email)){
-        header("location: ../Views/User/ForgetPassword.html?Error=True");
+        header("location: ../Views/User/ForgetPassword.php?Error=True");
         exit;
     }
 
     $user = GetUserByEmail($Email);
 
     if(empty($user["id"])){
-        header("location: ../Views/User/ForgetPassword.html?Error=True");
+        header("location: ../Views/User/ForgetPassword.php?Error=True");
         exit;
     }
 
     SendPasswordRecoveryMail($Email,$user["id"],$user["name"]);
-    header("location: ../Views/User/ForgetPassword.html");
+    header("location: ../Views/User/ForgetPassword.php");
     exit;
 }
 
@@ -179,7 +176,7 @@ elseif(isset($_POST["UpdatePassword"])){
     $Model = GetRecoveryPasswordCodeData($Code);
 
     if($Model === false){
-        header("location: ../Views/User/ForgetPassword.html?Error=True");
+        header("location: ../Views/User/ForgetPassword.php?Error=True");
         exit;
     }
 
@@ -197,7 +194,7 @@ elseif(isset($_POST["UpdatePassword"])){
         }
 
         if(UpdateUserPassword($Model->ID,$Password)){
-            header("location: ../Views/User/PasswordUpdated.html");
+            header("location: ../Views/User/PasswordUpdated.php");
             exit;
         }
 
@@ -208,7 +205,7 @@ elseif(isset($_POST["UpdatePassword"])){
     }
 
     else{
-        header("location: ../Views/User/ForgetPassword.html?Error=TimeExceeded");
+        header("location: ../Views/User/ForgetPassword.php?Error=TimeExceeded");
         exit;
     }
 }
