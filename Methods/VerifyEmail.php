@@ -23,7 +23,3 @@ if(Update($table,$columns,$expression)){
     header("location: ../Views/User/LogIn.php");
     exit;
 }
-
-else{
-    echo "Something went wrong.";
-}
