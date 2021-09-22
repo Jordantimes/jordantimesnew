@@ -15,7 +15,7 @@
             <button type="submit" name="login_Submit">Log in</button>
         </form>
 
-        <a href="ForgetPassword.html">Forgot password?</a>
+        <a href="ForgetPassword.php">Forgot password?</a>
     </div>
 </body>
 </html>
