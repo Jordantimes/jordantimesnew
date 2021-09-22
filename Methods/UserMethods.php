@@ -1,7 +1,7 @@
 <?php
 include "../DAL/DAL.php";
 include "Additional.php";
-include "../Services/Emails/EmailLibrary.php";
+include "../Configration/Emails/EmailLibrary.php";
 include "../Models/RecoveryPasswordCodeModel.php";
 
 function InsertCompany($CompanyARR){
