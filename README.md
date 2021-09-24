@@ -1,4 +1,4 @@
-# jordantimesnew
+# JordanTimes
 
 After downloading the file and before you start the app do the following:
 
