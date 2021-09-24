@@ -6,7 +6,7 @@
             $RawCode = CodeDecrypt($Code, EncryptionKey);
             
             if($RawCode === false){
-
+                return false;
             }
             
             $Date = date("Y-m-d");
