@@ -59,6 +59,7 @@
 
 .content_view_box_header{
     padding: 24px;
+    margin-bottom: 36px;
     color: var(--text_main_color);
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
@@ -84,7 +85,6 @@
 .content_table{
     width: 100%;
     border-collapse: collapse;
-    margin-top: 36px;
 }
 
 .content_table tr td{
@@ -149,7 +149,7 @@
 }
 
 .overview_item_header{
-    padding: 12px 34px 34px 34px;
+    padding: 34px 34px 12px 34px;
     text-align: center;
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
@@ -157,8 +157,23 @@
 
 .overview_item_data{
     text-align: center;
-    padding: 34px 34px 12px 34px;
+    padding: 12px 34px 34px 34px;
+}
+
+.overview_count{
     font-family: inherit;
     font-size: 78px;
     color: var(--main_color);
+}
+
+.overview_info{
+    font-family: inherit;
+    font-size: 24px;
+    color: var(--side_color);
+}
+
+.ViewIndexContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
