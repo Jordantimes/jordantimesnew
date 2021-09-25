@@ -162,6 +162,12 @@ function CreateRequestTableRow(JSON_DATA){
 }
 
 function CreateViewIndexes(length,count_per_view,selected,button_index){
+    document.querySelector("#request_first_index").innerHTML="";
+    document.querySelector("#request_mid_index").innerHTML="";
+    document.querySelector("#request_last_index").innerHTML="";
+    document.querySelector("#request_space_index_1").innerHTML ="";
+    document.querySelector("#request_space_index_2").innerHTML ="";
+
     selected = parseInt(selected);
 
     let top = Math.ceil(length / count_per_view);
