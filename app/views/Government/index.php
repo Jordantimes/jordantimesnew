@@ -40,22 +40,19 @@
 
                 <div class="content_view_container">
                     <div class="content_view_box" id="overview_view_box">
+                        <div class="content_view_box_header">
+                                <h3>Dashboard overview</h3>
+                        </div>
+
                         <div class="grid_container">
                             <div class="overview_item">
-                                <div class="overview_item_data" id="requests_count"></div>
-
-                                <div class="overview_item_header">
-                                    <h4>New requests</h4>
-                                </div>
-                            </div>
-
-                            <div class="overview_item">
                                 <div class="overview_item_header">
                                     <h4>New requests</h4>
                                 </div>
 
-                                <div class="overview_item_data" id="">
-                                    
+                                <div class="overview_item_data" id="requests_count">
+                                    <div class="overview_count" id="requests_count_overview"></div>
+                                    <div class="overview_info"  id="requests_count_overview_information"></div>
                                 </div>
                             </div>
                         </div>
@@ -66,17 +63,18 @@
                         <div class="content_view_box_header">
                             <h3>Companys requests</h3>
                         </div>
+
                         <div class="content_view_box_data_container">
-                            <div class="content_view_box_information" id="requests_information">
+                            <div class="content_view_box_information" id="requests_information"></div>
 
-                            </div>
-
-                            <table class="content_table" id="requests_table">
-
-                            </table>
+                            <table class="content_table" id="requests_table"></table>
 
                             <div class="ViewIndexContainer" id="requests_indexes">
-
+                                <div class="first" id="request_first_index"></div>
+                                <div class="space" id="request_space_index_1"></div>
+                                <div class="mid" id="request_mid_index"></div>
+                                <div class="space" id="request_space_index_2"></div>
+                                <div class="last" id="request_last_index"></div>
                             </div>
                         </div>
                     </div>
