@@ -28,22 +28,22 @@ function GetRequests(count_per_view){
         if (this.readyState == 4 && this.status == 200) {
 
             let JSON_DATA = JSON.parse(Request.response);
-
-            document.querySelector("#requests_count").innerHTML = JSON_DATA.length;
             
             if(JSON_DATA.length == 0){
                 document.querySelector("#requests_information").innerHTML = "No new requests";
+                document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
             }
 
             else{
                 index = 1;
-                CreateViewRequests(JSON_DATA,index,count_per_view);
+                document.querySelector("#requests_count_overview").innerHTML = JSON_DATA.length;
+                CreateViewRequests(JSON_DATA,index,count_per_view,0);
             }
         }
     };
 }
 
-function CreateViewRequests(JSON_DATA ,index , count_per_view){
+function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
     let headers = "<tr>"+
                     "<th>Company ID</th>"+
                     "<th>Company Number</th>"+
@@ -66,16 +66,18 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view){
     for(let k = min ; k < max ; k++){
         document.querySelector("#requests_table").innerHTML+= CreateRequestTableRow(JSON_DATA[k]);
 
-        CreateViewIndexes(JSON_DATA.length,count_per_view,index);
+        CreateViewIndexes(JSON_DATA.length,count_per_view,index,button_index);
 
         var indexes = document.querySelectorAll("#index_button_request");
         for(let j = 0 ; j< indexes.length ; ++j){
             indexes[j].addEventListener("click", function(){
-                indexes[index - 1].className="index_button";
+                for (let k = 0; k < indexes.length; k++) {
+                    indexes[k].className="index_button";
+                }
                 indexes[j].className="index_button_selected";
-                index = j + 1;
+                index = indexes[j].value;
 
-                CreateViewRequests(JSON_DATA,index,count_per_view);
+                CreateViewRequests(JSON_DATA,index,count_per_view,j);
             } , true);
         }
 
@@ -102,7 +104,7 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view){
                                     index--;
                                 }
 
-                                CreateViewRequests(JSON_DATA , index , count_per_view);
+                                CreateViewRequests(JSON_DATA , index , count_per_view,button_index);
                             }
                         }
                     }
@@ -134,7 +136,7 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view){
 
                                 console.log(min);
 
-                                CreateViewRequests(JSON_DATA , index , count_per_view);
+                                CreateViewRequests(JSON_DATA , index , count_per_view,button_index);
                             }
                         }
                     }
@@ -159,16 +161,80 @@ function CreateRequestTableRow(JSON_DATA){
     return Row;
 }
 
-function CreateViewIndexes(length,count_per_view,selected){
-    document.querySelector("#requests_indexes").innerHTML="";
+function CreateViewIndexes(length,count_per_view,selected,button_index){
+    selected = parseInt(selected);
 
-    for (let i = 1; i <= Math.ceil(length / count_per_view) ; ++i) {
-        if(i == selected){
-            document.querySelector("#requests_indexes").innerHTML+="<button class='index_button_selected' id='index_button_request' value='"+i+"'>"+i+"</button>";
+    let top = Math.ceil(length / count_per_view);
+
+    if(top <= 7){
+        document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
+        document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
+
+        document.querySelector("#request_mid_index").innerHTML="";
+        for (let i = 2; i <= top - 1 ; ++i) {
+            document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
         }
 
-        else{
-            document.querySelector("#requests_indexes").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
-        }
+        document.querySelectorAll("#index_button_request")[selected - 1].className="index_button_selected";
+    }
+
+    else{
+            if(selected < 4){
+                document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
+                document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
+
+                document.querySelector("#request_mid_index").innerHTML="";
+                for(let i = 2; i < 5 ; ++i) {
+                    document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
+                }
+
+                document.querySelector("#request_space_index_1").innerHTML ="";
+                document.querySelector("#request_space_index_2").innerHTML ="...";
+
+                let buttons = document.querySelectorAll("#index_button_request");
+                for(let i = 0 ; i< buttons.length ; ++i){
+                    if(buttons[i].value == selected){
+                        document.querySelectorAll("#index_button_request")[i].className="index_button_selected";
+                    }
+                }
+            }
+
+            else if(selected > length - 3){
+                document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
+                document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
+
+
+                document.querySelector("#request_space_index_1").innerHTML ="...";
+                document.querySelector("#request_space_index_2").innerHTML ="";
+
+                document.querySelector("#request_mid_index").innerHTML="";
+                for(let i = length - 3; i < length ; ++i) {
+                    document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
+                }
+
+                let buttons = document.querySelectorAll("#index_button_request");
+                for(let i = 0 ; i< buttons.length ; ++i){
+                    if(buttons[i].value == selected){
+                        document.querySelectorAll("#index_button_request")[i].className="index_button_selected";
+                    }
+                }
+            }
+
+            else{
+                document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
+                document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
+
+
+                document.querySelector("#request_space_index_1").innerHTML ="...";
+                document.querySelector("#request_space_index_2").innerHTML ="...";
+
+                document.querySelector("#request_mid_index").innerHTML="";
+                for(let i = selected-1; i < selected+2 ; ++i) { 
+                    document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
+                }
+
+                document.querySelectorAll("#index_button_request")[2].className="index_button_selected";
+
+            }
     }
 }
