@@ -18,6 +18,11 @@ window.addEventListener("DOMContentLoaded" , function(){
 } , true);
 
 function GetRequests(count_per_view){
+    let alerts = document.querySelectorAll(".alert");
+    for (let i = 0; i < alerts.length; ++i) {
+        alerts[i].style.display="none";
+    }
+
     let Request = new XMLHttpRequest();
     let URL = URLROOT+"/Government/Requests";
 
@@ -25,76 +30,108 @@ function GetRequests(count_per_view){
     Request.send();
 
     Request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-
-            let JSON_DATA = JSON.parse(Request.response);
+        if (this.status === 200) {
+            if(this.readyState === 4){
+                let JSON_DATA = JSON.parse(Request.response);
             
-            if(JSON_DATA.length == 0){
-                document.querySelector("#requests_information").innerHTML = "No new requests";
-                document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
-            }
+                if(JSON_DATA.length == 0){
+                    document.querySelector("#requests_information").innerHTML = "No new requests";
+                    document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
+                }
 
-            else{
-                index = 1;
-                document.querySelector("#requests_count_overview").innerHTML = JSON_DATA.length;
-                CreateViewRequests(JSON_DATA,index,count_per_view,0);
+                else{
+                    index = 1;
+                    document.querySelector("#requests_count_overview").innerHTML = JSON_DATA.length;
+                    CreateViewRequests(JSON_DATA,index,count_per_view,0);
+                }
             }
+        }
+
+        else{
+            document.querySelector("#error_alert").style.display="flex";
+
+            setTimeout(function(){
+                document.querySelector("#error_alert").style.opacity="1";
+            } , 500);
+
+            setTimeout(function(){
+                document.querySelector("#error_alert").style.opacity="0";
+            } , 5500);
+
+            setTimeout(function(){
+                document.querySelector("#error_alert").style.display="none";
+            } , 6000);
         }
     };
 }
 
 function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
-    let headers = "<tr>"+
-                    "<th>Company ID</th>"+
-                    "<th>Company Number</th>"+
-                    "<th>Company Name</th>"+
-                    "<th>Email</th>"+
-                    "<th>Phone Number</th>"+
-                    "<th>Requested At</th>"+
-                    "</tr>"    
-                    ;
-
-    document.querySelector("#requests_table").innerHTML= headers;
-
-    let max = index * count_per_view;
-    let min = max - count_per_view;
-
-    if(max > JSON_DATA.length){
-        max = JSON_DATA.length;
+    if(JSON_DATA.length === 0){
+        document.querySelector("#requests_information").innerHTML = "No new requests";
+        document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
+        document.querySelector("#requests_count_overview").innerHTML="";
+        document.querySelector("#requests_table").innerHTML="";
+        document.querySelector("#requests_indexes").innerHTML="";
     }
 
-    for(let k = min ; k < max ; k++){
+    else{
+        let headers = "<tr>"+
+        "<th>Company ID</th>"+
+        "<th>Company Number</th>"+
+        "<th>Company Name</th>"+
+        "<th>Email</th>"+
+        "<th>Phone Number</th>"+
+        "<th>Requested At</th>"+
+        "</tr>"    
+        ;
+
+        document.querySelector("#requests_table").innerHTML= headers;
+
+        let max = index * count_per_view;
+        let min = max - count_per_view;
+
+        if(max > JSON_DATA.length){
+        max = JSON_DATA.length;
+        }
+
+        for(let k = min ; k < max ; k++){
         document.querySelector("#requests_table").innerHTML+= CreateRequestTableRow(JSON_DATA[k]);
 
         CreateViewIndexes(JSON_DATA.length,count_per_view,index,button_index);
 
         var indexes = document.querySelectorAll("#index_button_request");
         for(let j = 0 ; j< indexes.length ; ++j){
-            indexes[j].addEventListener("click", function(){
-                for (let k = 0; k < indexes.length; k++) {
-                    indexes[k].className="index_button";
-                }
-                indexes[j].className="index_button_selected";
-                index = indexes[j].value;
+        indexes[j].addEventListener("click", function(){
+            for (let k = 0; k < indexes.length; k++) {
+                indexes[k].className="index_button";
+            }
+            indexes[j].className="index_button_selected";
+            index = indexes[j].value;
 
-                CreateViewRequests(JSON_DATA,index,count_per_view,j);
-            } , true);
+            CreateViewRequests(JSON_DATA,index,count_per_view,j);
+        } , true);
         }
 
         var accept_request_button = document.querySelectorAll(".accept_request");
-            for(let i = 0 ; i < accept_request_button.length ; ++i){
-                accept_request_button[i].addEventListener("click" , function(){
-                    let data = {
-                        "Email" : accept_request_button[i].value
-                    };
+        for(let i = 0 ; i < accept_request_button.length ; ++i){
+            accept_request_button[i].addEventListener("click" , function(){
+                let alerts = document.querySelectorAll(".alert");
+                for (let i = 0; i < alerts.length; ++i) {
+                    alerts[i].style.display="none";
+                }
 
-                    let Request_Accept = new XMLHttpRequest();
-                    let URL = URLROOT+"/Government/Accept";
+                let data = {
+                    "Email" : accept_request_button[i].value
+                };
 
-                    Request_Accept.open("POST" , URL , true);
-                    Request_Accept.send(JSON.stringify(data));
-                    Request_Accept.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
+                let Request_Accept = new XMLHttpRequest();
+                let URL = URLROOT+"/Government/Accept";
+
+                Request_Accept.open("POST" , URL , true);
+                Request_Accept.send(JSON.stringify(data));
+                Request_Accept.onreadystatechange = function() {
+                    if (Request_Accept.status === 200) {
+                        if(Request_Accept.readyState === 4){
                             let JSON_Message = JSON.parse(Request_Accept.response);
 
                             if(JSON_Message["message"] === "accepted"){
@@ -105,26 +142,64 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
                                 }
 
                                 CreateViewRequests(JSON_DATA , index , count_per_view,button_index);
+
+                                document.querySelector("#accepted_alert").style.display="flex";
+
+                                setTimeout(function(){
+                                    document.querySelector("#accepted_alert").style.opacity="1";
+                                } , 500);
+
+                                setTimeout(function(){
+                                    document.querySelector("#accepted_alert").style.opacity="0";
+                                } , 5500);
+
+                                setTimeout(function(){
+                                    document.querySelector("#accepted_alert").style.display="none";
+                                } , 6000);
                             }
                         }
                     }
-                } , true);
-            }
 
-            var accept_request_button = document.querySelectorAll(".decline_request");
-            for(let i = 0 ; i < accept_request_button.length ; ++i){
-                accept_request_button[i].addEventListener("click" , function(){
-                    let data = {
-                        "Email" : accept_request_button[i].value
-                    };
+                    else{
+                        document.querySelector("#error_alert").style.display="flex";
 
-                    let Request_Decline = new XMLHttpRequest();
-                    let URL = URLROOT+"/Government/Decline";
+                        setTimeout(function(){
+                            document.querySelector("#error_alert").style.opacity="1";
+                        } , 500);
 
-                    Request_Decline.open("POST" , URL , true);
-                    Request_Decline.send(JSON.stringify(data));
-                    Request_Decline.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
+                        setTimeout(function(){
+                            document.querySelector("#error_alert").style.opacity="0";
+                        } , 5500);
+
+                        setTimeout(function(){
+                            document.querySelector("#error_alert").style.display="none";
+                        } , 6000);
+                    }
+                }
+            } , true);
+        }
+
+        var accept_request_button = document.querySelectorAll(".decline_request");
+        for(let i = 0 ; i < accept_request_button.length ; ++i){
+            accept_request_button[i].addEventListener("click" , function(){
+
+                let alerts = document.querySelectorAll(".alert");
+                for (let i = 0; i < alerts.length; ++i) {
+                    alerts[i].style.display="none";
+                }
+
+                let data = {
+                    "Email" : accept_request_button[i].value
+                };
+
+                let Request_Decline = new XMLHttpRequest();
+                let URL = URLROOT+"/Government/Decline";
+
+                Request_Decline.open("POST" , URL , true);
+                Request_Decline.send(JSON.stringify(data));
+                Request_Decline.onreadystatechange = function() {
+                    if (this.status === 200){
+                        if(this.readyState === 4){
                             let JSON_Message = JSON.parse(Request_Decline.response);
 
                             if(JSON_Message["message"] === "Declined"){
@@ -134,14 +209,44 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
                                     index--;
                                 }
 
-                                console.log(min);
-
                                 CreateViewRequests(JSON_DATA , index , count_per_view,button_index);
+
+                                document.querySelector("#declined_alert").style.display="flex";
+
+                                setTimeout(function(){
+                                    document.querySelector("#declined_alert").style.opacity="1";
+                                } , 500);
+
+                                setTimeout(function(){
+                                    document.querySelector("#declined_alert").style.opacity="0";
+                                } , 5500);
+
+                                setTimeout(function(){
+                                    document.querySelector("#declined_alert").style.display="none";
+                                } , 6000);
                             }
                         }
                     }
-                } , true);
-            }
+
+                    else{
+                        document.querySelector("#error_alert").style.display="flex";
+
+                        setTimeout(function(){
+                            document.querySelector("#error_alert").style.opacity="1";
+                        } , 500);
+
+                        setTimeout(function(){
+                            document.querySelector("#error_alert").style.opacity="0";
+                        } , 5500);
+
+                        setTimeout(function(){
+                            document.querySelector("#error_alert").style.display="none";
+                        } , 6000);
+                    }
+                }
+            } , true);
+        }
+        }
     }
 }
 
@@ -181,8 +286,7 @@ function CreateViewIndexes(length,count_per_view,selected,button_index){
             document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
             document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
         }
-        
-        document.querySelector("#request_mid_index").innerHTML="";
+
         for (let i = 2; i <= top - 1 ; ++i) {
             document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
         }
@@ -195,12 +299,10 @@ function CreateViewIndexes(length,count_per_view,selected,button_index){
                 document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
                 document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
 
-                document.querySelector("#request_mid_index").innerHTML="";
                 for(let i = 2; i < 5 ; ++i) {
                     document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
                 }
 
-                document.querySelector("#request_space_index_1").innerHTML ="";
                 document.querySelector("#request_space_index_2").innerHTML ="...";
 
                 let buttons = document.querySelectorAll("#index_button_request");
@@ -217,9 +319,7 @@ function CreateViewIndexes(length,count_per_view,selected,button_index){
 
 
                 document.querySelector("#request_space_index_1").innerHTML ="...";
-                document.querySelector("#request_space_index_2").innerHTML ="";
 
-                document.querySelector("#request_mid_index").innerHTML="";
                 for(let i = length - 3; i < length ; ++i) {
                     document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
                 }
@@ -240,7 +340,6 @@ function CreateViewIndexes(length,count_per_view,selected,button_index){
                 document.querySelector("#request_space_index_1").innerHTML ="...";
                 document.querySelector("#request_space_index_2").innerHTML ="...";
 
-                document.querySelector("#request_mid_index").innerHTML="";
                 for(let i = selected-1; i < selected+2 ; ++i) { 
                     document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
                 }
