@@ -98,7 +98,7 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
                             let JSON_Message = JSON.parse(Request_Accept.response);
 
                             if(JSON_Message["message"] === "accepted"){
-                                JSON_DATA.splice(i+count_per_view,1);
+                                JSON_DATA.splice(i+count_per_view*(index-1),1);
 
                                 if(min == JSON_DATA.length){
                                     index--;
@@ -128,7 +128,7 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
                             let JSON_Message = JSON.parse(Request_Decline.response);
 
                             if(JSON_Message["message"] === "Declined"){
-                                JSON_DATA.splice(i+count_per_view,1);
+                                JSON_DATA.splice(i+count_per_view*(index-1),1);
 
                                 if(min == JSON_DATA.length){
                                     index--;
