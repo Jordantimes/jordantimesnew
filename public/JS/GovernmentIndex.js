@@ -75,6 +75,8 @@ function CreateViewRequests(JSON_DATA ,index , count_per_view,button_index){
     }
 
     else{
+        document.querySelector("#requests_count_overview").innerHTML = JSON_DATA.length;
+        
         let headers = "<tr>"+
         "<th>Company ID</th>"+
         "<th>Company Number</th>"+
