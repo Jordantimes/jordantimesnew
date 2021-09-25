@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded" , function(){
     nav_buttons[0].style.backgroundColor ="#eeeeee";
     var view_box = 0;
 
-    GetRequests();
+    GetRequests(10);
 
     for (let i = 0; i < nav_buttons.length; ++i) {
         nav_buttons[i].addEventListener("click" , function(){
@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded" , function(){
     }
 } , true);
 
-function GetRequests(){
+function GetRequests(count_per_view){
     let Request = new XMLHttpRequest();
     let URL = URLROOT+"/Government/Requests";
 
@@ -36,7 +36,15 @@ function GetRequests(){
             }
 
             else{
-                var headers = "<tr>"+
+                index = 1;
+                CreateViewRequests(JSON_DATA,index,count_per_view);
+            }
+        }
+    };
+}
+
+function CreateViewRequests(JSON_DATA ,index , count_per_view){
+    let headers = "<tr>"+
                     "<th>Company ID</th>"+
                     "<th>Company Number</th>"+
                     "<th>Company Name</th>"+
@@ -45,34 +53,9 @@ function GetRequests(){
                     "<th>Requested At</th>"+
                     "</tr>"    
                     ;
-                document.querySelector("#requests_table").innerHTML= headers;
 
-                count_per_view = 10;
-                index = 0;
+    document.querySelector("#requests_table").innerHTML= headers;
 
-                CreateView(JSON_DATA,"#requests_table",(index+1),count_per_view);
-
-                CreateViewIndexes(JSON_DATA.length,count_per_view,"#requests_indexes");
-
-                var indexes = document.querySelectorAll("#index_button_request");
-                for(let j = 0 ; j< indexes.length ; ++j){
-                    indexes[j].addEventListener("click", function(){
-                        document.querySelector("#requests_table").innerHTML= "";
-                        document.querySelector("#requests_table").innerHTML= headers;
-
-                        indexes[index].className="index_button";
-                        indexes[j].className="index_button_selected";
-                        index = j;
-
-                        CreateView(JSON_DATA,"#requests_table",indexes[j].value,count_per_view);
-                    } , true);
-                }
-            }
-        }
-    };
-}
-
-function CreateView(JSON_DATA , View  ,index , count_per_view){
     let max = index * count_per_view;
     let min = max - count_per_view;
 
@@ -80,8 +63,21 @@ function CreateView(JSON_DATA , View  ,index , count_per_view){
         max = JSON_DATA.length;
     }
 
-    for(min ; min < max ; min++){
-        document.querySelector(View).innerHTML+= CreateRequestTableRow(JSON_DATA[min]);
+    for(let k = min ; k < max ; k++){
+        document.querySelector("#requests_table").innerHTML+= CreateRequestTableRow(JSON_DATA[k]);
+
+        CreateViewIndexes(JSON_DATA.length,count_per_view,index);
+
+        var indexes = document.querySelectorAll("#index_button_request");
+        for(let j = 0 ; j< indexes.length ; ++j){
+            indexes[j].addEventListener("click", function(){
+                indexes[index - 1].className="index_button";
+                indexes[j].className="index_button_selected";
+                index = j + 1;
+
+                CreateViewRequests(JSON_DATA,index,count_per_view);
+            } , true);
+        }
 
         var accept_request_button = document.querySelectorAll(".accept_request");
             for(let i = 0 ; i < accept_request_button.length ; ++i){
@@ -100,7 +96,13 @@ function CreateView(JSON_DATA , View  ,index , count_per_view){
                             let JSON_Message = JSON.parse(Request_Accept.response);
 
                             if(JSON_Message["message"] === "accepted"){
-                                GetRequests();
+                                JSON_DATA.splice(i,1);
+
+                                if(min == JSON_DATA.length){
+                                    index--;
+                                }
+
+                                CreateViewRequests(JSON_DATA , index , count_per_view);
                             }
                         }
                     }
@@ -124,7 +126,15 @@ function CreateView(JSON_DATA , View  ,index , count_per_view){
                             let JSON_Message = JSON.parse(Request_Decline.response);
 
                             if(JSON_Message["message"] === "Declined"){
-                                GetRequests();
+                                JSON_DATA.splice(i,1);
+
+                                if(min == JSON_DATA.length){
+                                    index--;
+                                }
+
+                                console.log(min);
+
+                                CreateViewRequests(JSON_DATA , index , count_per_view);
                             }
                         }
                     }
@@ -149,16 +159,16 @@ function CreateRequestTableRow(JSON_DATA){
     return Row;
 }
 
-function CreateViewIndexes(length,count_per_view,Viewindex){
-    document.querySelector(Viewindex).innerHTML="";
+function CreateViewIndexes(length,count_per_view,selected){
+    document.querySelector("#requests_indexes").innerHTML="";
 
-    for (let i = 0; i < Math.ceil(length / count_per_view) ; ++i) {
-        if(i == 0){
-            document.querySelector(Viewindex).innerHTML+="<button class='index_button_selected' id='index_button_request' value='"+(i+1)+"'>"+(i+1)+"</button>";
+    for (let i = 1; i <= Math.ceil(length / count_per_view) ; ++i) {
+        if(i == selected){
+            document.querySelector("#requests_indexes").innerHTML+="<button class='index_button_selected' id='index_button_request' value='"+i+"'>"+i+"</button>";
         }
 
         else{
-            document.querySelector(Viewindex).innerHTML+="<button class='index_button' id='index_button_request' value='"+(i+1)+"'>"+(i+1)+"</button>";
+            document.querySelector("#requests_indexes").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
         }
     }
 }
