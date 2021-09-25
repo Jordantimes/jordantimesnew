@@ -167,9 +167,15 @@ function CreateViewIndexes(length,count_per_view,selected,button_index){
     let top = Math.ceil(length / count_per_view);
 
     if(top <= 7){
-        document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
-        document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
+        if(top === 1){
+            document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
+        }
 
+        else{
+            document.querySelector("#request_first_index").innerHTML= "<button class='index_button' id='index_button_request' value='1'>1</button>";
+            document.querySelector("#request_last_index").innerHTML= "<button class='index_button' id='index_button_request' value='"+top+"'>"+top+"</button>";
+        }
+        
         document.querySelector("#request_mid_index").innerHTML="";
         for (let i = 2; i <= top - 1 ; ++i) {
             document.querySelector("#request_mid_index").innerHTML+="<button class='index_button' id='index_button_request' value='"+i+"'>"+i+"</button>";
