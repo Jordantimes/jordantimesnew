@@ -47,4 +47,33 @@
 
             return Update($table,$columns,$expression);
         }
+
+        public function GetCompanyByNameOrNumber($Value){
+            $Data = [];
+
+            if(!empty($Value)){
+                $table= "users";
+                $columns = "company_ID,company_Number,name,email,phone,CreatedAt";
+                $expression =  "verified = false AND role = 'company' AND isDeleted = false AND (name LIKE '%$Value%' OR company_Number LIKE '%$Value%')";
+                
+                $result = SelectByCondition($table,$columns,$expression);
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    extract($row);
+
+                    $DataItems = [
+                        "company_ID" => $row["company_ID"],
+                        "company_Number" => $row["company_Number"],
+                        "name" => $row["name"],
+                        "email" => $row["email"],
+                        "phone" => $row["phone"],
+                        "CreatedAt" => $row["CreatedAt"],
+                    ];
+
+                    array_push($Data , $DataItems);
+                }
+            }
+
+            return $Data;
+        }
     }
