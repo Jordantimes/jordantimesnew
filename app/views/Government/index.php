@@ -22,57 +22,15 @@
     ?> -->
 
     <div class="main_view">
-        <div class="content">
-            <div class="alert_container">
-                <div class="alert" id="error_alert">
-                    <div class="alert_title">
-                        Something went wrong...
-                    </div>
-                    <div class="alert_icon_container" id="error_icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
-                            <g>
-                                <g>
-                                    <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
-                                </g>
-                            </g>
-                            <g>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="alert" id="accepted_alert">
-                    <div class="alert_title">
-                        Company accepted
-                    </div>
-
-                    <div class="alert_icon_container">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                            <g>
-                                <g>
-                                    <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0    c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7    C514.5,101.703,514.499,85.494,504.502,75.496z"/>
-                                </g>
-                            </g>
-                            <g>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="alert" id="declined_alert">
-                    <div class="alert_title">
-                        Company declined
-                    </div>
-                    <div class="alert_icon_container">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
-                            <g>
-                                <g>
-                                    <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
-                                </g>
-                            </g>
-                            <g>
-                        </svg>
-                    </div>
-                </div>
+        <div class="pop_ups_container">
+            <div class="pop_up_content_container">
+                <div class="pop_up_information"></div>
+                <div class="pop_up_actions"></div>
             </div>
+        </div>
+
+        <div class="content">
+            <div class="alert_container"></div>
 
             <div class="content_container">
                 <div class="navigation_bar_container">
@@ -82,6 +40,7 @@
                         </div>
                         <div class="navigation_buttons_container">
                             <button class="navigation_button">Overview</button>
+                            <button class="navigation_button">Companys</button>
                             <button class="navigation_button">Requests</button>
                             <button class="navigation_button">Messeges</button>
                             <button class="navigation_button">Notifications</button>
@@ -109,24 +68,51 @@
                         </div>
                     </div>
 
+                    <div class="content_view_box" id="companys_view_box">
+                        <div class="content_view_box_header">
+                            <h3>Companys</h3>
+                        </div>
+
+                        <div class="content_view_box_data_container">
+    
+                        </div>
+                    </div>
 
                     <div class="content_view_box" id="requests_view_box">
                         <div class="content_view_box_header">
                             <h3>Companys requests</h3>
+
+                            <div class="view_box_refresh_container">
+                                <button class="refresh_button" id="refresh_requests">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 489.533 489.533" style="enable-background:new 0 0 489.533 489.533;" xml:space="preserve">
+                                        <g>
+                                            <path d="M268.175,488.161c98.2-11,176.9-89.5,188.1-187.7c14.7-128.4-85.1-237.7-210.2-239.1v-57.6c0-3.2-4-4.9-6.7-2.9   l-118.6,87.1c-2,1.5-2,4.4,0,5.9l118.6,87.1c2.7,2,6.7,0.2,6.7-2.9v-57.5c87.9,1.4,158.3,76.2,152.3,165.6   c-5.1,76.9-67.8,139.3-144.7,144.2c-81.5,5.2-150.8-53-163.2-130c-2.3-14.3-14.8-24.7-29.2-24.7c-17.9,0-31.9,15.9-29.1,33.6   C49.575,418.961,150.875,501.261,268.175,488.161z"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
+
+                        <div class="view_box_search_container">
+                                <input type="text" placeholder="Search..." class="search_input" id="requests_search_input">
+                                <button type="submit" class="search_button" id="requests_search_button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512.005 512.005" style="enable-background:new 0 0 512.005 512.005;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <path d="M505.749,475.587l-145.6-145.6c28.203-34.837,45.184-79.104,45.184-127.317c0-111.744-90.923-202.667-202.667-202.667    S0,90.925,0,202.669s90.923,202.667,202.667,202.667c48.213,0,92.48-16.981,127.317-45.184l145.6,145.6    c4.16,4.16,9.621,6.251,15.083,6.251s10.923-2.091,15.083-6.251C514.091,497.411,514.091,483.928,505.749,475.587z     M202.667,362.669c-88.235,0-160-71.765-160-160s71.765-160,160-160s160,71.765,160,160S290.901,362.669,202.667,362.669z"/>
+                                            </g>
+                                        </g>
+                                        <g>
+                                    </svg>
+                                </button>
+                        </div>                        
 
                         <div class="content_view_box_data_container">
                             <div class="content_view_box_information" id="requests_information"></div>
 
                             <table class="content_table" id="requests_table"></table>
 
-                            <div class="ViewIndexContainer" id="requests_indexes">
-                                <div class="first" id="request_first_index"></div>
-                                <div class="space" id="request_space_index_1"></div>
-                                <div class="mid" id="request_mid_index"></div>
-                                <div class="space" id="request_space_index_2"></div>
-                                <div class="last" id="request_last_index"></div>
-                            </div>
+                            <div class="view_more_container" id="requests_view_more"></div>
                         </div>
                     </div>
                 </div>
