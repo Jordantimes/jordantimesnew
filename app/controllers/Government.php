@@ -73,4 +73,16 @@
                 echo json_encode($JSON);
             }
         }
+
+        public function SearchRequests(){
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/JSON');
+            header('Access-Control-Allow-Methods: POST');
+            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+            $data = json_decode(file_get_contents("php://input"));
+
+            $Data = $this->GovernmentRepo->GetCompanyByNameOrNumber($data->Value);
+                echo json_encode($Data);
+        }
     }
