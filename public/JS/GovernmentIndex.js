@@ -113,6 +113,9 @@ function GetRequestsSearch(count_per_time){
             }
 
             else{
+                document.querySelector("#requests_information").innerHTML = "An error occured";
+                document.querySelector("#requests_table").innerHTML="";
+                document.querySelector("#requests_view_more").innerHTML= "";
                 CreateErrorMessage();
             }
         }
