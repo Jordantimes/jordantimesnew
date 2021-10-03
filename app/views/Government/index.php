@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="CSS/GovernmentIndex.css">
 </head>
 <body>
-    <!-- <?php 
-        print_r(unserialize($_SESSION["Government"]));
-    ?> -->
-
+        
+    <?php $USER = unserialize($_SESSION["Government"]); ?>
+    <div class="USER" id="<?php echo $USER["ID"]; ?>" email="<?php echo $USER["Email"]; ?>"></div>
+    
     <div class="main_view">
         <div class="pop_ups_container">
             <div class="pop_up_content_container">
@@ -40,9 +40,9 @@
                         </div>
                         <div class="navigation_buttons_container">
                             <button class="navigation_button">Overview</button>
+                            <button class="navigation_button">Trips</button>
                             <button class="navigation_button">Companys</button>
                             <button class="navigation_button">Requests</button>
-                            <button class="navigation_button">Messeges</button>
                             <button class="navigation_button">Notifications</button>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="grid_container">
                             <div class="overview_item">
                                 <div class="overview_item_header">
-                                    <h4>New requests</h4>
+                                    <h4>Requests</h4>
                                 </div>
 
                                 <div class="overview_item_data" id="requests_count">
@@ -65,6 +65,27 @@
                                     <div class="overview_info"  id="requests_count_overview_information"></div>
                                 </div>
                             </div>
+
+                            <div class="overview_item">
+                                <div class="overview_item_header">
+                                    <h4>Notifications</h4>
+                                </div>
+
+                                <div class="overview_item_data" id="notifications_count">
+                                    <div class="overview_count" id="notifications_count_overview"></div>
+                                    <div class="overview_info"  id="notifications_count_overview_information"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content_view_box" id="trips_view_box">
+                        <div class="content_view_box_header">
+                            <h3>Trips</h3>
+                        </div>
+
+                        <div class="content_view_box_data_container">
+    
                         </div>
                     </div>
 
@@ -94,7 +115,7 @@
                         </div>
 
                         <div class="view_box_search_container">
-                                <input type="text" placeholder="Search..." class="search_input" id="requests_search_input">
+                                <input type="text" placeholder="Search by name or number..." class="search_input" id="requests_search_input">
                                 <button type="submit" class="search_button" id="requests_search_button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512.005 512.005" style="enable-background:new 0 0 512.005 512.005;" xml:space="preserve">
                                         <g>
@@ -110,9 +131,35 @@
                         <div class="content_view_box_data_container">
                             <div class="content_view_box_information" id="requests_information"></div>
 
-                            <table class="content_table" id="requests_table"></table>
+                            <table class="requests_table" id="requests_table"></table>
 
                             <div class="view_more_container" id="requests_view_more"></div>
+                        </div>
+                    </div>
+
+                    <div class="content_view_box" id="notifications_view_box">
+                        <div class="content_view_box_header">
+                            <h3>Notifications</h3>
+
+                            <div class="view_box_refresh_container">
+                                <button class="refresh_button" id="refresh_notifications">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 489.533 489.533" style="enable-background:new 0 0 489.533 489.533;" xml:space="preserve">
+                                        <g>
+                                            <path d="M268.175,488.161c98.2-11,176.9-89.5,188.1-187.7c14.7-128.4-85.1-237.7-210.2-239.1v-57.6c0-3.2-4-4.9-6.7-2.9   l-118.6,87.1c-2,1.5-2,4.4,0,5.9l118.6,87.1c2.7,2,6.7,0.2,6.7-2.9v-57.5c87.9,1.4,158.3,76.2,152.3,165.6   c-5.1,76.9-67.8,139.3-144.7,144.2c-81.5,5.2-150.8-53-163.2-130c-2.3-14.3-14.8-24.7-29.2-24.7c-17.9,0-31.9,15.9-29.1,33.6   C49.575,418.961,150.875,501.261,268.175,488.161z"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="content_view_box_data_container">
+                            <div class="content_view_box_information" id="notifications_information"></div>
+
+                            <div class="notifications_controls"></div>
+
+                            <div class="notifications_table" id="notifications_table"></div>
+
+                            <div class="view_more_container" id="notifications_view_more"></div>
                         </div>
                     </div>
                 </div>
