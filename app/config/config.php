@@ -2,7 +2,7 @@
 
     define("HOST" , "localhost");
     define("USERNAME" , "root");
-    define("PASSWORD" , "bruhbruh");
+    define("PASSWORD" , "");
     define("DBNAME" , "jordantimes"); 
 
     define("APPROOT" , dirname(dirname(__FILE__)));
