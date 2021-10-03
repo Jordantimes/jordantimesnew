@@ -46,6 +46,17 @@ function Update($table,$columns,$expression){
     return $query_condition;
 }
 
-function Delete(){
+function Delete($table,$expression){
+    $DataBase = new DataBase();
+    $Connection = $DataBase->Connect();
+    $Date = date("Y-m-d");
+    
+    $Query = "UPDATE $table SET isDeleted = true , UpdatedAt = '$Date' WHERE $expression";
+    $stmt= $Connection->prepare($Query);
+    $query_condition = $stmt->execute();
 
+    $DataBase = Null;
+    $Connection = NULL;
+
+    return $query_condition;
 }
