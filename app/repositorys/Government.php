@@ -19,7 +19,7 @@
                     "name" => $row["name"],
                     "email" => $row["email"],
                     "phone" => $row["phone"],
-                    "CreatedAt" => $row["CreatedAt"],
+                    "CreatedAt" => $row["CreatedAt"]
                 ];
 
                 array_push($Data , $DataItems);
@@ -39,13 +39,10 @@
         }
 
         public function DeclineCompany($Email){
-            $Date = date("Y-m-d");
-
             $table= "users";
-            $columns = "isDeleted = true , UpdatedAt = '$Date'";
             $expression =  "email = '$Email' AND role = 'company' AND isDeleted = false";
 
-            return Update($table,$columns,$expression);
+            return Delete($table,$expression);
         }
 
         public function GetCompanyByNameOrNumber($Value){
@@ -67,7 +64,7 @@
                         "name" => $row["name"],
                         "email" => $row["email"],
                         "phone" => $row["phone"],
-                        "CreatedAt" => $row["CreatedAt"],
+                        "CreatedAt" => $row["CreatedAt"]
                     ];
 
                     array_push($Data , $DataItems);
