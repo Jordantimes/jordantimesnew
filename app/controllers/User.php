@@ -241,7 +241,7 @@
                     exit;
                 }
 
-                SendPasswordRecoveryMail($_POST["email"],$user["id"],$user["name"]);
+                $this->UserRepo->SendPasswordRecoveryMail($_POST["email"],$user["id"],$user["name"]);
                 $this->view("User/ForgotPassword");
                 exit;
             }
@@ -274,7 +274,7 @@
                 $CurrentDate = date('Y-m-d h:i:s');
 
 
-                $CodeData = GetRecoveryPasswordCodeData($Data["Code"]);
+                $CodeData = $this->UserRepo->GetRecoveryPasswordCodeData($Data["Code"]);
 
                 if($CodeData === false){
                     $this->view("User/ChangePassword" , $Error = ["Message" => "Something went wrong"]);
@@ -282,7 +282,7 @@
                 }
 
                 if($CodeData["Date"] > $CurrentDate){
-                    if(UpdateUserPassword($CodeData["ID"],$Data["Password"])){
+                    if($this->UserRepo->UpdateUserPassword($CodeData["ID"],$Data["Password"])){
                         $this->view("User/ChangePassword");
                         exit;
                     }
@@ -302,5 +302,101 @@
             else{
                 $this->view("User/ChangePassword");
             }
+        }
+
+        //HTTP Request
+        public function Notifications(){
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/JSON');
+            header('Access-Control-Allow-Methods: POST');
+            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+            $data = json_decode(file_get_contents("php://input"));
+
+            $Data = $this->UserRepo->GetNotifications($data->ID);
+
+            echo json_encode($Data);
+        }
+
+
+        //HTTP Request
+        public function NotificationMarkUnread(){
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/JSON');
+            header('Access-Control-Allow-Methods: POST');
+            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+            $data = json_decode(file_get_contents("php://input"));
+
+            if($this->UserRepo->MarkAsUnread($data->ID , $data->Values)){
+                $JSON = [
+                    "message" => "Updated"
+                ];
+    
+                echo json_encode($JSON);
+            }
+
+            else{
+                $JSON = [
+                    "message" => "something went wrong"
+                ];
+    
+                echo json_encode($JSON);
+            }
+            
+        }
+
+        //HTTP Request
+        public function NotificationMarkread(){
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/JSON');
+            header('Access-Control-Allow-Methods: POST');
+            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+            $data = json_decode(file_get_contents("php://input"));
+
+            if($this->UserRepo->MarkAsread($data->ID , $data->Values)){
+                $JSON = [
+                    "message" => "Updated"
+                ];
+    
+                echo json_encode($JSON);
+            }
+
+            else{
+                $JSON = [
+                    "message" => "something went wrong"
+                ];
+    
+                echo json_encode($JSON);
+            }
+            
+        }
+
+        //HTTP Request
+        public function NotificationDelete(){
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/JSON');
+            header('Access-Control-Allow-Methods: POST');
+            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+            $data = json_decode(file_get_contents("php://input"));
+
+            if($this->UserRepo->DeleteNotifications($data->ID , $data->Values)){
+                $JSON = [
+                    "message" => "Deleted"
+                ];
+    
+                echo json_encode($JSON);
+            }
+
+            else{
+                $JSON = [
+                    "message" => "something went wrong"
+                ];
+    
+                echo json_encode($JSON);
+            }
+            
         }
     }
