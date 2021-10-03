@@ -235,12 +235,12 @@
     transition: 0.2s ease-in-out;
 }
 
-.content_table{
+.requests_table{
     width: 100%;
     border-collapse: collapse;
 }
 
-.content_table tr td{
+.requests_table tr td{
     width: calc(100%/8);
     text-align: center;
     padding: 24px 6px;
@@ -249,7 +249,7 @@
     font-size: 14px;
 }
 
-.content_table tr td button{
+.requests_table tr td button{
     background-color: transparent;
     border: none;
     font-family: inherit;
@@ -257,11 +257,11 @@
     cursor: pointer;
 }
 
-.content_table tr td button:hover{
+.requests_table tr td button:hover{
     text-decoration: underline;
 }
 
-.content_table tr th{
+.requests_table tr th{
     text-align: center;
     padding: 24px 6px;
     border: 1px var(--side_color) solid;
@@ -333,4 +333,129 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.notifications_item{
+    width: 100%;
+    border: 1px var(--side_color) solid;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 18px 0px;
+}
+
+.notifications_item_upper{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-bottom: 1px var(--side_color) solid;
+    padding-left: 36px;
+}
+
+.notifications_item_upper div{
+    padding: 7px;
+    text-align: left;
+}
+
+.notifications_item_upper div:nth-child(1){
+    padding: 0px;
+}
+
+.notifications_item_upper div:nth-child(2){
+    flex: 1;
+    border-right: 1px var(--side_color) solid;
+}
+
+.notifications_item_lower{
+    width: 100%;
+    padding: 7px;
+    background-color: var(--side_color);
+}
+
+.notifications_controls{
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    position: relative;
+}
+
+.select_all_checkbox,.notifications_item input[type=checkbox]{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+}
+
+.select_all_checkbox_custom_container{
+    position: relative;
+    padding: 21px;
+    width: 14px;
+    height: 14px;
+}
+
+.select_all_checkbox_custom{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    border: 1px var(--text_main_color) solid;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.checkbox_custom{
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    border: 1px var(--text_main_color) solid;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.checkbox_custom svg,.select_all_checkbox_custom svg{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 8px;
+    height: 8px;
+    fill: #ffffff;
+}
+
+.selected_notifications_controls{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notifications_control_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 14px;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.notifications_control_button:hover{
+    background-color: var(--side_color);
+}
+
+.notifications_control_button svg{
+    display: block;
+    width: 14px;
+    height: 14px;
+    fill: #000000;
 }
