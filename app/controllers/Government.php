@@ -33,7 +33,7 @@
 
             if($this->GovernmentRepo->AcceptCompany($data->Email)){
                 $JSON = [
-                    "message" => "accepted"
+                    "message" => "Accepted"
                 ];
     
                 echo json_encode($JSON);
@@ -74,6 +74,7 @@
             }
         }
 
+        //HTTP Request
         public function SearchRequests(){
             header('Access-Control-Allow-Origin: *');
             header('Content-Type: application/JSON');
