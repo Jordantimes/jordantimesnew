@@ -1,16 +1,30 @@
 window.addEventListener("DOMContentLoaded" , function(){
-    //sticky navigation section control
-    nav_buttons = document.querySelectorAll(".navigation_button");
+    //navigation buttons control
+    const nav_buttons = document.querySelectorAll(".navigation_button");
+    const nav_buttons_counter = document.querySelectorAll(".navigation_button_counter");
+    const view_boxex = document.querySelectorAll(".content_view_box");
     var view_box = 0;
-    nav_buttons[view_box].style.backgroundColor ="#eeeeee";
-    document.querySelectorAll(".content_view_box")[view_box].style.display="block";
+
+    nav_buttons[view_box].style.backgroundColor = MAIN_COLOR;
+    nav_buttons[view_box].style.color = "#ffffff";
+    nav_buttons[view_box].style.border = "1px "+MAIN_COLOR+" solid";
+    view_boxex[view_box].style.display="block";
+    nav_buttons_counter[view_box].style.color = "#ffffff";
+    
 
     for (let i = 0; i < nav_buttons.length; ++i) {
         nav_buttons[i].addEventListener("click" , function(){
-            document.querySelectorAll(".content_view_box")[view_box].style.display = "none";
+            view_boxex[view_box].style.display = "none";
             nav_buttons[view_box].style.backgroundColor = "transparent";
-            document.querySelectorAll(".content_view_box")[i].style.display="block";
-            nav_buttons[i].style.backgroundColor = "#eeeeee";
+            nav_buttons[view_box].style.color = "#cccccc";
+            nav_buttons[view_box].style.border = "1px #cccccc solid";
+            nav_buttons_counter[view_box].style.color = MAIN_COLOR;
+
+            view_boxex[i].style.display="block";
+            nav_buttons[i].style.backgroundColor = MAIN_COLOR;
+            nav_buttons[i].style.color = "#ffffff";
+            nav_buttons[i].style.border = "1px "+MAIN_COLOR+" solid";
+            nav_buttons_counter[i].style.color = "#ffffff";
 
             view_box = i;
         } , true);
@@ -64,13 +78,12 @@ function GetRequests(count_per_time){
             
                 if(JSON_DATA.length == 0){
                     document.querySelector("#requests_information").innerHTML = "No new requests";
-                    document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
                 }
 
                 else{
-                    document.querySelector("#requests_count_overview_information").innerHTML = "";
+                    document.querySelector("#requests_counter").innerHTML = "";
                     document.querySelector("#requests_information").innerHTML = "";
-                    document.querySelector("#requests_count_overview").innerHTML = JSON_DATA.length;
+                    document.querySelector("#requests_counter").innerHTML = JSON_DATA.length;
                     document.querySelector("#requests_table").setAttribute("all_count" , JSON_DATA.length);
                     document.querySelector("#requests_table").setAttribute("count" , JSON_DATA.length);
                     CreateRequestsTable(JSON_DATA,0,count_per_time);
@@ -80,7 +93,6 @@ function GetRequests(count_per_time){
 
         else{
             document.querySelector("#requests_information").innerHTML = "An error occured";
-            document.querySelector("#requests_count_overview_information").innerHTML = "An error occured";
             document.querySelector("#requests_table").innerHTML="";
             CreateErrorMessage();
         }
@@ -136,7 +148,7 @@ function CreateRequestsTable(JSON_DATA,index,count_per_time){
         "<th>Company ID</th>"+
         "<th>Company Number</th>"+
         "<th>Company Name</th>"+
-        "<th>Email</th>"+
+        "<th>Company Email</th>"+
         "<th>Phone Number</th>"+
         "<th>Requested At</th>"+
         "</tr>"    
@@ -305,11 +317,9 @@ function GetNotifications(count_per_time){
             
                 if(JSON_DATA.length == 0){
                     document.querySelector("#notifications_information").innerHTML = "No new notifications";
-                    document.querySelector("#notifications_count_overview_information").innerHTML = "No new notifications";
                 }
 
                 else{
-                    document.querySelector("#notifications_count_overview_information").innerHTML = "";
                     document.querySelector("#notifications_information").innerHTML = "";
                     document.querySelector("#notifications_table").setAttribute("all_count" , JSON_DATA.length);
                     document.querySelector("#notifications_table").setAttribute("count" , JSON_DATA.length);
@@ -323,11 +333,11 @@ function GetNotifications(count_per_time){
                     }
 
                     if(unread_count === 0){
-                        document.querySelector("#notifications_count_overview_information").innerHTML = "No new notifications";
+                        document.querySelector("#notifications_counter").innerHTML = "";
                     }
 
                     else{
-                        document.querySelector("#notifications_count_overview").innerHTML = unread_count;
+                        document.querySelector("#notifications_counter").innerHTML = unread_count;
                     }
                     
                     CreateNotificationsTable(JSON_DATA,0,count_per_time);
@@ -337,7 +347,6 @@ function GetNotifications(count_per_time){
 
         else{
             document.querySelector("#notifications_information").innerHTML = "An error occured";
-            document.querySelector("#notifications_count_overview_information").innerHTML = "An error occured";
             document.querySelector("#notifications_table").innerHTML="";
             CreateErrorMessage();
         }
@@ -744,13 +753,11 @@ function CreateNotificationsControls(JSON_DATA){
                                 document.querySelector("#notifications_table").setAttribute("unread" , unread_count_new);
 
                                 if(unread_count_new !== 0){
-                                    document.querySelector("#notifications_count_overview").innerHTML = unread_count_new;
-                                    document.querySelector("#notifications_count_overview_information").innerHTML = "";
+                                    document.querySelector("#notifications_counter").innerHTML = unread_count_new;
                                 }
 
                                 else{
-                                    document.querySelector("#notifications_count_overview").innerHTML = "";
-                                    document.querySelector("#notifications_count_overview_information").innerHTML = "No new notifications";
+                                    document.querySelector("#notifications_counter").innerHTML = "";
                                 }
                             }
                         }
@@ -828,8 +835,7 @@ function CreateNotificationsControls(JSON_DATA){
                 
                                 let unread_count_new = parseInt(document.querySelector("#notifications_table").getAttribute("unread")) + 1;
                                 document.querySelector("#notifications_table").setAttribute("unread" , unread_count_new);
-                                document.querySelector("#notifications_count_overview").innerHTML = unread_count_new;
-                                document.querySelector("#notifications_count_overview_information").innerHTML = "";
+                                document.querySelector("#notifications_counter").innerHTML = unread_count_new;
                             }
                         }
 
@@ -935,11 +941,11 @@ function CreateAcceptPopUp(JSON_DATA,index,value,name){
 
                         //print the overall count in the overview sections
                         if(all_count_new !== 0){
-                            document.querySelector("#requests_count_overview").innerHTML = all_count_new;
+                            document.querySelector("#requests_counter").innerHTML = all_count_new;
                         }
 
                         else{
-                            document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
+                            document.querySelector("#requests_counter").innerHTML = "";
                         }
                         
                         //if the index reached 0 then there is nothing else to show
@@ -1040,11 +1046,11 @@ function CreateDeclinePopUp(JSON_DATA,index,value,name){
                         document.querySelector("#requests_table").setAttribute("all_count" , all_count_new);
 
                         if(all_count_new !== 0){
-                            document.querySelector("#requests_count_overview").innerHTML = all_count_new;
+                            document.querySelector("#requests_counter").innerHTML = all_count_new;
                         }
 
                         else{
-                            document.querySelector("#requests_count_overview_information").innerHTML = "No new requests";
+                            document.querySelector("#requests_counter").innerHTML = "";
                         }
                         
                         if(new_count === 0){
@@ -1135,13 +1141,11 @@ function CreateDeleteNotificationsPopUp(JSON_DATA,indexes,ID,Values){
                                 document.querySelector("#notifications_table").setAttribute("unread" , unread_count_new);
 
                                 if(unread_count_new !== 0){
-                                    document.querySelector("#notifications_count_overview").innerHTML = unread_count_new;
-                                    document.querySelector("#notifications_count_overview_information").innerHTML = "";
+                                    document.querySelector("#notifications_counter").innerHTML = unread_count_new;
                                 }
 
                                 else{
-                                    document.querySelector("#notifications_count_overview").innerHTML = "";
-                                    document.querySelector("#notifications_count_overview_information").innerHTML = "No new notifications";
+                                    document.querySelector("#notifications_counter").innerHTML = "";
                                 }
                             }
 
