@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITENAME?>Government</title>
     <link rel="stylesheet" href="CSS/Base.css">
-    <link rel="stylesheet" href="CSS/NotificationsStyle.css">
+    <link rel="stylesheet" href="CSS/Notifications.css">
+    <link rel="stylesheet" href="CSS/pop_ups.css">
+    <link rel="stylesheet" href="CSS/alerts.css">
     <link rel="stylesheet" href="CSS/GovernmentIndex.css">
 </head>
 <body>
