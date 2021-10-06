@@ -3,6 +3,7 @@
     class CompanySignUpModel{
         public $Company_ID;
         public $Company_Number;
+        public $Image;
         public $Name;
         public $Email;
         public $Phone_Number;
