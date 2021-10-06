@@ -32,7 +32,8 @@ function CreateAcceptPopUp(JSON_DATA,index,value,name){
     pop_up_actions_div.appendChild(cancel_button);
 
     document.querySelector(".pop_ups_container").style.display= "block";
-
+    document.querySelector("body").style.overflow= "hidden";
+    
 
     //Accept request code
     document.querySelector(".confirm_pop_up").addEventListener("click" , function(){
@@ -142,7 +143,7 @@ function CreateDeclinePopUp(JSON_DATA,index,value,name){
     pop_up_actions_div.appendChild(cancel_button);
 
     document.querySelector(".pop_ups_container").style.display= "block";
-
+    document.querySelector("body").style.overflow= "hidden";
 
 
     document.querySelector(".confirm_pop_up").addEventListener("click" , function(){
@@ -245,7 +246,7 @@ function CreateDeleteNotificationsPopUp(JSON_DATA,indexes,Values){
     pop_up_actions_div.appendChild(cancel_button);
 
     document.querySelector(".pop_ups_container").style.display= "block";
-
+    document.querySelector("body").style.overflow= "hidden";
 
 
     document.querySelector(".delete_pop_up").addEventListener("click" , function(){
