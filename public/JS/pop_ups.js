@@ -2,7 +2,8 @@
 document.querySelector(".pop_ups_container").addEventListener("click" , function(event){
     if(event.target.className === "pop_ups_container" || event.target.className === "cancel_pop_up"){
         document.querySelector(".pop_ups_container").style.display= "none";
-
+        document.querySelector("body").style.overflow= "auto";
+        
         document.querySelector(".pop_up_information").innerHTML = "";
         document.querySelector(".pop_up_actions").innerHTML = "";
     }
