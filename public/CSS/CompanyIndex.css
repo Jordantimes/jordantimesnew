@@ -171,13 +171,33 @@
     color: var(--main_color);
 }
 
-.edit_profile_button_container button ,.submit_button{
+.submit_button_container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.submit_button_container button{
     display: block;
     width: 120px;
-    border: 1px var(--main_color) solid;
-    background-color: var(--main_color);
+    background-color: transparent;
+    border: 1px #000 solid;
+    color: var(--text_main_color);
     border-radius: 50px;
-    color: #ffffff;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 7px 14px;
+    margin-left: 14px;
+    cursor: pointer;
+}
+
+.edit_profile_button_container button{
+    display: block;
+    width: 120px;
+    background-color: transparent;
+    border: 1px #000 solid;
+    color: var(--text_main_color);
+    border-radius: 50px;
     font-family: inherit;
     font-size: inherit;
     padding: 7px 14px;
@@ -185,7 +205,13 @@
     cursor: pointer;
 }
 
-.edit_profile_button_container button:hover ,.submit_button:hover{
+.submit_button_container .submit_button , .edit_profile_button_container .edit_profile_button{
+    border: 1px var(--main_color) solid ;
+    background-color: var(--main_color);
+    color: #ffffff;
+}
+
+.edit_profile_button_container button:hover ,.submit_button_container button:hover{
     text-decoration: underline;
 }
 
