@@ -21,11 +21,13 @@ if(view_box == null){
     history.pushState({},"",URLROOT+"/"+PageURL_ARR[4]+"/"+nav_buttons_text[0].innerText);
 }
 
+//display view box
 nav_buttons[view_box].style.backgroundColor = MAIN_COLOR;
 nav_buttons[view_box].style.color = "#ffffff";
 nav_buttons[view_box].style.border = "1px "+MAIN_COLOR+" solid";
 view_boxex[view_box].style.display="block";
 nav_buttons_counter[view_box].style.color = "#ffffff";
+history.pushState({},"",URLROOT+"/"+PageURL_ARR[4]+"/"+nav_buttons_text[view_box].innerText);
 
 
 //once the user clicks on any of the navigators return the previously selected button to its original style
@@ -33,25 +35,10 @@ nav_buttons_counter[view_box].style.color = "#ffffff";
 //hide the previously viewed view box and render the new selected one
 for (let i = 0; i < nav_buttons.length; ++i) {
     nav_buttons[i].addEventListener("click" , function(){
-        //hide the previously selected view box
-        view_boxex[view_box].style.display = "none";
-        nav_buttons[view_box].style.backgroundColor = "transparent";
-        nav_buttons[view_box].style.color = "#cccccc";
-        nav_buttons[view_box].style.border = "1px #cccccc solid";
-        nav_buttons_counter[view_box].style.color = MAIN_COLOR;
-
-        //display the selected view box
-        view_boxex[i].style.display="block";
-        nav_buttons[i].style.backgroundColor = MAIN_COLOR;
-        nav_buttons[i].style.color = "#ffffff";
-        nav_buttons[i].style.border = "1px "+MAIN_COLOR+" solid";
-        nav_buttons_counter[i].style.color = "#ffffff";
+        view_box = ChangeView(view_box , i);
 
         //set the new URL
         history.pushState({},"",URLROOT+"/"+PageURL_ARR[4]+"/"+nav_buttons_text[i].innerText);
-
-        //save the index of the selected button so it can be used in the next time as the "Previously selected button"
-        view_box = i;
     } , true);
 }
 
@@ -65,22 +52,30 @@ window.addEventListener('popstate', function(){
 
     for(let i = 0 ; i < nav_buttons_text.length ; ++i){
         if(NewURL_ARR[5].toLowerCase() === nav_buttons_text[i].innerText.toLowerCase()){
-            //hide the previously selected view box
-            view_boxex[view_box].style.display = "none";
-            nav_buttons[view_box].style.backgroundColor = "transparent";
-            nav_buttons[view_box].style.color = "#cccccc";
-            nav_buttons[view_box].style.border = "1px #cccccc solid";
-            nav_buttons_counter[view_box].style.color = MAIN_COLOR;
-
-            //display the selected view box
-            view_boxex[i].style.display="block";
-            nav_buttons[i].style.backgroundColor = MAIN_COLOR;
-            nav_buttons[i].style.color = "#ffffff";
-            nav_buttons[i].style.border = "1px "+MAIN_COLOR+" solid";
-            nav_buttons_counter[i].style.color = "#ffffff";
-
-            //save the index of the selected button so it can be used in the next time as the "Previously selected button"
-            view_box = i;
+            view_box = ChangeView(view_box , i);
         }
     }
 }, true);
+
+
+
+function ChangeView(view_box , i){
+    //hide the previously selected view box
+    view_boxex[view_box].style.display = "none";
+    nav_buttons[view_box].style.backgroundColor = "transparent";
+    nav_buttons[view_box].style.color = "#cccccc";
+    nav_buttons[view_box].style.border = "1px #cccccc solid";
+    nav_buttons_counter[view_box].style.color = MAIN_COLOR;
+
+    //display the selected view box
+    view_boxex[i].style.display="block";
+    nav_buttons[i].style.backgroundColor = MAIN_COLOR;
+    nav_buttons[i].style.color = "#ffffff";
+    nav_buttons[i].style.border = "1px "+MAIN_COLOR+" solid";
+    nav_buttons_counter[i].style.color = "#ffffff";
+
+    //save the index of the selected button so it can be used in the next time as the "Previously selected button"
+    view_box = i;
+
+    return view_box;
+}
