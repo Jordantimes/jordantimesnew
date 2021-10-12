@@ -6,15 +6,32 @@
             $this->GovernmentRepo = $this->Repository("Government");
         }
 
-        public function index(){
+        public function index($ViewBox = "Trips"){
             session_start();
-            
-            if(empty($_SESSION["USER"])){
+            $USER;
+
+            if(!empty($_SESSION["USER"])){
+                $USER= unserialize($_SESSION["USER"]);
+
+                if(strtolower($USER["Role"]) !== "government"){
+                    header("location:".URLROOT."/".ucwords($USER["Role"]));
+                    exit;
+                }
+            }
+
+            else{
                 header("location:".URLROOT."/User/LogIn");
                 exit;
             }
+
+            $ViewBox = trim(ucwords(strtolower($ViewBox)));
+
+            $data = [
+                "ViewBox" => $ViewBox,
+                "USER" => $USER
+            ];
             
-            $this->view("Government/index");
+            $this->view("Government/index" , $data);
         }
 
         //JSON HTTP Request
