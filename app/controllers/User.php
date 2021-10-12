@@ -211,7 +211,7 @@
                     
                     $_SESSION["USER"] = serialize($Company);
                     
-                    header("location:".URLROOT."/Company");
+                    header("location:".URLROOT."/Company/Trips");
                     exit;
                 }
 
@@ -224,7 +224,7 @@
 
                     $_SESSION["USER"] = serialize($Gov);
                     
-                    header("location:".URLROOT."/Government");
+                    header("location:".URLROOT."/Government/Trips");
                     exit;
                 }
             }
@@ -235,12 +235,12 @@
                     $Role = $USER["Role"];
                     
                     if($Role === "government"){
-                        header("location:".URLROOT."/Government");
+                        header("location:".URLROOT."/Government/Trips");
                         exit;
                     }
             
                     elseif($Role === "company"){
-                        header("location:".URLROOT."/Company");
+                        header("location:".URLROOT."/Company/Trips");
                         exit;
                     }
                     
