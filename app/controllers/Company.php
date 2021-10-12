@@ -6,17 +6,32 @@
             $this->CompanyRepo = $this->Repository("Company");
         }
 
-        public function index(){
+        public function index($ViewBox = "Trips"){
             session_start();
-            
-            if(empty($_SESSION["USER"])){
+            $USER;
+
+            if(!empty($_SESSION["USER"])){
+                $USER= unserialize($_SESSION["USER"]);
+
+                if(strtolower($USER["Role"]) !== "company"){
+                    header("location:".URLROOT."/".ucwords($USER["Role"]));
+                    exit;
+                }
+            }
+
+            else{
                 header("location:".URLROOT."/User/LogIn");
                 exit;
             }
 
-            $USER= unserialize($_SESSION["USER"]);
+            $ViewBox = trim(ucwords(strtolower($ViewBox)));
 
-            $this->view("Company/index");
+            $data = [
+                "ViewBox" => $ViewBox,
+                "USER" => $USER
+            ];
+
+            $this->view("Company/index" , $data);
         }
 
         public function edit_profile(){
@@ -106,7 +121,7 @@
                     
                     $_SESSION["USER"] = serialize($Company);
 
-                    header("location:".URLROOT."/Company");
+                    header("location:".URLROOT."/Company/Profile");
                     exit;
                 }
 
