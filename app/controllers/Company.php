@@ -58,44 +58,15 @@
                 $file_name = $file["name"];
 
                 if($file_error === 0){
+                    $ResponseOBJ = $this->CompanyRepo->ImageUpload($file_tmp,$file_size,$file_error,$file_type,$file_name,"companys");
 
-                    //get the extension of the uploaded file
-                    $file_explode_name = explode("." , $file_name);
-                    $file_extension = strtolower(end($file_explode_name));
-
-                    //alowed extensions 
-                    $allowed = array("jpg" , "jpeg" , "png");
-
-                    //if its allowed
-                    if(in_array($file_extension , $allowed)){
-                        if($file_error === 0){
-                            if($file_size < 1000000){
-                                //give the image a uniq ID so no other image can have the same one
-                                //in a better practice the image id/name sould be checked if its used just like the email or username but this will do enough
-                                $file_name_new = uniqid('',true).".".$file_extension;
-
-                                //create a file destination and uplaod it
-                                $file_destination = "images/users/companys/".$file_name_new;
-                                move_uploaded_file($file_tmp , $file_destination);
-
-                                //save the new image name in the DATA array to send to the update function
-                                $Data["Image"] = $file_name_new;
-                            }
-
-                            else{
-                                $this->view("Company/index" , $Error = ["Message" => "size not allowed"]);
-                                exit;
-                            }
-                        }
-                        
-                        else{
-                            $this->view("Company/index" , $Error = ["Message" => "upload error"]);
-                            exit;
-                        }
+                    //save the new image name in the DATA array to send to the update function
+                    if($ResponseOBJ["Name"]){
+                        $Data["Image"] = $ResponseOBJ["Name"];
                     }
 
-                    else{
-                        $this->view("Company/index" , $Error = ["Message" => "extension not allowed"]);
+                    elseif($ResponseOBJ["Error"]){
+                        $this->view("Company/index" , $data = ["Message" => "size not allowed" , "ViewBox" => "profile", "USER" => $USER]);
                         exit;
                     }
                 }
@@ -126,9 +97,118 @@
                 }
 
                 else{
-                    $this->view("Company/index" , $Error = ["Message" => "something went wrong"]);
+                    $this->view("Company/index" , $data = ["Message" => "something went wrong", "ViewBox" => "profile", "USER" => $USER]);
                     exit;
                 }
+            }
+
+            else{
+                header("location:".URLROOT."/Company");
+                exit;
+            }
+        }
+
+        public function CreateTrip(){
+            if($_SERVER["REQUEST_METHOD"] === "POST"){
+                session_start();
+                $USER = unserialize($_SESSION["USER"]);
+                $ID = $USER["ID"];
+
+                $locations = [
+                    "Amman",
+                    "Zarqa",
+                    "Irbid",
+                    "Ajloun",
+                    "Jarash",
+                    "Al Balqa",
+                    "Al Mafraq",
+                    "Madaba",
+                    "Al Tafele",
+                    "Al Karak",
+                    "Ma'an",
+                    "Aqaba",
+                ];
+
+                $locationsAr = [
+                    "عمان",
+                    "الزرقاء",
+                    "إربد",
+                    "عجلون",
+                    "جرش",
+                    "البلقاء",
+                    "المفرق",
+                    "مادبا",
+                    "الطفيلة",
+                    "الكرك",
+                    "معان",
+                    "العقبة",
+                ];
+
+                $Data = [
+                    "ID" => $ID,
+                    "name" => "",
+                    "nameAr" => "",
+                    "start_date" => $_POST["start_date"],
+                    "end_date" => $_POST["end_date"],
+                    "days" => "",
+                    "nights" => $_POST["nights"],
+                    "image" => "",
+                    "description" => $_POST["description"],
+                    "descriptionAr" => $_POST["description_ar"],
+                    "breakfast" => isset($_POST["breakfast"]) ? 1 : 0,
+                    "breakfast_price" => isset($_POST["breakfast"]) ? $_POST["breakfast_price"] : "",
+                    "lunch" => isset($_POST["lunch"]) ? 1 : 0,
+                    "lunch_price" => isset($_POST["lunch"]) ? $_POST["lunch_price"] : "",
+                    "dinner" => isset($_POST["dinner"]) ? 1 : 0,
+                    "dinner_price" => isset($_POST["dinner"]) ? $_POST["dinner_price"] : "",
+                ];
+
+                $destinations = $_POST["destination"];
+                if(!isset($destinations) || empty($Data["start_date"]) || empty($Data["end_date"])){
+                    header("location:".URLROOT."/Company");
+                    exit;
+                }
+
+                $date1 = new DateTime($Data["start_date"]);
+                $date2 = new DateTime($Data["end_date"]);
+                $interval = $date1->diff($date2);
+                $Data["days"] = $interval->days;
+
+                for ($i=0; $i < count($destinations); ++$i){ 
+                    $i === count($destinations) - 1 ? $Data["name"].= $locations[$destinations[$i] - 1] : $Data["name"].= $locations[$destinations[$i] - 1]." - ";
+                    $i === count($destinations) - 1 ? $Data["nameAr"].= $locationsAr[$destinations[$i] - 1] : $Data["nameAr"].= $locationsAr[$destinations[$i] - 1]." - ";
+                }
+                
+                $file= $_FILES["image"];
+                if($file["name"][0]){
+                    $file_count = count($file["name"]);
+
+                    for ($i=0; $i < $file_count; ++$i) { 
+                        $file_tmp = $file["tmp_name"][$i];
+                        $file_size = $file["size"][$i];
+                        $file_error = $file["error"][$i];
+                        $file_type = $file["type"][$i];
+                        $file_name = $file["name"][$i];
+                        
+                        $ResponseOBJ = $this->CompanyRepo->ImageUpload($file_tmp,$file_size,$file_error,$file_type,$file_name,"trips");
+
+                        //save the new image name in the DATA array to send to the update function
+                        if($ResponseOBJ["Name"]){
+                            $i === $file_count - 1 ? $Data["image"].= $ResponseOBJ["Name"] : $Data["image"].= $ResponseOBJ["Name"].",";
+                        }
+    
+                        elseif($ResponseOBJ["Error"]){
+                            $this->view("Company/index" , $data = ["Message" => "size not allowed" , "ViewBox" => "profile", "USER" => $USER]);
+                            exit;
+                        }
+                    }
+                }
+
+
+                $this->CompanyRepo->CreateTrip($Data);
+
+                header("location:".URLROOT."/Company");
+                exit;
             }
 
             else{
