@@ -154,7 +154,7 @@
         <div class="create_trip_pop_up_container">
             <div class="create_trip_pop_up">
                 <h2>Create trip</h2>
-                <form action="#">
+                <form action="<?php echo URLROOT;?>/Company/CreateTrip" method="POST">
                     <div class="create_form_input">
                         <label>Destinations</label>
                         <div class="destination_input">
