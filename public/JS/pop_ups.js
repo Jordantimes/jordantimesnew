@@ -512,7 +512,7 @@ function CreateDestinationInput(){
 
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type" , "checkbox");
-    checkbox.setAttribute("name" , "destination");
+    checkbox.setAttribute("name" , "destination[]");
     checkbox.className="dest_checkbox";
 
     let button = document.createElement("button");
