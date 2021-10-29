@@ -200,3 +200,39 @@
     font-size: inherit;
     color: #ff0000;
 }
+
+.create_trip{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    padding: 12px;
+    background-color: var(--main_color);
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: inherit;
+    transition: 0.2s ease-in-out;
+}
+
+.create_trip svg{
+    display: block;
+    stroke: #ffffff;
+    width: 24px;
+    height: 24px;
+}
+
+.create_trip span{
+    display: block;
+    width: 0px;
+    height: 24px;
+    overflow: hidden;
+    transition: 0.2s ease-in-out;
+}
+
+.create_trip:hover span{
+    width: 90px;
+}
