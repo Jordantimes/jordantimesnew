@@ -1,0 +1,83 @@
+.calender_container{
+    background-color: #ffffff;
+}
+
+.calender_header{
+    background-color: #f05d5e;
+    text-align: center;
+    color: #ffffff;
+}
+
+.calender_name{
+    font-family: inherit;
+    font-size: 18px;
+    padding-top: 12px;
+}
+
+.nav_month_container{
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.month_year_wrapper{
+    width: 50%;
+}
+
+.month_nav_left_wrapper,.month_nav_right_wrapper{
+    background-color: transparent;
+    border: none;
+}
+
+.month_nav_left_wrapper svg{
+    width: 12px;
+    height: 12px;
+    fill: #ffffff;
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.month_nav_right_wrapper svg{
+    width: 12px;
+    height: 12px;
+    fill: #ffffff;
+    cursor: pointer;
+    transform: rotate(-90deg);
+}
+
+.days_names_wrapper,.days_wrapper{
+    font-size: 0px;
+}
+
+.days_wrapper{
+    min-height: calc(46px * 6);
+}
+
+.day_name,.day,.dimmed_day{
+    background-color: transparent;
+    display: inline-block;
+    width: calc(100%/7 - 2px);
+    margin: 1px;
+    padding: 12px 0px;
+    text-align: center;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+.day{
+    cursor: pointer;
+}
+
+.day:hover{
+    background-color: #eeeeee;
+}
+
+.dimmed_day{
+    color: #aaaaaa;
+}
