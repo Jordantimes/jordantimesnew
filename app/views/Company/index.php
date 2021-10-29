@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\alerts.css";?>">
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\CompanyIndex.css";?>">
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\Navigators.css";?>">
+        <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\calender.css";?>">
 </head>
 
 <body>
