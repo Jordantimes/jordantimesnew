@@ -118,4 +118,51 @@
     
         return $CodeData;
     }
+
+    function ImageUpload($file_tmp,$file_size,$file_error,$file_type,$file_name,$file_path){
+        //get the extension of the uploaded file
+        $file_explode_name = explode("." , $file_name);
+        $file_extension = strtolower(end($file_explode_name));
+
+        //alowed extensions 
+        $allowed = array("jpg" , "jpeg" , "png");
+        
+        $max_size;
+        if($file_path === "companys"){
+            $max_size = 1000000;
+        }
+
+        elseif($file_path === "trips"){
+            $max_size = 5000000;
+        }
+
+        //if its allowed
+        if(in_array($file_extension , $allowed)){
+            if($file_error === 0){
+                if($file_size < $max_size){
+                    //give the image a uniq ID so no other image can have the same one
+                    //in a better practice the image id/name sould be checked if its used just like the email or username but this will do enough
+                    $file_name_new = uniqid('',true).".".$file_extension;
+
+                    //create a file destination and uplaod it
+                    $file_destination = "images/users/".$file_path."/".$file_name_new;
+                    move_uploaded_file($file_tmp , $file_destination);
+
+                    return ["Name" => $file_name_new , "Error" => ""];
+                }
+
+                else{
+                    return ["Name" => "" , "Error" => "size not allowed"];
+                }
+            }
+            
+            else{
+                return ["Name" => "" , "Error" => "upload error"];
+            }
+        }
+
+        else{
+            return ["Name" => "" , "Error" => "extension not allowed"];
+        }
+    }
     
