@@ -154,7 +154,7 @@
         <div class="create_trip_pop_up_container">
             <div class="create_trip_pop_up">
                 <h2>Create trip</h2>
-                <form action="<?php echo URLROOT;?>/Company/CreateTrip" method="POST">
+                <form action="<?php echo URLROOT;?>/Company/CreateTrip" method="POST" enctype="multipart/form-data">
                     <div class="create_form_input">
                         <label>Destinations</label>
                         <div class="destination_input">
@@ -350,7 +350,7 @@
 
                     <div class="create_form_input">
                         <label>Images</label>
-                        <input class='create_file_input' type='file' name='image' accept='.jpg, .jpeg, .png' multiple="true">
+                        <input class='create_file_input' type='file' name='image[]' accept='.jpg, .jpeg, .png' multiple="true">
 
                         <div class="images_wrapper"></div>
                     </div>
