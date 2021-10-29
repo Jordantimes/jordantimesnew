@@ -158,7 +158,7 @@
                     <div class="create_form_input">
                         <label>Destinations</label>
                         <div class="destination_input">
-                            <input type="checkbox" name="destination" class="dest_checkbox">
+                            <input type="checkbox" name="destination[]" class="dest_checkbox">
                             <button class="destination_button" type="button">
                                 <span class="destination_name">Select</span>
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -207,7 +207,7 @@
                         </div>
 
                         <div class="destination_input">
-                            <input type="checkbox" name="destination" class="dest_checkbox">
+                            <input type="checkbox" name="destination[]" class="dest_checkbox">
                             <button class="destination_button" type="button">
                                 <span class="destination_name">Select</span>
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
