@@ -1,10 +1,11 @@
-.pop_ups_container{
+.pop_ups_container,.create_trip_pop_up_container{
     display: none;
     position: fixed;
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0 ,0.7);
     z-index: 100;
+    overflow: auto;
 }
 
 .pop_up_content_container{
@@ -15,6 +16,14 @@
     background-color: #ffffff;
     width: 420px;
     border-radius: 12px;
+}
+
+.create_trip_pop_up{
+    background-color: #ffffff;
+    width: 420px;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px auto;
 }
 
 .pop_up_information{
@@ -54,4 +63,396 @@
     background-color: transparent;
     border: 1px #000000 solid;
     color: #000000;
+}
+
+.create_trip_pop_up h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+}
+
+.create_form_input{
+    position: relative;
+    margin: 24px 0px;
+}
+
+.create_form_input label{
+    display: block;
+    font-weight: 600;
+    margin: 12px 0px;
+}
+
+.destination_input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 12px 0px;
+}
+
+input[type="checkbox"],input[type="text"]{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+.destination_button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 6px;
+    background-color: transparent;
+    border: 1px var(--side_color) solid;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 7px;
+    color: var(--text_main_color);
+    cursor: pointer;
+}
+
+.destination_input svg{
+    width: 16px;
+    height: 16px;
+    fill: var(--text_side_color);
+}
+
+.destination_list{
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 50%;
+    border: 1px var(--side_color) solid;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-top: 7px;
+    z-index: 2;
+}
+
+.destination_list button{
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px var(--side_color) solid;
+    padding: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.destination_list button:last-child{
+    border-bottom: none;
+}
+
+.remove_destination_button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.add_destination{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 6px;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: transparent;
+    border: 1px var(--text_side_color) dashed;
+    border-radius: 7px;
+    color: var(--text_side_color);
+    text-align: left;
+    cursor: pointer;
+}
+
+.add_destination svg{
+    display: block;
+    width: 16px;
+    height: 16px;
+    stroke: var(--text_side_color);
+}
+
+.create_file_input{
+    width: 100%;
+    overflow: hidden;
+}
+
+.images_wrapper{
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 12px;
+}
+
+.images_wrapper a{
+    display: block;
+    margin-right: 12px;
+}
+
+.images_wrapper a:last-child{
+    margin-right: 0px;
+}
+
+.trip_image_create{
+    display: block;
+    width: 180px;
+    height: 180px;
+    min-width: 180px;
+    min-height: 180px;
+    object-fit: cover;
+}
+
+input[type="date"]{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+.date_list{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    margin-top: 7px;
+    z-index: 2;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px var(--side_color) solid;
+    border-radius: 7px;
+}
+
+.date_button,.nights_button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 6px;
+    background-color: transparent;
+    border: 1px var(--side_color) solid;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.date_button svg ,.nights_button svg{
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: var(--text_side_color);
+}
+
+.calender_container{
+    background-color: #ffffff;
+}
+
+.calender_header{
+    background-color: #f05d5e;
+    text-align: center;
+    color: #ffffff;
+}
+
+.calender_name{
+    font-family: inherit;
+    font-size: 18px;
+    padding-top: 12px;
+}
+
+.nav_month_container{
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.month_year_wrapper{
+    width: 50%;
+}
+
+.month_nav_left_wrapper,.month_nav_right_wrapper{
+    background-color: transparent;
+    border: none;
+}
+
+.month_nav_left_wrapper svg{
+    width: 12px;
+    height: 12px;
+    fill: #ffffff;
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.month_nav_right_wrapper svg{
+    width: 12px;
+    height: 12px;
+    fill: #ffffff;
+    cursor: pointer;
+    transform: rotate(-90deg);
+}
+
+.days_names_wrapper,.days_wrapper{
+    font-size: 0px;
+}
+
+.days_wrapper{
+    min-height: calc(46px * 6);
+}
+
+.day_name,.day,.dimmed_day{
+    background-color: transparent;
+    display: inline-block;
+    width: calc(100%/7 - 2px);
+    margin: 1px;
+    padding: 12px 0px;
+    text-align: center;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+.day{
+    cursor: pointer;
+}
+
+.day:hover{
+    background-color: #eeeeee;
+}
+
+.dimmed_day{
+    color: #aaaaaa;
+}
+
+.nights_list{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0%;
+    margin-top: 7px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    z-index: 2;
+    border: 1px var(--side_color) solid;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.nights_selection{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px var(--side_color) solid;
+    padding: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.nights_selection:last-child{
+    border-bottom: none;
+}
+
+.description{
+    width: 100%;
+    border: 1px var(--side_color) solid;
+    border-radius: 7px;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    padding: 6px;
+    resize: vertical;
+}
+
+.aditional_input_wrapper{
+    display: flex;
+    align-items: center;
+    margin: 12px 0px;
+}
+
+.aditional_input_wrapper label{
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0px 0px;
+    min-width: 120px;
+}
+
+.custom_checkbox{
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 2px var(--text_side_color) solid;
+    border-radius: 2px;
+    margin-right: 4px;
+}
+
+.custom_checkbox svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: block;
+    width: 9px;
+    height: 9px;
+    fill: #ffffff;
+}
+
+.aditional_input_wrapper input[type="checkbox"]:checked + label .custom_checkbox{
+    border: 2px var(--main_color) solid;
+    background-color: var(--main_color);
+}
+
+.aditional_input_wrapper input[type="text"]{
+    display: block;
+    position: static;
+    width: 48px;
+    height: 24px;
+    opacity: 1;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    padding: 4px;
+}
+
+.create_form_input:last-child{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.create_form_input:last-child button{
+    display: block;
+    width: 120px;
+    background-color: transparent;
+    border: 1px #000 solid;
+    color: var(--text_main_color);
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 7px 14px;
+    cursor: pointer;
+}
+
+.create_form_input:last-child button:nth-child(2){
+    border: 1px var(--main_color) solid;
+    background-color: var(--main_color);
+    color: #ffffff;
+    margin-left: 12px;
+}
+
+.create_form_input:last-child button:hover{
+    text-decoration: underline;
 }
