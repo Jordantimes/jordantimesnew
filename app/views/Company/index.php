@@ -142,6 +142,300 @@
                 </div>
             </div>
         </div>
+
+        <button class="create_trip">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="plusIconTitle" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M20 12L4 12M12 4L12 20"/>
+            </svg>
+
+            <span>Create trip</span>
+        </button>
+
+        <div class="create_trip_pop_up_container">
+            <div class="create_trip_pop_up">
+                <h2>Create trip</h2>
+                <form action="#">
+                    <div class="create_form_input">
+                        <label>Destinations</label>
+                        <div class="destination_input">
+                            <input type="checkbox" name="destination" class="dest_checkbox">
+                            <button class="destination_button" type="button">
+                                <span class="destination_name">Select</span>
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
+                                    xml:space="preserve">
+                                    <g>
+                                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
+                                            c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
+                                            c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                                    </g>
+                                </svg>
+                            </button>
+
+                            <div class="destination_list" visibile="false"> 
+                                <button for="0" value="0" type="button" class="dest_selection">Select</button>
+                                <button for="0" value="1" type="button" class="dest_selection">Amman</button>
+                                <button for="0" value="2" type="button" class="dest_selection">Zarqa</button>
+                                <button for="0" value="3" type="button" class="dest_selection">Irbid</button>
+                                <button for="0" value="4" type="button" class="dest_selection">Ajloun</button>
+                                <button for="0" value="5" type="button" class="dest_selection">Jarash</button>
+                                <button for="0" value="6" type="button" class="dest_selection">Al Balqa</button>
+                                <button for="0" value="7" type="button" class="dest_selection">Al Mafraq</button>
+                                <button for="0" value="8" type="button" class="dest_selection">Madaba</button>
+                                <button for="0" value="9" type="button" class="dest_selection">Al Tafele</button>
+                                <button for="0" value="10" type="button" class="dest_selection">Al Karak</button>
+                                <button for="0" value="11" type="button" class="dest_selection">Ma'an</button>
+                                <button for="0" value="12" type="button" class="dest_selection">Aqaba</button>
+                            </div>
+
+                            <button class="remove_destination_button" type="button">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872
+                                                c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872
+                                                c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052
+                                                L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116
+                                                c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952
+                                                c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116
+                                                c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="destination_input">
+                            <input type="checkbox" name="destination" class="dest_checkbox">
+                            <button class="destination_button" type="button">
+                                <span class="destination_name">Select</span>
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
+                                    xml:space="preserve">
+                                    <g>
+                                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
+                                            c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
+                                            c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                                    </g>
+                                </svg>
+                            </button>
+
+                            <div class="destination_list" visibile="false">
+                                <button for="1" value="0" type="button" class="dest_selection">Select</button>
+                                <button for="1" value="1" type="button" class="dest_selection">Amman</button>
+                                <button for="1" value="2" type="button" class="dest_selection">Zarqa</button>
+                                <button for="1" value="3" type="button" class="dest_selection">Irbid</button>
+                                <button for="1" value="4" type="button" class="dest_selection">Ajloun</button>
+                                <button for="1" value="5" type="button" class="dest_selection">Jarash</button>
+                                <button for="1" value="6" type="button" class="dest_selection">Al Balqa</button>
+                                <button for="1" value="7" type="button" class="dest_selection">Al Mafraq</button>
+                                <button for="1" value="8" type="button" class="dest_selection">Madaba</button>
+                                <button for="1" value="9" type="button" class="dest_selection">Al Tafele</button>
+                                <button for="1" value="10" type="button" class="dest_selection">Al Karak</button>
+                                <button for="1" value="11" type="button" class="dest_selection">Ma'an</button>
+                                <button for="1" value="12" type="button" class="dest_selection">Aqaba</button>
+                            </div>
+                            
+                            
+                            <button class="remove_destination_button" type="button">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872
+                                                c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872
+                                                c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052
+                                                L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116
+                                                c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952
+                                                c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116
+                                                c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <button type="button" class="add_destination">
+                            <span>Add destination</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="plusIconTitle" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                <path d="M20 12L4 12M12 4L12 20"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="create_form_input">
+                        <input type="date" class="start_date_input" name="start_date">
+                        <input type="date" class="end_date_input" name="end_date">
+
+                        <label>Trip date</label>
+
+                        <button class="date_button" id="trip_date_holder" type="button">
+                            <span>
+                                <span class="selected_start_date_holder">----/--/--</span> To <span class="selected_end_date_holder">----/--/--</span>
+                            </span>
+
+                            <div class="holder_arrow_nav">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
+                                    <g>
+                                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </button>
+                        
+                        <div class="date_list" id="trip_date_list" visibility="hidden" calender_type="start">
+                            <div class="calender_container">
+                                <div class="calender_header">
+                                    <div class="calender_name">Start date</div>
+                                
+                                <div class="nav_month_container">
+                                    <button class="month_nav_left_wrapper" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
+                                            <g>
+                                                <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                                            </g>
+                                        </svg>
+                                    </button>
+
+                                    <div class="month_year_wrapper">
+                                        <div class="month_year" id="start_date_month_year"></div>
+                                    </div>
+
+                                    <button class="month_nav_right_wrapper" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
+                                            <g>
+                                                <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                                </div>
+
+                                <div class="days_names_wrapper">
+                                    <div class="day_name">Su</div>
+                                    <div class="day_name">Mo</div>
+                                    <div class="day_name">Tu</div>
+                                    <div class="day_name">We</div>
+                                    <div class="day_name">Th</div>
+                                    <div class="day_name">Fr</div>
+                                    <div class="day_name">Sa</div>
+                                </div>
+
+                                <div class="days_wrapper" id="start_date_days_wrapper"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create_form_input">
+                        <label>Nights</label>
+                        <input type="text" name="nights" class="nights_checkbox">
+
+                        <button class="nights_button" type="button">
+                                <span class="nights_holder">- days, - nights</span>
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
+                                    xml:space="preserve">
+                                    <g>
+                                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
+                                            c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
+                                            c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                                    </g>
+                                </svg>
+                            </button>
+                    
+                        
+                        <div class="nights_list" visibile="false"></div>
+                    </div>
+
+                    <div class="create_form_input">
+                        <label>Images</label>
+                        <input class='create_file_input' type='file' name='image' accept='.jpg, .jpeg, .png' multiple="true">
+
+                        <div class="images_wrapper"></div>
+                    </div>
+
+                    <div class="create_form_input">
+                        <label>Description</label>
+                        <textarea name="description" class="description" rows="4"></textarea>
+                    </div>
+
+                    <div class="create_form_input">
+                        <label>Description(العربية)</label>
+                        <textarea name="description_ar" class="description" rows="4"></textarea>
+                    </div>
+
+                    <div class="create_form_input">
+                        <label>Aditional</label>
+                        
+                        <div class="aditional_input_wrapper">
+                        <input type="checkbox" name="breakfast" id="breakfast" class="additional_checkbox">
+                            <label for="breakfast">    
+                                <div class="custom_checkbox">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
+                                                    c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
+                                                    C514.5,101.703,514.499,85.494,504.502,75.496z"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                Breakfast
+                            </label>
+                            <input type="text" class="aditional_input" name="breakfast_price" disabled>
+                        </div>
+
+                        <div class="aditional_input_wrapper">
+                            <input type="checkbox" name="lunch" id="lunch" class="additional_checkbox">
+                            <label for="lunch">    
+                                    <div class="custom_checkbox">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                            <g>
+                                                <g>
+                                                    <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
+                                                        c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
+                                                        C514.5,101.703,514.499,85.494,504.502,75.496z"/>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    Lunch
+                                </label>
+                            <input type="text" class="aditional_input" name="lunch_price" disabled>
+                        </div>
+
+                        <div class="aditional_input_wrapper">
+                            <input type="checkbox" name="dinner" id="dinner" class="additional_checkbox">
+                            <label for="dinner">    
+                                <div class="custom_checkbox">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
+                                                    c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
+                                                    C514.5,101.703,514.499,85.494,504.502,75.496z"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                Dinner
+                            </label>
+                            <input type="text" class="aditional_input" name="dinner_price" disabled>
+                        </div>
+                    </div>
+
+                    <div class="create_form_input">
+                        <button type="button" id="cancel_create">Cancel</button>
+                        <button>Create</button>
+                    </div>
+                </form>                                     
+            </div>
+        </div>
     </div>
 
     <script src="<?php echo URLROOT."\public\JS\config.js";?>"></script>
@@ -150,5 +444,6 @@
     <script src="<?php echo URLROOT."\public\JS\pop_ups.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\UserMessages.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\Notifications.js";?>"></script>
+    <script src="<?php echo URLROOT."\public\JS\calender.js";?>"></script>
 </body>
 </html>
