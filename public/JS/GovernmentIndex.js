@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded" , function(){
 
 function GetRequests(count_per_time){
     let Request = new XMLHttpRequest();
-    let URL = URLROOT+"/Government/Requests";
+    let URL = URLROOT+"/Government/GetRequests";
 
     Request.open("GET" , URL , true);
     Request.send();
