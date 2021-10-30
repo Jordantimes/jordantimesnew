@@ -1,6 +1,6 @@
 function GetNotifications(count_per_time){
     let Request = new XMLHttpRequest();
-    let URL = URLROOT+"/User/Notifications";
+    let URL = URLROOT+"/User/GetNotifications";
 
     Request.open("GET" , URL , true);
     Request.send();
