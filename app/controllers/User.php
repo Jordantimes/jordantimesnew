@@ -338,7 +338,7 @@
         }
 
         //HTTP Request
-        public function Notifications(){
+        public function GetNotifications(){
             header('Access-Control-Allow-Origin: *');
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: GET');
