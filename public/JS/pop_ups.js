@@ -37,6 +37,25 @@ var dest_names = document.querySelectorAll(".destination_name");
 var remove_dest = document.querySelectorAll(".remove_destination_button");
 const add_dest = document.querySelector(".add_destination");
 
+for (let i = 0; i < dest_buttons    .length; ++i){
+    dest_buttons[i].addEventListener("click" , function(){
+        if(i !== opened_list){
+            dest_lists[opened_list].style.display="none";
+            dest_lists[opened_list].setAttribute("visibile" , "false");
+        }
+
+        if(dest_lists[i].getAttribute("visibile") === "false"){
+            dest_lists[i].style.display="block";
+            dest_lists[i].setAttribute("visibile" , "true");
+            opened_list = i;
+        }
+    
+        else{
+            dest_lists[i].style.display="none";
+            dest_lists[i].setAttribute("visibile" , "false");
+        }
+    } , false);   
+}
 
 for(let i = 0 ; i < dest_selections.length ; ++i){
     dest_selections[i].addEventListener("click" , function(){
@@ -63,23 +82,9 @@ const create_file_input = document.querySelector(".create_file_input");
 
 
 document.querySelector(".create_trip_pop_up_container").addEventListener("click" , function(event){
-    if(event.target.closest(".destination_button")){
-        if(event.target.closest(".destination_button").nextElementSibling.getAttribute("visibile") === "false"){
-            event.target.closest(".destination_button").nextElementSibling.style.display="block";
-            event.target.closest(".destination_button").nextElementSibling.setAttribute("visibile" , "true");
-        }
-
-        else{
-            event.target.closest(".destination_button").nextElementSibling.style.display="none";
-            event.target.closest(".destination_button").nextElementSibling.setAttribute("visibile" , "false");
-        }
-    }
-
-    else if(!event.target.closest(".destination_button")){
-        for (let i = 0; i < dest_lists.length; ++i) {
-            dest_lists[i].style.display= "none";
-            dest_lists[i].setAttribute("visibile" , "false");
-        }
+    if(!event.target.closest(".destination_button")){
+        dest_lists[opened_list].style.display= "none";
+        dest_lists[opened_list].setAttribute("visibile" , "false");
     }
 
     if(event.target.closest(".date_button")){
@@ -583,6 +588,24 @@ function CreateDestinationInput(){
     dest_checkboxs = document.querySelectorAll(".dest_checkbox");
     dest_names = document.querySelectorAll(".destination_name");
     remove_dest = document.querySelectorAll(".remove_destination_button");
+
+    dest_buttons[index].addEventListener("click" , function(){
+        if(index !== opened_list){
+            dest_lists[opened_list].style.display="none";
+            dest_lists[opened_list].setAttribute("visibile" , "false");
+        }
+
+        if(dest_lists[index].getAttribute("visibile") === "false"){
+            dest_lists[index].style.display="block";
+            dest_lists[index ].setAttribute("visibile" , "true");
+            opened_list = index ;
+        }
+    
+        else{
+            dest_lists[index].style.display="none";
+            dest_lists[index].setAttribute("visibile" , "false");
+        }
+    } , false);   
 
     remove.addEventListener("click" , function(){
         remove_destination(index);
