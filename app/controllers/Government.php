@@ -35,7 +35,7 @@
         }
 
         //JSON HTTP Request
-        public function Requests(){
+        public function GetRequests(){
             header('Access-Control-Allow-Origin: *');
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: GET');
