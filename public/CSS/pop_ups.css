@@ -90,7 +90,7 @@
     margin: 12px 0px;
 }
 
-input[type="checkbox"],input[type="text"]{
+.create_form_input input[type="checkbox"], .create_form_input input[type="text"]{
     position: absolute;
     width: 0px;
     height: 0px;
