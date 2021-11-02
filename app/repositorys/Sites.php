@@ -15,12 +15,12 @@
             if(!empty($filter["end_date"])){
                 $expression.= " AND end_date = '".$filter["end_date"]."'";
             }
-
-            if(!empty($filter["start_location"])){
+            
+            if(strlen($filter["start_location"]) > 0){
                 $expression.= " AND start_location = ". ((int)$filter["start_location"]+1);
             }  
             
-            if(!empty($filter["end_location"])){
+            if(strlen($filter["end_location"]) > 0){
                 $expression.= " AND end_location = ". ((int)$filter["end_location"]+1);
             }  
 
