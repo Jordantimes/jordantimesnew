@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 class Home extends Controller{
 
@@ -17,10 +17,5 @@ class Home extends Controller{
     public function about(){
         session_start();
         $this->view("Home/about");
-    }
-
-    public function sites(){
-        session_start();
-        $this->view("Home/sites");
     }
 }
