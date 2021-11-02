@@ -148,6 +148,8 @@
                     "ID" => $ID,
                     "name" => "",
                     "nameAr" => "",
+                    "start_location" => "",
+                    "end_location" => "",
                     "start_date" => $_POST["start_date"],
                     "end_date" => $_POST["end_date"],
                     "days" => "",
@@ -155,6 +157,7 @@
                     "image" => "",
                     "description" => $_POST["description"],
                     "descriptionAr" => $_POST["description_ar"],
+                    "price" => $_POST["price"],
                     "breakfast" => isset($_POST["breakfast"]) ? 1 : 0,
                     "breakfast_price" => isset($_POST["breakfast"]) ? $_POST["breakfast_price"] : "",
                     "lunch" => isset($_POST["lunch"]) ? 1 : 0,
@@ -164,7 +167,7 @@
                 ];
 
                 $destinations = $_POST["destination"];
-                if(!isset($destinations) || empty($Data["start_date"]) || empty($Data["end_date"])){
+                if(!isset($destinations) || empty($Data["start_date"]) || empty($Data["end_date"]) || empty($Data["price"])){
                     header("location:".URLROOT."/Company");
                     exit;
                 }
@@ -173,6 +176,9 @@
                 $date2 = new DateTime($Data["end_date"]);
                 $interval = $date1->diff($date2);
                 $Data["days"] = $interval->days;
+
+                $Data["start_location"] = $destinations[0];
+                $Data["end_location"] = $destinations[count($destinations) - 1];
 
                 for ($i=0; $i < count($destinations); ++$i){ 
                     $i === count($destinations) - 1 ? $Data["name"].= $locations[$destinations[$i] - 1] : $Data["name"].= $locations[$destinations[$i] - 1]." - ";
