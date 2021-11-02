@@ -28,6 +28,9 @@ set_calender(date,current_month,current_year);
 const calender_month_nav_left = document.querySelector(".month_nav_left_wrapper");
     calender_month_nav_left.addEventListener("click" , function(){
         let calender_type = document.querySelector("#trip_date_list").getAttribute("calender_type");
+        if(current_day == 31){
+            date.setDate(30);
+        }
         date.setMonth(date.getMonth() - 1);
             
         if(date.getMonth() < 0 ){
@@ -47,6 +50,9 @@ const calender_month_nav_left = document.querySelector(".month_nav_left_wrapper"
 const calender_month_nav_right = document.querySelector(".month_nav_right_wrapper");
 calender_month_nav_right.addEventListener("click" , function(){
     let calender_type = document.querySelector("#trip_date_list").getAttribute("calender_type");
+    if(current_day == 31){
+        date.setDate(30);
+    }
     date.setMonth(date.getMonth() + 1);
         
     if(date.getMonth() > 11 ){
