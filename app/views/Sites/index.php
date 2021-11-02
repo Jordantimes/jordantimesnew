@@ -7,6 +7,7 @@
     <title><?php echo SITENAME?> - Sites</title>
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\Base.css";?>">
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\sites.css";?>">
+    <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\calender.css";?>">
 
 </head>
 <body>
@@ -19,58 +20,65 @@
 
         <div class="pop_up_site_details_container" condition="hidden">
             <div class="pop_up_site_details">
-                <div class="pop_up_close_button_wrapper">
-                    <button class="close_button" id="pop_up_close">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
-                        <g>
+                <form action="#" method="POST">
+                    <div class="pop_up_close_button_wrapper">
+                        <button class="close_button" id="pop_up_close" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
                             <g>
-                                <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
+                                <g>
+                                    <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
+                                </g>
                             </g>
-                        </g>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="site_name_price_wrapper">
-                    <div class="site_name">Mercure Istanbul Altunizade</div>
-                    <div class="site_price">
-                        <span class="currency">USD</span>184
+                            </svg>
+                        </button>
                     </div>
-                </div>
 
-                <div class="site_images_preview_slider_wrapper">
-                    <div class="site_images_preview_slider">
-                        <div class="controlled_slider">
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel2.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview1.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview2.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview3.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview4.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview5.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview6.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview7.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview8.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview9.jpg" alt=""></div>
-                            <div class="preview_image_container"><img class="preview_image" src="../../Assets/Images/Index/hotels/hotel_preview10.jpg" alt=""></div>
+                    <div class="site_company_info_popedup">
+                        <div><img class="company_picture_popedup" src="" alt="company picture"></div>
+                        <div>
+                            <div class="company_name_popedup"></div>
+                            <div class="site_created_at_popup"></div>
                         </div>
                     </div>
 
-                    <div class="slider_navigators_wrapper">
-                        <div class="slider_navigators"></div>
+                    <div class="site_name_price_wrapper">
+                        <div>
+                            <div class="site_name_popedup"></div>
+                            <div class="site_date_popedup">
+                                <span class="site_start_date_popedup"></span>
+                                <span>-</span>
+                                <span class="site_end_date_popedup"></span>
+                            </div>
+                        </div>
+                        <div class="site_price_popedup"></div>
                     </div>
-                </div>
 
-                <div class="site_description_wrapper">
-                    <div class="site_description_popedup">
-                        With a stay at Mercure Istanbul Altunizade in Istanbul (Uskudar), you'll be a 4-minute drive from Maiden's Tower and 6 minutes from Bagdat Avenue.  This 4-star hotel is 5.3 mi (8.5 km) from Dolmabahce Palace and 6.1 mi (9.9 km) from Bosphorus Bridge.
-                        Enjoy a range of recreational amenities, including a health club, an indoor pool, and a sauna. Additional amenities at this hotel include complimentary wireless Internet access, concierge services, and a television in a common area.
-                        Make yourself at home in one of the 140 air-conditioned rooms featuring fireplaces and plasma televisions. Complimentary wireless Internet access keeps you connected, and cable programming is available for your entertainment. Conveniences include phones, as well as safes and desks.
+                    <div class="site_images_preview_slider_wrapper">
+                        <div class="site_images_preview_slider">
+                            <div class="controlled_slider"></div>
+                        </div>
+
+                        <div class="slider_navigators_wrapper">
+                            <div class="slider_navigators"></div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="checkin_wrapper">
-                    <button class="check_in">Check in</button>
-                </div>
+                    <div class="site_description_wrapper">
+                        <div class="site_description_popedup"></div>
+                    </div>
+
+                    <div class="site_additional_wrapper">
+                        <div class="site_base_price_popedup"></div>
+                        <div class="breakfast_price_popedup"></div>
+                        <div class="lunch_price_popedup"></div>
+                        <div class="dinner_price_popedup"></div>
+                        <div class="total"></div>
+                    </div>
+
+                    <div class="checkin_wrapper">
+                        <button class="check_in">Check in</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -102,7 +110,7 @@
                                             </svg>
                                     </div>
                                     <div class="holder_text">
-                                        <span class="passenger_counter"><?php echo $data["passengers"]; ?></span> 
+                                        <span class="passenger_counter"><?php echo $data["Filter"]["passengers"] != "" ? $data["Filter"]["passengers"] : "-"; ?></span> 
                                         Passenger(s)
                                     </div>
 
@@ -178,7 +186,7 @@
                                     </svg>
                                     </div>
                                     <div class="holder_text">
-                                        <span class="start_location_holder"><?php echo $data["start_location_name"]; ?></span> To <span class="end_location_holder"><?php echo $data["end_location_name"]; ?></span>
+                                        <span class="start_location_holder"><?php echo $data["Filter"]["start_location_name"] != "" ? $data["Filter"]["start_location_name"] : "-";?></span> To <span class="end_location_holder"><?php echo $data["Filter"]["end_location_name"]!= "" ? $data["Filter"]["end_location_name"] : "-"; ?></span>
                                     </div>
 
                                     <div class="holder_arrow_nav">
@@ -296,7 +304,7 @@
                                         </svg>
                                     </div>
                                     <div class="holder_text">
-                                        <span class="selected_start_date_holder"><?php echo $data["start_date"] != "----/--/--" ? $data["start_date"] : "----/--/--"?></span> To <span class="selected_end_date_holder"><?php echo $data["end_date"] != "----/--/--" ? $data["end_date"] : "----/--/--"?></span>
+                                        <span class="selected_start_date_holder"><?php echo $data["Filter"]["start_date"] != "" ? $data["Filter"]["start_date"] : "----/--/--"?></span> To <span class="selected_end_date_holder"><?php echo $data["Filter"]["end_date"] != "" ? $data["Filter"]["end_date"] : "----/--/--"?></span>
                                     </div>
 
                                     <div class="holder_arrow_nav">
@@ -352,98 +360,72 @@
                             </div>
                         </div>
 
-                        <input id="passenger_radio" type="radio" name="p" value="1" <?php echo $data["passengers"] == "1" ? "checked" : ""; ?>>
-                        <input id="passenger_radio" type="radio" name="p" value="2" <?php echo $data["passengers"] == "2" ? "checked" : ""; ?>>
-                        <input id="passenger_radio" type="radio" name="p" value="3" <?php echo $data["passengers"] == "3" ? "checked" : ""; ?>>
-                        <input id="passenger_radio" type="radio" name="p" value="4" <?php echo $data["passengers"] == "4" ? "checked" : ""; ?>>
-                        <input id="passenger_radio" type="radio" name="p" value="5" <?php echo $data["passengers"] == "5" ? "checked" : ""; ?>>
-                        <input id="passenger_radio" type="radio" name="p" value="6" <?php echo $data["passengers"] == "6" ? "checked" : ""; ?>>
+                        <input id="passenger_radio" type="radio" name="passengers" value="1" <?php echo $data["Filter"]["passengers"] == "1" ? "checked" : ""; ?>>
+                        <input id="passenger_radio" type="radio" name="passengers" value="2" <?php echo $data["Filter"]["passengers"] == "2" ? "checked" : ""; ?>>
+                        <input id="passenger_radio" type="radio" name="passengers" value="3" <?php echo $data["Filter"]["passengers"] == "3" ? "checked" : ""; ?>>
+                        <input id="passenger_radio" type="radio" name="passengers" value="4" <?php echo $data["Filter"]["passengers"] == "4" ? "checked" : ""; ?>>
+                        <input id="passenger_radio" type="radio" name="passengers" value="5" <?php echo $data["Filter"]["passengers"] == "5" ? "checked" : ""; ?>>
+                        <input id="passenger_radio" type="radio" name="passengers" value="6" <?php echo $data["Filter"]["passengers"] == "6" ? "checked" : ""; ?>>
 
-                        <input type="text" class="start_location_input" name="sl" value="<?php echo $data["start_location"] != "-" ? $data["start_location"] : ""?>">
-                        <input type="text" class="end_location_input" name="el" value="<?php echo $data["end_location"] != "-" ? $data["end_location"] : ""?>">
+                        <input type="text" class="start_location_input" name="start_location" value="<?php echo $data["Filter"]["start_location"] != "" ? $data["Filter"]["start_location"] : ""?>">
+                        <input type="text" class="end_location_input" name="end_location" value="<?php echo $data["Filter"]["end_location"] != "" ? $data["Filter"]["end_location"] : ""?>">
 
-                        <input type="date" class="start_date_input" name="sd" value="<?php echo $data["start_date"] != "----/--/--" ? $data["start_date"] : ""?>">
-                        <input type="date" class="end_date_input" name="ed" value="<?php echo $data["end_date"] != "----/--/--" ? $data["end_date"] : ""?>">
+                        <input type="date" class="start_date_input" name="start_date" value="<?php echo $data["Filter"]["start_date"] != "" ? $data["Filter"]["start_date"] : ""?>">
+                        <input type="date" class="end_date_input" name="end_date" value="<?php echo $data["Filter"]["end_date"] != "" ? $data["Filter"]["end_date"] : ""?>">
 
                         <button type="submit" class="filter_form_submit_button">Apply filter</button>
                 </div>
 
                 <div class="sites_section_wrapper">
                     <div class="available_sites_wrapper">
-                        <button class="site">
-                            <div class="site_image_wrapper" style="background-image: url(../../Assets/Images/Index/hotels/hotel1.jpg);"></div>
+                        <?php for ($i = 0 ; $i < count($data["Sites"]) ; ++$i) { ?>
+                            
+                            <button class="site" type="button" value="<?php echo $data["Sites"][$i]["id"]?>">
+                                <div class="site_image_wrapper">
+                                    <?php
+                                        for ($j=0; $j < count($data["Sites"][$i]["images"]) ; ++$j) { 
+                                            echo "<img src='".URLROOT."/public/images/users/trips/".$data["Sites"][$i]["images"][$j]."' alt='site_picture'>";
+                                        }
+                                    ?>
+                                </div>
 
-                            <div class="site_information_wrapper">
-                                <div class="site_name_price_wrapper">
-                                    <div class="site_name">Grand Hotel De Pera</div>
-                                    <div class="site_price">
-                                        <span class="currency">USD</span>178
+                                <div class="site_information_wrapper">
+                                    <div class="site_header">
+                                        <div class="site_header_left">
+                                            <div class="site_name"><?php echo $data["Sites"][$i]["name"]?></div>
+                                            <div class="site_company_info">
+                                                <div><?php echo "<img class='company_picture' src='".URLROOT."/public/images/users/companys/".$data["Sites"][$i]["image"]."' alt='company_picture'>"; ?></div>
+                                                <div>
+                                                    <span class="company_name"><?php echo $data["Sites"][$i]["company_name"]?></span>
+                                                    <span>.</span>
+                                                    <span class="site_created_at"><?php echo $data["Sites"][$i]["created_at"]?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="site_price">
+                                            USD<?php echo ($data["Sites"][$i]["price"] + $data["Sites"][$i]["breakfast_price"] + $data["Sites"][$i]["lunch_price"] + $data["Sites"][$i]["dinner_price"])*$data["Filter"]["passengers"]?>
+                                        </div>
+                                    </div>
+
+                                    <div class="site_description_wrapper">
+                                        <div class="site_description"><?php echo $data["Sites"][$i]["description"]?></div>
+                                    </div>
+
+                                    <div class="site_additional">
+                                        <span class="breakfast_price"><?php echo $data["Sites"][$i]["breakfast"] ? $data["Sites"][$i]["breakfast_price"] : ""; ?></span>
+                                        <span class="lunch_price"><?php echo $data["Sites"][$i]["lunch"] ? $data["Sites"][$i]["lunch_price"] : ""; ?></span>
+                                        <span class="dinner_price"><?php echo $data["Sites"][$i]["dinner"] ? $data["Sites"][$i]["dinner_price"] : ""; ?></span>
+                                        <span class="site_base_price"><?php echo $data["Sites"][$i]["price"]; ?></span>
+                                        <span class="site_start_date"><?php echo $data["Sites"][$i]["start_date"]?></span>
+                                        <span class="site_end_date"><?php echo $data["Sites"][$i]["end_date"]?></span>
+                                    </div>
+
+                                    <div class="site_moredetails_wrapper">
+                                        <div class="moredetails">More details</div>
                                     </div>
                                 </div>
-
-                                <div class="site_description_wrapper">
-                                    <div class="site_description">
-                                        With a stay at Grand Hotel De Pera, you'll be centrally located in Istanbul, steps from Pera Museum and 11 minutes by foot from Galata Tower.  This 4-star hotel is 0.7 mi (1.1 km) from Taksim Square and 0.3 mi (0.4 km) from Istiklal Avenue
-                                        Enjoy a range of recreational amenities, including an indoor pool, a sauna, and a fitness center. Additional features at this hotel include complimentary wireless Internet access, concierge services, and a banquet hall.
-                                        Make yourself at home in one of the 84 air-conditioned rooms featuring minibars. Complimentary wireless Internet access keeps you connected, and satellite programming is available for your entertainment. Bathrooms feature showers, complimentary toiletries, and hair dryers. Conveniences include safes and desks, and housekeeping is provided daily. 
-                                    </div>
-                                </div>
-
-                                <div class="site_moredetails_wrapper">
-                                    <div class="moredetails">More details</div>
-                                </div>
-                            </div>
-                        </button>
-
-                        <button class="site">
-                            <div class="site_image_wrapper" style="background-image: url(../../Assets/Images/Index/hotels/hotel2.jpg);"></div>
-
-                            <div class="site_information_wrapper">
-                                <div class="site_name_price_wrapper">
-                                    <div class="site_name">Mercure Istanbul Altunizade</div>
-                                    <div class="site_price">
-                                        <span class="currency">USD</span>184
-                                    </div>
-                                </div>
-
-                                <div class="site_description_wrapper">
-                                    <div class="site_description">
-                                        With a stay at Mercure Istanbul Altunizade in Istanbul (Uskudar), you'll be a 4-minute drive from Maiden's Tower and 6 minutes from Bagdat Avenue.  This 4-star hotel is 5.3 mi (8.5 km) from Dolmabahce Palace and 6.1 mi (9.9 km) from Bosphorus Bridge.
-                                        Enjoy a range of recreational amenities, including a health club, an indoor pool, and a sauna. Additional amenities at this hotel include complimentary wireless Internet access, concierge services, and a television in a common area.
-                                        Make yourself at home in one of the 140 air-conditioned rooms featuring fireplaces and plasma televisions. Complimentary wireless Internet access keeps you connected, and cable programming is available for your entertainment. Conveniences include phones, as well as safes and desks.
-                                    </div>
-                                </div>
-
-                                <div class="site_moredetails_wrapper">
-                                    <div class="moredetails">More details</div>
-                                </div>
-                            </div>
-                        </button>
-
-                        <button class="site">
-                            <div class="site_image_wrapper" style="background-image: url(../../Assets/Images/Index/hotels/hotel3.jpg);"></div>
-
-                            <div class="site_information_wrapper">
-                                <div class="site_name_price_wrapper">
-                                    <div class="site_name">Hotel Broken Column</div>
-                                    <div class="site_price">
-                                        <span class="currency">USD</span>142
-                                    </div>
-                                </div>
-
-                                <div class="site_description_wrapper">
-                                    <div class="site_description">
-                                        With a stay at Hotel Broken Column, you'll be centrally located in Istanbul, within a 5-minute walk of Sultanahmet Square and Blue Mosque.  This 4-star hotel is 0.3 mi (0.5 km) from Hagia Sophia and 0.3 mi (0.5 km) from Basilica Cistern.
-                                        Take in the views from a rooftop terrace and make use of amenities such as complimentary wireless Internet access and concierge services. Additional amenities at this hotel include gift shops/newsstands and a television in a common area. Guests can catch a ride to nearby destinations on the area shuttle (surcharge).
-                                        Make yourself at home in one of the 15 air-conditioned rooms featuring refrigerators and minibars. Complimentary wireless Internet access keeps you connected, and satellite programming is available for your entertainment. Private bathrooms with showers feature complimentary toiletries and hair dryers. Conveniences include laptop-compatible safes and coffee/tea makers, and housekeeping is provided daily.
-                                    </div>
-                                </div>
-
-                                <div class="site_moredetails_wrapper">
-                                    <div class="moredetails">More details</div>
-                                </div>
-                            </div>
-                        </button>
+                            </button>
+                        <?php } ?>
                     </div>
                     <button name="page" value="4">submit</button>
                 </div>
