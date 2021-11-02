@@ -18,6 +18,7 @@
 
 .full_screen_image{
     display: block;
+    max-width: 75%;
     margin: 5%;
 }
 
@@ -28,13 +29,14 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: scroll;
 }
 
 .pop_up_site_details{
     background-color: #ffffff;
     width: 940px;
-    margin: 5% auto 5% auto;
+    margin: 2.5% auto 2.5% auto;
     padding: 24px;
     border-radius: 12px;
     height: auto;
@@ -58,6 +60,45 @@
     height: 22px;
 }
 
+.site_company_info_popedup{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.company_picture_popedup{
+    display: block;
+    width: 98px;
+    height: 98px;
+    object-fit: cover;
+    border-radius: 50px;
+    margin-right: 12px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.company_name_popedup{
+    font-family: inherit;
+    font-size: 24px;
+}
+
+.site_created_at_popup{
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--text_side_color);
+}
+
+.site_date_popedup{
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--text_side_color);
+}
+
+.site_name_price_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
 .site_images_preview_slider_wrapper{
     width: 870px;
     margin: 24px auto;
@@ -69,7 +110,7 @@
 
 .controlled_slider{
     display: flex;
-    transition: 0.9s ease-in;
+    transition: 0.6s ease-in;
 }
 
 .preview_image_container{
@@ -84,6 +125,13 @@
     margin: 0px 5px;
     overflow: hidden;
     cursor: pointer;
+}
+
+.preview_image_container img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .slider_navigators_wrapper{
@@ -119,14 +167,25 @@
     border-radius: 50%;
 }
 
+.site_additional_wrapper{
+    margin-top: 12px;
+}
+
+.site_additional_wrapper div{
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text_side_color);
+    margin-top: 6px;
+}
+
 .checkin_wrapper{
-    margin-top: 36px;
+    margin-top: 12px;
 }
 
 .check_in{
     display: block;
-    padding: 12px 16px;
-    border-radius: 3px;
+    padding: 7px 28px;
+    border-radius: 50px;
     background-color: #f05d5e;
     color: #ffffff;
     font-family: inherit;
@@ -136,53 +195,8 @@
     cursor: pointer;
 }
 
-.header_video_container{
-    width: 100%;
-    height: auto;
-    max-height: 100vh;
-    overflow: hidden;
-}
-
-.bckg_video_container{
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    overflow: hidden;
-}
-
-.BCKG_video{
-    width: 100%;
-    height: auto;
-}
-
-.header_container{
-    width: 100%;
-    background-color: #faf8f3;
-}
-
-.header_upper{
-    padding: 7px 0px;
-}
-
-.header_logo_wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header_logo_wrapper a{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.header_bottom{
-    background-color: #eeeeee;
-}
-
-.header_nav_wrapper{
-    display: flex;
-    justify-content: flex-end;
+.check_in:hover{
+    text-decoration: underline;
 }
 
 .selections{
@@ -474,85 +488,6 @@
     background-color: #eeeeee;
 }
 
-.calender_header{
-    background-color: #f05d5e;
-    text-align: center;
-    color: #ffffff;
-}
-
-.calender_name{
-    font-family: inherit;
-    font-size: 18px;
-    padding-top: 12px;
-}
-
-.nav_month_container{
-    padding: 12px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-family: inherit;
-    font-size: 16px;
-}
-
-.month_year_wrapper{
-    width: 50%;
-}
-
-.month_nav_left_wrapper,.month_nav_right_wrapper{
-    background-color: transparent;
-    border: none;
-}
-
-.month_nav_left_wrapper svg{
-    width: 12px;
-    height: 12px;
-    fill: #ffffff;
-    cursor: pointer;
-    transform: rotate(90deg);
-}
-
-.month_nav_right_wrapper svg{
-    width: 12px;
-    height: 12px;
-    fill: #ffffff;
-    cursor: pointer;
-    transform: rotate(-90deg);
-}
-
-.days_names_wrapper,.days_wrapper{
-    font-size: 0px;
-}
-
-.days_wrapper{
-    min-height: calc(46px * 6);
-}
-
-.day_name,.day,.dimmed_day{
-    background-color: transparent;
-    display: inline-block;
-    width: calc(100%/7 - 2px);
-    margin: 1px;
-    padding: 12px 0px;
-    text-align: center;
-    border: none;
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 20px;
-}
-
-.day{
-    cursor: pointer;
-}
-
-.day:hover{
-    background-color: #eeeeee;
-}
-
-.dimmed_day{
-    color: #aaaaaa;
-}
-
 .filter_form_submit_button{
     display: block;
     width: 100%;
@@ -581,10 +516,22 @@
 .site_image_wrapper{
     width: 35%;
     height: 260px;
-    background-position: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
     margin-left: 12px;
+}
+
+.site_image_wrapper img{
+    display: none;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+.site_image_wrapper img:first-child{
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
 }
 
 .site_information_wrapper{
@@ -592,30 +539,59 @@
     margin-left: 24px;
 }
 
-.site_name_price_wrapper{
+.site_header{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.site_name{
-    display: block;
+.site_name,.site_name_popedup{
+    max-height: 68px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
     font-family: inherit;
     font-size: 28px;
+    text-align: left;
 }
 
-.site_price{
+.site_company_info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 7px;
+    text-align: left;
+    color: var(--text_side_color);
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.company_picture{
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 25px;
+    margin-right: 7px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+}
+
+.site_price,.site_price_popedup{
     display: block;
     font-family: inherit;
-    font-size: 38px;
-    color: #bbbbbb;
+    font-size: 32px;
+    color: var(--text_side_color);
+    margin-left: 7px;
 }
 
 .site_description_wrapper{
     margin-top: 12px;
     font-family: inherit;
     font-size: 16px;
-    color: #aaaaaa;
+    color: var(--text_side_color);
 }
 
 .site_description{
@@ -629,19 +605,33 @@
     height: 100px;
     line-height: 20px;
     -webkit-line-clamp: 5;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.site_additional{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    overflow: hidden;
 }
 
 
 .moredetails{
     position: absolute;
     display: inline-block;
-    bottom: calc(0% + 12px);
+    bottom: calc(0% + 24px);
     right: 0%;
-    padding: 8px 12px;
+    padding: 7px 28px;
     border-radius: 50px;
     background-color: #f05d5e;
     color: #ffffff;
     font-family: inherit;
     font-size: 16px;
     margin: auto;
+}
+
+.site:hover .site_moredetails_wrapper .moredetails{
+    text-decoration: underline;
 }
