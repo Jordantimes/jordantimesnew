@@ -230,7 +230,7 @@ function setInputDate(selected_day,selected_month,selected_year,selected_date,ca
         const date1 = new Date(end_date);
         const date2 = new Date(start_date);
         const diffTime = Math.abs(date2 - date1);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; 
 
         document.querySelector(".nights_checkbox").value=diffDays;
         document.querySelector(".nights_holder").innerText = diffDays + " days, " + diffDays + " nights";
