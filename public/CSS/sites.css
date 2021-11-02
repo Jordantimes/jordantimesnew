@@ -445,7 +445,7 @@
     z-index: 2;
 }
 
-#option button{
+.option button{
     display: block;
     width: 100%;
     text-align: left;
@@ -455,14 +455,14 @@
     font-size: 16px;
 }
 
-#option button label{
+.option button label{
     display: block;
     width: 100%;
     padding: 12px;
     cursor: pointer;
 }
 
-#passenger_radio,.start_date_input,.end_date_input{
+#passenger_radio,.start_date_input,.end_date_input,.start_location_input,.end_location_input,.nights_input{
     visibility: hidden;
     position: absolute;
     width: 0px;
@@ -470,7 +470,7 @@
     opacity: 0%;
 }
 
-.passenger_option:hover{
+.option:hover{
     background-color: #eeeeee;
 }
 
@@ -638,7 +638,7 @@
     bottom: calc(0% + 12px);
     right: 0%;
     padding: 8px 12px;
-    border-radius: 3px;
+    border-radius: 50px;
     background-color: #f05d5e;
     color: #ffffff;
     font-family: inherit;
