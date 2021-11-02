@@ -8,7 +8,7 @@ class Sites extends Controller{
         session_start();
         $USER = [];
         $passengers = "-";
-        $Date = date("Y/m/d");
+        $Date = date("2021-04-05");
         $start_date = "----/--/--";
         $end_date = "----/--/--";
         $start_location = "-";
@@ -45,7 +45,7 @@ class Sites extends Controller{
             }
         }
 
-        if(isset($_GET["ed"]) && $_GET["ed"] !== "" && isset($_GET["ed"])){
+        if(isset($_GET["ed"]) && $start_date!== "----/--/--" && isset($_GET["sd"])){
             $ed = date("Y/m/d",strtotime($_GET["ed"]));
             if($ed  >= date($start_date)){
                 $end_date = $ed ;
@@ -58,7 +58,7 @@ class Sites extends Controller{
             }
         }
 
-        if(isset($_GET["el"]) && $_GET["el"] !== "" && isset($_GET["sl"])){
+        if(isset($_GET["el"]) && $start_location !== "-" && isset($_GET["sl"])){
             if($_GET["el"] >= 0 && $_GET["el"] <= 12 ){
                 $end_location = $_GET["el"];
             }
