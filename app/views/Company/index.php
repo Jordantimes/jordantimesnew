@@ -363,7 +363,12 @@
 
                     <div class="create_form_input">
                         <label>Description(العربية)</label>
-                        <textarea name="description_ar" class="description" rows="4"></textarea>
+                        <textarea name="description_ar" class="description description_ar" rows="4"></textarea>
+                    </div>
+
+                    <div class="create_form_input">
+                        <label>Base price (USD)</label>
+                        <input name="price" class="price_input"></input>
                     </div>
 
                     <div class="create_form_input">
