@@ -26,12 +26,15 @@
                 $Data["ID"],
                 $Data["name"],
                 $Data["nameAr"],
+                $Data["start_location"],
+                $Data["end_location"],
                 $Data["start_date"],
                 $Data["end_date"],
                 $Data["days"],
                 $Data["nights"],
                 $Data["description"],
                 $Data["descriptionAr"],
+                $Data["price"],
                 $Data["breakfast"],
                 $Data["breakfast_price"],
                 $Data["lunch"],
@@ -45,7 +48,7 @@
             ];
 
             $table = "trips";
-            $columns = "company,name,name_ar,start_date,end_date,days,nights,description,description_ar,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at,updated_at,is_deleted";
+            $columns = "company,name,name_ar,start_location,end_location,start_date,end_date,days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at,updated_at,is_deleted";
             $values = NormalCombine($trip_values);
             
             return Insert($table,$columns,$values);
