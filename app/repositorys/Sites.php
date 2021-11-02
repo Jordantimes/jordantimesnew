@@ -1,0 +1,35 @@
+<?php
+
+    class SitesRepo{
+        public function GetSites($filter,$page){
+            $data = [];
+            $table = "trips,users";
+            $columns = "users.name as company_name,image,trips.id,trips.name,name_ar,start_location,end_location,start_date,end_date,
+                        days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
+            $expression = "is_deleted = false AND users.id = company";
+
+            if(!empty($filter["start_date"])){
+                $expression.= " AND start_date = '".$filter["start_date"]."'";
+            }
+
+            if(!empty($filter["end_date"])){
+                $expression.= " AND end_date = '".$filter["end_date"]."'";
+            }
+
+            if(!empty($filter["start_location"])){
+                $expression.= " AND start_location = ". ((int)$filter["start_location"]+1);
+            }  
+            
+            if(!empty($filter["end_location"])){
+                $expression.= " AND end_location = ". ((int)$filter["end_location"]+1);
+            }  
+
+            $result =  SelectByCondition($table,$columns,$expression);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                $row["images"] = explode("," , $row["images"]);
+                array_push($data , $row);
+            }
+
+            return $data;
+        }
+    }
