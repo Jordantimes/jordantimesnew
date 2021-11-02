@@ -1,27 +1,96 @@
 window.addEventListener('DOMContentLoaded', function(){
-
+    const destination = [   
+        "Amman",
+        "Zarqa",
+        "Irbid",
+        "Ajloun",
+        "Jarash",
+        "Al Balqa",
+        "Al Mafraq",
+        "Madaba",
+        "Al Tafele",
+        "Al Karak",
+        "Ma'an",
+        "Aqaba",
+    ];
     let selected_passenger_button = 0;
+    let selected_location = 0;
     const passenger_click = document.querySelectorAll(".passenger_click");
     const passenger_value_RADIO = document.querySelectorAll("#passenger_radio");
     const passenger_counter_span = document.querySelector(".passenger_counter");
-        for(let i = 0 ; i < passenger_click.length ; i++){
-            passenger_click[i].addEventListener("click" , function(){
-                //chnage the style of the previous selected option to the orignal style
-                passenger_click[selected_passenger_button].style.backgroundColor = "transparent";
-                passenger_click[selected_passenger_button].style.color = "#000000";   
+    const locations_click = document.querySelectorAll(".location_click");
+    const locations_list = document.querySelector("#locations_list");
 
-                //change the new selected option to the highlighted style
-                passenger_click[i].style.backgroundColor = "#f05d5e";
-                passenger_click[i].style.color = "#ffffff";
+    //set the date from the url
+    const sd = new Date(document.querySelector(".start_date_input").getAttribute("value"));
+    document.querySelector(".start_date_input").value = sd.getFullYear()+"-"+(sd.getMonth()+1)+"-"+sd.getDate();
 
-                //check the coresponding radio button with the selected option
-                passenger_value_RADIO[i].checked = "true";
-                passenger_counter_span.innerHTML = passenger_value_RADIO[i].value;
+    const ed = new Date(document.querySelector(".end_date_input").getAttribute("value"));
+    document.querySelector(".end_date_input").value = ed.getFullYear()+"-"+(ed.getMonth()+1)+"-"+ed.getDate();
 
-                //save the index of the selected option
-                selected_passenger_button = i;
-            } , true);
+    //set the color of the selected option from the url if entered
+    for (let i = 0; i < passenger_value_RADIO.length; ++i) {
+        if(passenger_value_RADIO[i].checked){
+            passenger_click[i].style.backgroundColor = "#f05d5e";
+            passenger_click[i].style.color = "#ffffff";
+            selected_passenger_button = i;
+            break; 
         }
+    }
+
+    for(let i = 0 ; i < passenger_click.length ; i++){
+        passenger_click[i].addEventListener("click" , function(){
+            //change the style of the previous selected option to the orignal style
+            passenger_click[selected_passenger_button].style.backgroundColor = "transparent";
+            passenger_click[selected_passenger_button].style.color = "#000000";   
+
+            //change the new selected option to the highlighted style
+            passenger_click[i].style.backgroundColor = "#f05d5e";
+            passenger_click[i].style.color = "#ffffff";
+
+            //check the coresponding radio button with the selected option
+            passenger_value_RADIO[i].checked = "true";
+            passenger_counter_span.innerHTML = passenger_value_RADIO[i].value;
+
+            //save the index of the selected option
+            selected_passenger_button = i;
+        } , true);
+    }
+
+    for(let i = 0 ; i < locations_click.length ; i++){
+        locations_click[i].addEventListener("click" , function(){
+            //change the style of the previous selected option to the orignal style
+            locations_click[selected_location].style.backgroundColor = "transparent";
+            locations_click[selected_location].style.color = "#000000";   
+
+            //change the new selected option to the highlighted style
+            locations_click[i].style.backgroundColor = "#f05d5e";
+            locations_click[i].style.color = "#ffffff";
+
+            //check the coresponding input with the selected option
+            let list_condition = document.querySelector("#locations_list").getAttribute("location_type");
+
+            if(list_condition === "start"){
+                document.querySelector(".start_location_input").value = i;
+                document.querySelector(".start_location_holder").innerHTML = destination[i];
+                document.querySelector("#locations_list").setAttribute("location_type" , "end");
+            }
+
+            else if(list_condition === "end" && i !== selected_location){
+                document.querySelector(".end_location_input").value = i;
+                document.querySelector(".end_location_holder").innerHTML = destination[i];
+                document.querySelector("#locations_list").setAttribute("location_type" , "start");
+
+                locations_list.style.display="none";
+                locations_list.setAttribute("visibility" , "hidden"); 
+                }
+
+
+            //save the index of the selected option
+            selected_location = i;
+        } , true);
+    }
+
 
     const site_pop_up = document.querySelector(".pop_up_site_details_container");
         const site = document.querySelectorAll(".site");
@@ -62,6 +131,9 @@ window.addEventListener('DOMContentLoaded', function(){
             let passsenger_count_list = document.querySelector("#passsenger_count_list");
             let passenger_list_condition = passsenger_count_list.getAttribute("visibility");
 
+            let locations_list_condition = locations_list.getAttribute("visibility");
+            let locations_list_type = locations_list.getAttribute("location_type");
+
             let trip_date_list = document.querySelector("#trip_date_list");
             let trip_date_list_condition = trip_date_list.getAttribute("visibility");
             let trip_date_list_type = trip_date_list.getAttribute("calender_type");
@@ -72,6 +144,21 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(passenger_list_condition === "hidden"){
                     passsenger_count_list.style.display="block";
                     passsenger_count_list.setAttribute("visibility" , "visible");
+                }
+            }
+
+            if(event.target.closest("#locations_input_wrapper")){
+                if(locations_list_condition === "hidden"){
+                    locations_list.style.display="block";
+                    locations_list.setAttribute("visibility" , "visible");
+
+                    if(locations_list_type === "start"){
+                        document.querySelector(".start_location_input").value = "";
+                        document.querySelector(".start_location_holder").innerHTML = "-";
+
+                        document.querySelector(".end_location_input").value = "";
+                        document.querySelector(".end_location_holder").innerHTML = "-";
+                    }
                 }
             }
 
@@ -104,6 +191,13 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(passenger_list_condition === "visible"){
                     passsenger_count_list.style.display="none";
                     passsenger_count_list.setAttribute("visibility" , "hidden"); 
+                }
+            }
+
+            if(!event.target.closest("#locations_list")){
+                if(locations_list_condition === "visible"){
+                    locations_list.style.display="none";
+                    locations_list.setAttribute("visibility" , "hidden"); 
                 }
             }
 
@@ -177,6 +271,7 @@ window.addEventListener('DOMContentLoaded', function(){
             document.querySelector(".controlled_slider").style.transform="translateX(0px)";
 
         }
+
         function create_nav_circles(images_count){
             let circles_count = Math.ceil(images_count / 3);
 
