@@ -23,10 +23,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
     //set the date from the url
     const sd = new Date(document.querySelector(".start_date_input").getAttribute("value"));
-    document.querySelector(".start_date_input").value = sd.getFullYear()+"-"+(sd.getMonth()+1)+"-"+sd.getDate();
+    document.querySelector(".start_date_input").value = sd.getFullYear() +"-"+ ("0"+(sd.getMonth()+1)).slice(-2) +"-"+ ("0"+sd.getDate()).slice(-2);
 
     const ed = new Date(document.querySelector(".end_date_input").getAttribute("value"));
-    document.querySelector(".end_date_input").value = ed.getFullYear()+"-"+(ed.getMonth()+1)+"-"+ed.getDate();
+    document.querySelector(".end_date_input").value = ed.getFullYear() +"-"+ ("0"+(sd.getMonth()+1)).slice(-2) +"-"+ ("0"+ed.getDate()).slice(-2);
 
     //set the color of the selected option from the url if entered
     for (let i = 0; i < passenger_value_RADIO.length; ++i) {
