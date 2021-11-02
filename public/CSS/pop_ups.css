@@ -290,6 +290,20 @@ input[type="date"]{
     resize: vertical;
 }
 
+.description_ar{
+    text-align: right;
+}
+
+.price_input{
+    width: 100%;
+    padding: 6px;
+    border-radius: 7px;
+    border: 1px var(--side_color) solid;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
 .aditional_input_wrapper{
     display: flex;
     align-items: center;
