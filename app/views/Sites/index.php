@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="checkin_wrapper">
-                        <button class="check_in">Check in</button>
+                        <button class="check_in" name="trip">Check in</button>
                     </div>
                 </form>
             </div>
