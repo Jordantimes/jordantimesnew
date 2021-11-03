@@ -21,7 +21,7 @@
             <button type="submit" name="login_Submit">Log in</button>
         </form>
 
-        <a href="<?php echo URLROOT; ?>/User/ForgotPassword">Forgot password?</a>
+        <a href="<?php echo URLROOT; ?>/User/PasswordUpdate">Forgot password?</a>
     </div>
 </body>
 </html>
