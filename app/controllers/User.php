@@ -192,7 +192,7 @@
             
                     $_SESSION["USER"] = serialize($Customer);
                     
-                    header("location:".URLROOT."/Customer");
+                    header("location:".URLROOT);
                     exit;
                 }
 
@@ -245,7 +245,7 @@
                     }
                     
                     elseif($Role === "customer"){
-                        header("location:".URLROOT."/Customer");
+                        header("location:".URLROOT);
                         exit;
                     }
                 }
@@ -316,7 +316,7 @@
 
                 if($CodeData["Date"] > $CurrentDate){
                     if($this->UserRepo->UpdateUserPassword($CodeData["ID"],$Data["Password"])){
-                        $this->view("User/ChangePassword");
+                        header("location: ".URLROOT."/User/LogIn");
                         exit;
                     }
 
