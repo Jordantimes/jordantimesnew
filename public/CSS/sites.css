@@ -384,6 +384,7 @@
 }
 
 .sites_section_wrapper{
+    position: relative;
     width: 70%;
 }
 
@@ -634,4 +635,28 @@
 
 .site:hover .site_moredetails_wrapper .moredetails{
     text-decoration: underline;
+}
+
+.empty_sites{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.empty_sites_icon svg{
+    display: block;
+    width: 98px;
+    height: 98px;
+    fill: var(--side_color);
+    margin: auto;
+}
+
+.empty_sites span{
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--side_color);
+    text-align: center;
+    margin-top: 12px;
 }
