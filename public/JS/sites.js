@@ -226,7 +226,7 @@ window.addEventListener('DOMContentLoaded', function(){
             document.querySelector(".breakfast_price_popedup").innerText = document.querySelectorAll(".breakfast_price")[i].innerText ? "- Breakfast " + document.querySelectorAll(".breakfast_price")[i].innerText + "USD": "";
             document.querySelector(".lunch_price_popedup").innerText = document.querySelectorAll(".lunch_price")[i].innerText ? "- Lunch " + document.querySelectorAll(".lunch_price")[i].innerText + "USD": "";
             document.querySelector(".dinner_price_popedup").innerText = document.querySelectorAll(".dinner_price")[i].innerText ? "- Dinner " + document.querySelectorAll(".dinner_price")[i].innerText + "USD": "";
-            document.querySelector(".site_base_price_popedup").innerText = "- Trip base price "+document.querySelectorAll(".site_base_price")[i].innerText;
+            document.querySelector(".site_base_price_popedup").innerText = "- Trip base price "+document.querySelectorAll(".site_base_price")[i].innerText +"USD";;
             document.querySelector(".site_start_date_popedup").innerText = document.querySelectorAll(".site_start_date")[i].innerText;
             document.querySelector(".site_end_date_popedup").innerText = document.querySelectorAll(".site_end_date")[i].innerText;
             document.querySelector(".check_in").value = document.querySelectorAll(".site")[i].value;
