@@ -175,7 +175,7 @@
                 $date1 = new DateTime($Data["start_date"]);
                 $date2 = new DateTime($Data["end_date"]);
                 $interval = $date1->diff($date2);
-                $Data["days"] = $interval->days;
+                $Data["days"] = ($interval->days)+1;
 
                 $Data["start_location"] = $destinations[0];
                 $Data["end_location"] = $destinations[count($destinations) - 1];
