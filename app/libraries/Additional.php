@@ -6,6 +6,7 @@
 
         foreach($Obj as $Value){
             if(gettype($Value) === "string"){
+                $Value = addslashes($Value);
                 $string.="'$Value'";
             }
 
