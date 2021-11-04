@@ -106,7 +106,7 @@ CREATE TABLE `users` (
   `image` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `name` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(13) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(14) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bio` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
