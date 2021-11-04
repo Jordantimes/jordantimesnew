@@ -389,7 +389,7 @@
                                         </g>
                                     </svg>
                                 </div>
-                                Breakfast
+                                Breakfast(USD)
                             </label>
                             <input type="text" class="aditional_input" name="breakfast_price" disabled>
                         </div>
@@ -409,7 +409,7 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    Lunch
+                                    Lunch(USD)
                                 </label>
                             <input type="text" class="aditional_input" name="lunch_price" disabled>
                         </div>
@@ -429,7 +429,7 @@
                                         </g>
                                     </svg>
                                 </div>
-                                Dinner
+                                Dinner(USD)
                             </label>
                             <input type="text" class="aditional_input" name="dinner_price" disabled>
                         </div>
