@@ -10,34 +10,61 @@
         }
     
         public function SignUp(){
+            $data = [
+                "SignupType" => "",
+                "Error" => [
+                    "type" => "",
+                    "message" => ""
+                ]
+            ];
+
             if($_SERVER["REQUEST_METHOD"] === "POST"){
                 $_POST = filter_input_array(INPUT_POST , FILTER_SANITIZE_STRING);
-                
+            
                 $Date = date("Y-m-d");
 
                 if(strtolower($_POST["Role"]) === "customer"){
+                    $data["SignupType"] = "Customer";
+
                     $Data = [
                         "Name" => trim(ucwords(strtolower($_POST["name"]))),
                         "Email" => trim(strtolower($_POST["email"])),
-                        "Phone" => trim($_POST["phone"]),
+                        "Phone" => "+962".trim($_POST["phone"]),
                         "Password" => trim($_POST["password"]),
                         "Repeat_Password" => trim($_POST["repeat_password"])
                     ];
 
-                    foreach ($Data as $Value){
+                    foreach ($Data as $key => $Value){
                         if(empty($Value)){
-                            $this->view("User/SignUp" , $Error = ["Message" => "Empty input"]);
+                            $data["Error"]["type"] = $key;
+                            $data["Error"]["message"] = "Empty input";
+
+                            $this->view("User/SignUp" , $data);
                             exit;
                         }
                     }
 
+                    if(strlen($Data["Phone"]) > 13 || strlen($Data["Phone"]) < 13){
+                        $data["Error"]["type"] = "Phone";
+                        $data["Error"]["message"] = "Invalid phone number";
+
+                        $this->view("User/SignUp" , $data);
+                        exit;
+                    }
+
                     if($Data["Password"] !== $Data["Repeat_Password"]){
-                        $this->view("User/SignUp" , $Error = ["Message" => "Password mismatch"]);
+                        $data["Error"]["type"] = "Password";
+                        $data["Error"]["message"] = "Password mismatch";
+
+                        $this->view("User/SignUp" , $data);
                         exit;
                     }
 
                     if($this->UserRepo->CheckEmail($Data["Email"])){
-                        $this->view("User/SignUp" , $Error = ["Message" => "Email used"]);
+                        $data["Error"]["type"] = "Email";
+                        $data["Error"]["message"] = "Email is used";
+
+                        $this->view("User/SignUp" , $data);
                         exit;
                     }
 
@@ -61,12 +88,12 @@
                     }
 
                     else{
-                        $this->view("User/SignUp" , $Error = ["Message" => "Something went wrong"]);
-                        exit;
+                        echo "Something went wrong";
                     }
                 }
 
                 elseif(strtolower($_POST["Role"]) === "company"){
+                    $data["SignupType"] = "Company";
                     $Company_ID_State = true;
                     $Company_ID;
 
@@ -74,35 +101,58 @@
                         "Company_Number" => trim($_POST["company_number"]),
                         "Name" => trim(ucwords(strtolower($_POST["name"]))),
                         "Email" => trim(strtolower($_POST["email"])),
-                        "Phone" => trim($_POST["phone"]),
+                        "Phone" => "+962".trim($_POST["phone"]),
                         "Password" => trim($_POST["password"]),
                         "Repeat_Password" => trim($_POST["repeat_password"])
                     ];
 
-                    foreach ($Data as $Value){
+                    foreach ($Data as $key => $Value){
                         if(empty($Value)){
-                            $this->view("User/SignUp" , $Error = ["Message" => "Empty input"]);
+                            $data["Error"]["type"] = "C-".$key;
+                            $data["Error"]["message"] = "Empty input";
+
+                            $this->view("User/SignUp" , $data);
                             exit;
                         }
                     }
 
+                    if(strlen($Data["Phone"]) > 13 || strlen($Data["Phone"]) < 13){
+                        $data["Error"]["type"] = "C-Phone";
+                        $data["Error"]["message"] = "Invalid phone number";
+
+                        $this->view("User/SignUp" , $data);
+                        exit;
+                    }
+
                     if($Data["Password"] !== $Data["Repeat_Password"]){
-                        $this->view("User/SignUp" , $Error = ["Message" => "Password mismatch"]);
+                        $data["Error"]["type"] = "C-Password";
+                        $data["Error"]["message"] = "Password mismatch";
+
+                        $this->view("User/SignUp" , $data);
                         exit;
                     }
 
                     if($this->UserRepo->CheckEmail($Data["Email"])){
-                        $this->view("User/SignUp" , $Error = ["Message" => "Email used"]);
+                        $data["Error"]["type"] = "C-Email";
+                        $data["Error"]["message"] = "Email is used";
+
+                        $this->view("User/SignUp" , $data);
                         exit;
                     }
 
                     if($this->UserRepo->CheckCompanyNumber($Data["Company_Number"])){
-                        $this->view("User/SignUp" , $Error = ["Message" => "Company number used"]);
+                        $data["Error"]["type"] = "C-Company_Number";
+                        $data["Error"]["message"] = "Company number is used";
+
+                        $this->view("User/SignUp" , $data);
                         exit;
                     }
 
                     if($this->UserRepo->CheckName($Data["Name"] , $_POST["Role"])){
-                        $this->view("User/SignUp" , $Error = ["Message" => "Name used"]);
+                        $data["Error"]["type"] = "C-Name";
+                        $data["Error"]["message"] = "Name is used";
+
+                        $this->view("User/SignUp" , $data);
                         exit;
                     }
 
@@ -133,15 +183,14 @@
                     }
 
                     else{
-                        $this->view("User/SignUp" , $Error = ["Message" => "Something went wrong"]);
-                        exit;
+                        echo "Something went wrong";
                     }
                 }
 
             }
 
             else{
-                $this->view("User/SignUp");
+                $this->view("User/SignUp" , $data);
             }
         }
 
