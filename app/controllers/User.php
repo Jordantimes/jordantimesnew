@@ -29,7 +29,7 @@
                     $Data = [
                         "Name" => trim(ucwords(strtolower($_POST["name"]))),
                         "Email" => trim(strtolower($_POST["email"])),
-                        "Phone" => "+962".trim($_POST["phone"]),
+                        "Phone" => "+962-".trim($_POST["phone"]),
                         "Password" => trim($_POST["password"]),
                         "Repeat_Password" => trim($_POST["repeat_password"])
                     ];
@@ -101,7 +101,7 @@
                         "Company_Number" => trim($_POST["company_number"]),
                         "Name" => trim(ucwords(strtolower($_POST["name"]))),
                         "Email" => trim(strtolower($_POST["email"])),
-                        "Phone" => "+962".trim($_POST["phone"]),
+                        "Phone" => "+962-".trim($_POST["phone"]),
                         "Password" => trim($_POST["password"]),
                         "Repeat_Password" => trim($_POST["repeat_password"])
                     ];
