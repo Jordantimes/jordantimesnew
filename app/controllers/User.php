@@ -44,7 +44,7 @@
                         }
                     }
 
-                    if(strlen($Data["Phone"]) > 13 || strlen($Data["Phone"]) < 13){
+                    if(strlen($Data["Phone"]) !== 14){
                         $data["Error"]["type"] = "Phone";
                         $data["Error"]["message"] = "Invalid phone number";
 
@@ -116,7 +116,7 @@
                         }
                     }
 
-                    if(strlen($Data["Phone"]) > 13 || strlen($Data["Phone"]) < 13){
+                    if(strlen($Data["Phone"]) !== 14){
                         $data["Error"]["type"] = "C-Phone";
                         $data["Error"]["message"] = "Invalid phone number";
 
