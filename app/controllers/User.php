@@ -394,8 +394,8 @@
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
             $USER = unserialize($_SESSION["USER"]);
-            $Data = $this->UserRepo->GetNotifications($USER["ID"]);
-
+            $Data = $this->UserRepo->GetNotifications($USER["ID"] , $USER["Role"]);
+ 
             echo json_encode($Data);
         }
 
