@@ -6,7 +6,26 @@ class Home extends Controller{
 
     public function index(){
         session_start();
-        $this->view("Home/index");
+        if(isset($_SESSION["USER"])){
+            $USER = unserialize($_SESSION["USER"]);
+        }
+
+        $data = [
+            "trip" => "",
+            "passengers" => ""
+        ];
+
+        if(!empty($_SESSION["trip"])){
+            if($USER["Role"] === "customer"){
+                $data["trip"] = $_SESSION["trip"];
+                $data["passengers"] = $_SESSION["passengers"];   
+            }
+
+            $_SESSION["trip"] = "";
+            $_SESSION["passengers"] = "";
+        }
+
+        $this->view("Home/index" , $data);
     }
 
     public function contact(){
