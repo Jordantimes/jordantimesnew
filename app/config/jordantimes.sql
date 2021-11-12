@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 09:57 PM
+-- Generation Time: Nov 12, 2021 at 12:29 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `jordantimes`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booked`
+--
+
+CREATE TABLE `booked` (
+  `id` int(32) NOT NULL,
+  `trip` int(32) DEFAULT NULL,
+  `user` int(32) DEFAULT NULL,
+  `name` varchar(256) DEFAULT NULL,
+  `phone` varchar(14) DEFAULT NULL,
+  `age` varchar(3) DEFAULT NULL,
+  `nationID` varchar(16) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
+  `is_deleted` smallint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booked`
+--
+
+INSERT INTO `booked` (`id`, `trip`, `user`, `name`, `phone`, `age`, `nationID`, `created_at`, `updated_at`, `is_deleted`) VALUES
+(9, 4, 109, 'omar hatem', '+962-07254725', '22', '02115656146', '2021-11-06', '2021-11-06', 0),
+(10, 4, 109, 'karam', '+962-07254725', '22', '131315316514', '2021-11-06', '2021-11-06', 0);
 
 -- --------------------------------------------------------
 
@@ -50,7 +77,9 @@ INSERT INTO `notifications` (`id`, `userid`, `head`, `body`, `role`, `seen`, `Cr
 (9, 25, 'New sign up', 'Visitjordan has signed up.', 'government', 0, '2021-10-06', '2021-10-06', 0),
 (10, 25, 'New sign up', 'Visitjordan has signed up.', 'government', 0, '2021-10-06', '2021-10-06', 1),
 (11, 25, 'New sign up', 'Visitjordan has signed up.', 'government', 0, '2021-10-06', '2021-10-06', 1),
-(12, 25, 'New sign up', 'Test10 has signed up.', 'government', 0, '2021-11-04', '2021-11-04', 0);
+(12, 25, 'New sign up', 'Test10 has signed up.', 'government', 0, '2021-11-04', '2021-11-06', 1),
+(13, 25, 'New sign up', 'Asjkdaslkdnm has signed up.', 'government', 0, '2021-11-04', '2021-11-06', 1),
+(14, 133, 'New customer has booked', 'omar hatem has booked in the Amman - Al Balqa - Al Karak - Aqaba trip with 2 passengers', 'company', 0, '2021-11-06', '2021-11-06', 0);
 
 -- --------------------------------------------------------
 
@@ -143,6 +172,14 @@ INSERT INTO `users` (`id`, `company_ID`, `company_Number`, `image`, `name`, `ema
 --
 
 --
+-- Indexes for table `booked`
+--
+ALTER TABLE `booked`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `trip` (`trip`),
+  ADD KEY `user` (`user`);
+
+--
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
@@ -167,10 +204,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `booked`
+--
+ALTER TABLE `booked`
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `trips`
@@ -182,11 +225,18 @@ ALTER TABLE `trips`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `booked`
+--
+ALTER TABLE `booked`
+  ADD CONSTRAINT `booked_ibfk_1` FOREIGN KEY (`trip`) REFERENCES `trips` (`id`),
+  ADD CONSTRAINT `booked_ibfk_2` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `notifications`
