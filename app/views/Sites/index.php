@@ -20,7 +20,7 @@
 
         <div class="pop_up_site_details_container" condition="hidden">
             <div class="pop_up_site_details">
-                <form action="#" method="POST">
+                <form action="<?php echo URLROOT."/Customer/Book" ?>" method="GET">
                     <div class="pop_up_close_button_wrapper">
                         <button class="close_button" id="pop_up_close" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
@@ -76,7 +76,8 @@
                     </div>
 
                     <div class="checkin_wrapper">
-                        <button class="check_in" name="trip">Check in</button>
+                        <input type="hidden" name="passengers" value="<?php echo $data["Filter"]["passengers"]; ?>">
+                        <button class="check_in" name="trip" value="">Check in</button>
                     </div>
                 </form>
             </div>
