@@ -226,10 +226,19 @@
             return Update($table,$columns,$expression);
         }
 
-        public function GetNotifications($ID){
+        public function InsertNotification($Data){
+            $table = "notifications";
+            $columns = "userid,head,body,role,seen,CreatedAt,UpdatedAt";
+            $values = NormalCombine($Data);
+
+            Insert($table,$columns,$values);
+        }
+
+        public function GetNotifications($ID,$Role){
+            strtolower($Role);
             $table = "notifications";
             $columns = "id,head,body,seen,CreatedAt";
-            $expression = "userid = '$ID' AND role = 'government' AND isDeleted = false ORDER BY CreatedAt DESC";
+            $expression = "userid = '$ID' AND role = '$Role' AND isDeleted = false ORDER BY CreatedAt DESC";
 
             $result = SelectByCondition($table,$columns,$expression);
 
