@@ -31,7 +31,7 @@
                 $ids= [];
 
                 for($i = 0 ; $i < $_POST["passengers"] ; ++$i){
-                    if(!empty($_POST["name".($i+1)]) && !empty($_POST["age".($i+1)]) && !empty($_POST["phone".($i+1)]) && !empty($_POST["id".($i+1)])){
+                    if(!empty($_POST["name".($i+1)]) && !empty($_POST["age".($i+1)]) && !empty($_POST["phone".($i+1)])){
                         array_push($names , trim($_POST["name".($i+1)]));
                         array_push($ages , trim($_POST["age".($i+1)]));
                         array_push($phones , trim($_POST["phone".($i+1)]));
