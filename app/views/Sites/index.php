@@ -428,8 +428,6 @@
                                     </div>
                                 </button>
                             <?php } ?>
-
-                            <button name="page" value="4">submit</button>
                         </div>
                     <?php } else{ ?>
                         <div class="empty_sites">
