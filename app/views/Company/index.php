@@ -101,10 +101,10 @@
                             </div>
 
                             <div class="profile_right_content">
-                                <div class="data_wrapper_static">
+                                 <!-- <div class="data_wrapper_static">
                                     <label class="data_label">Company ID</label>
                                     <div class="data_div_static"><?php echo $data["USER"]["Company_ID"];?></div>
-                                </div>
+                                </div> -->
                                 
                                 <div class="data_wrapper_static">
                                     <label class="data_label">Company number</label>
