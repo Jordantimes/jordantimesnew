@@ -23,6 +23,69 @@
             </div>
         </div>
 
+        <div class="pop_up_site_image_full_screen_view_container" condition="hidden">
+            <div class="full_screen_image_container">
+                <img class="full_screen_image" src="" alt="full screen view">
+            </div>
+        </div>
+
+        <div class="pop_up_site_details_container" condition="hidden">
+            <div class="pop_up_site_details">
+                <form action="<?php echo URLROOT."/Customer/Book" ?>" method="GET">
+                    <div class="pop_up_close_button_wrapper">
+                        <button class="close_button" id="pop_up_close" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
+                                </g>
+                            </g>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="site_name_price_wrapper">
+                        <div>
+                            <div class="site_name_popedup"></div>
+                            <div class="site_date_popedup">
+                                <span class="site_start_date_popedup"></span>
+                                <span>-</span>
+                                <span class="site_end_date_popedup"></span>
+                            </div>
+                        </div>
+                        <div class="site_price_popedup"></div>
+                    </div>
+
+                    <div class="site_images_preview_slider_wrapper">
+                        <div class="site_images_preview_slider">
+                            <div class="controlled_slider"></div>
+                        </div>
+
+                        <div class="slider_navigators_wrapper">
+                            <div class="slider_navigators"></div>
+                        </div>
+                    </div>
+
+                    <div class="site_description_wrapper">
+                        <div class="site_description_popedup"></div>
+                    </div>
+
+                    <div class="site_additional_wrapper">
+                        <div class="site_base_price_popedup"></div>
+                        <div class="breakfast_price_popedup"></div>
+                        <div class="lunch_price_popedup"></div>
+                        <div class="dinner_price_popedup"></div>
+                        <div class="total"></div>
+                    </div>
+
+                    <div class="checkin_wrapper">
+                        <input type="hidden" name="passengers" value="<?php echo $data["Filter"]["passengers"]; ?>">
+                        <button class="check_in" name="trip" value="">Check in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <?php require_once APPROOT."\Views\INCLUDES\Header.php"; ?>
 
         <div class="content">
@@ -48,6 +111,72 @@
             <div class="content_view_container">
                 <div class="content_view_box" id="trips_view_box">
                     <div class="content_view_box_data_container">
+                        <?php if(count($data["Sites"]) > 0){ ?>
+                            <div class="available_sites_wrapper">
+                                <?php for ($i = 0 ; $i < count($data["Sites"]) ; ++$i) { ?>
+                                    
+                                    <button class="site" type="button" value="<?php echo $data["Sites"][$i]["id"]?>">
+                                        <div class="site_image_wrapper">
+                                            <?php
+                                                for ($j=0; $j < count($data["Sites"][$i]["images"]) ; ++$j) { 
+                                                    echo "<img src='".URLROOT."/public/images/users/trips/".$data["Sites"][$i]["images"][$j]."' alt='site_picture'>";
+                                                }
+                                            ?>
+                                        </div>
+
+                                        <div class="site_information_wrapper">
+                                            <div class="site_header">
+                                                <div class="site_header_left">
+                                                    <div class="site_name"><?php echo $data["Sites"][$i]["name"]?></div>
+                                                    <div class="site_company_info">
+                                                    <div>
+                                                        <span class="site_created_at"><?php echo $data["Sites"][$i]["created_at"]?></span>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="site_price">
+                                                    USD<?php echo ($data["Sites"][$i]["price"]); ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="site_description_wrapper">
+                                                <div class="site_description"><?php echo $data["Sites"][$i]["description"]?></div>
+                                            </div>
+
+                                            <div class="site_additional">
+                                                <span class="breakfast_price"><?php echo $data["Sites"][$i]["breakfast"] ? $data["Sites"][$i]["breakfast_price"] : ""; ?></span>
+                                                <span class="lunch_price"><?php echo $data["Sites"][$i]["lunch"] ? $data["Sites"][$i]["lunch_price"] : ""; ?></span>
+                                                <span class="dinner_price"><?php echo $data["Sites"][$i]["dinner"] ? $data["Sites"][$i]["dinner_price"] : ""; ?></span>
+                                                <span class="site_base_price"><?php echo $data["Sites"][$i]["price"]; ?></span>
+                                                <span class="site_start_date"><?php echo $data["Sites"][$i]["start_date"]?></span>
+                                                <span class="site_end_date"><?php echo $data["Sites"][$i]["end_date"]?></span>
+                                            </div>
+
+                                            <div class="site_moredetails_wrapper">
+                                                <div class="moredetails">More details</div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                <?php } ?>
+                            </div>
+                        <?php } else{ ?>
+                            <div class="empty_sites">
+                                <div class="empty_sites_icon">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <g>
+                                                    <path d="M165,0.008C74.019,0.008,0,74.024,0,164.999c0,90.977,74.019,164.992,165,164.992s165-74.015,165-164.992     C330,74.024,255.981,0.008,165,0.008z M165,299.992c-74.439,0-135-60.557-135-134.992S90.561,30.008,165,30.008     s135,60.557,135,134.991C300,239.436,239.439,299.992,165,299.992z"/>
+                                                    <path d="M165,130.008c-8.284,0-15,6.716-15,15v99.983c0,8.284,6.716,15,15,15s15-6.716,15-15v-99.983     C180,136.725,173.284,130.008,165,130.008z"/>
+                                                    <path d="M165,70.011c-3.95,0-7.811,1.6-10.61,4.39c-2.79,2.79-4.39,6.66-4.39,10.61s1.6,7.81,4.39,10.61     c2.79,2.79,6.66,4.39,10.61,4.39s7.81-1.6,10.609-4.39c2.79-2.8,4.391-6.66,4.391-10.61s-1.601-7.82-4.391-10.61     C172.81,71.61,168.95,70.011,165,70.011z"/>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <span>Nothing is here...</span>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -101,7 +230,7 @@
                             </div>
 
                             <div class="profile_right_content">
-                                 <!-- <div class="data_wrapper_static">
+                                <!-- <div class="data_wrapper_static">
                                     <label class="data_label">Company ID</label>
                                     <div class="data_div_static"><?php echo $data["USER"]["Company_ID"];?></div>
                                 </div> -->
