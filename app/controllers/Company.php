@@ -4,6 +4,7 @@
 
         public function __construct(){
             $this->CompanyRepo = $this->Repository("Company");
+            $this->SitesRepo = $this->Repository("Sites");
         }
 
         public function index($ViewBox = "Trips"){
@@ -24,11 +25,20 @@
                 exit;
             }
 
+            $sites = $this->SitesRepo->GetTripsByCompanyID($USER["ID"]);
+            $passengers = [];
+
+            for($i = 0 ; $i < count($sites) ; ++$i){
+                array_push($passengers,$this->SitesRepo->GetPassengersByTripID($sites[$i]["id"]));
+            }
+
             $ViewBox = trim(ucwords(strtolower($ViewBox)));
 
             $data = [
                 "ViewBox" => $ViewBox,
-                "USER" => $USER
+                "USER" => $USER,
+                "Sites" => $sites,
+                "Passengers" => $passengers
             ];
 
             $this->view("Company/index" , $data);
