@@ -31,7 +31,7 @@
 
         <div class="pop_up_site_details_container" condition="hidden">
             <div class="pop_up_site_details">
-                <form action="<?php echo URLROOT."/Customer/Book" ?>" method="GET">
+                <!-- <form action="<?php echo URLROOT."/Customer/Book" ?>" method="GET"> -->
                     <div class="pop_up_close_button_wrapper">
                         <button class="close_button" id="pop_up_close" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
@@ -78,11 +78,11 @@
                         <div class="total"></div>
                     </div>
 
-                    <div class="checkin_wrapper">
-                        <input type="hidden" name="passengers" value="<?php echo $data["Filter"]["passengers"]; ?>">
-                        <button class="check_in" name="trip" value="">Check in</button>
+                    <div class="passengers_container">
+                        <h3>Passengers:</h3>
+                        <div class="passengers_wrapper_popedup"></div>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
 
@@ -150,6 +150,41 @@
                                                 <span class="site_base_price"><?php echo $data["Sites"][$i]["price"]; ?></span>
                                                 <span class="site_start_date"><?php echo $data["Sites"][$i]["start_date"]?></span>
                                                 <span class="site_end_date"><?php echo $data["Sites"][$i]["end_date"]?></span>
+
+                                                <div class="passengers_wrapper">
+                                                    <table>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Name</th>
+                                                            <th>Age</th>
+                                                            <th>Phone</th>
+                                                            <th>National ID</th>
+                                                        </tr>
+                                                        <?php for($j = 0 ; $j < count($data["Passengers"][$i]) ; ++$j){ ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php echo $j+1; ?>
+                                                                </td>
+
+                                                                <td>
+                                                                    <?php echo $data["Passengers"][$i][$j]["name"]; ?>
+                                                                </td>
+
+                                                                <td>
+                                                                    <?php echo $data["Passengers"][$i][$j]["age"]; ?>
+                                                                </td>
+
+                                                                <td>
+                                                                    <?php echo $data["Passengers"][$i][$j]["phone"]; ?>
+                                                                </td>
+
+                                                                <td>
+                                                                    <?php echo $data["Passengers"][$i][$j]["nationID"]; ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </table>
+                                                </div>
                                             </div>
 
                                             <div class="site_moredetails_wrapper">
