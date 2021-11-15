@@ -48,4 +48,34 @@
 
             return $data;
         }
+
+        public function GetTripsByCompanyID($id){
+            $data = [];
+            $table = "trips";
+            $columns = "id,name,name_ar,start_location,end_location,start_date,end_date,
+                        days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
+            $expression = "company = $id AND is_deleted = false";
+
+            $result =  SelectByCondition($table,$columns,$expression);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                $row["images"] = explode("," , $row["images"]);
+                array_push($data , $row);
+            }
+
+            return $data;
+        }
+
+        public function GetPassengersByTripID($id){
+            $data = [];
+            $table = "booked";
+            $columns = "name,age,phone,nationID,created_at";
+            $expression = "trip = $id AND is_deleted = false";
+
+            $result =  SelectByCondition($table,$columns,$expression);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                array_push($data , $row);
+            }
+
+            return $data;
+        }
     }
