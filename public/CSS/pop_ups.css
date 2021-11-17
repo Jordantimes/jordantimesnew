@@ -1,4 +1,4 @@
-.pop_ups_container,.create_trip_pop_up_container{
+.pop_ups_container,.create_trip_pop_up_container,.edit_trip_pop_up_container{
     display: none;
     position: fixed;
     width: 100%;
@@ -18,7 +18,7 @@
     border-radius: 12px;
 }
 
-.create_trip_pop_up{
+.create_trip_pop_up,.edit_trip_pop_up{
     background-color: #ffffff;
     width: 520px;
     border-radius: 12px;
@@ -70,18 +70,18 @@
     font-size: 24px;
 }
 
-.create_form_input{
+.create_form_input,.edit_form_input{
     position: relative;
     margin: 24px 0px;
 }
 
-.create_form_input label{
+.create_form_input label ,.edit_form_input label{
     display: block;
     font-weight: 600;
     margin: 12px 0px;
 }
 
-.destination_input{
+.destination_input,.edit_destination_input{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,14 +90,15 @@
     margin: 12px 0px;
 }
 
-.create_form_input input[type="checkbox"], .create_form_input input[type="text"]{
+.create_form_input input[type="checkbox"], .create_form_input input[type="text"] ,
+.edit_form_input input[type="checkbox"], .edit_form_input input[type="text"] {
     position: absolute;
     width: 0px;
     height: 0px;
     opacity: 0;
 }
 
-.destination_button{
+.destination_button,.edit_destination_button{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -112,13 +113,13 @@
     cursor: pointer;
 }
 
-.destination_input svg{
+.destination_input svg ,.edit_destination_input svg{
     width: 16px;
     height: 16px;
     fill: var(--text_side_color);
 }
 
-.destination_list{
+.destination_list,.edit_destination_list{
     display: none;
     position: absolute;
     top: 100%;
@@ -130,7 +131,7 @@
     z-index: 2;
 }
 
-.destination_list button{
+.destination_list button ,.edit_destination_list button{
     display: block;
     width: 100%;
     background-color: #ffffff;
@@ -147,13 +148,13 @@
     border-bottom: none;
 }
 
-.remove_destination_button{
+.remove_destination_button,.edit_remove_destination_button{
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
 
-.add_destination{
+.add_destination,.edit_add_destination{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -169,7 +170,7 @@
     cursor: pointer;
 }
 
-.add_destination svg{
+.add_destination svg,.edit_add_destination svg{
     display: block;
     width: 16px;
     height: 16px;
@@ -357,13 +358,13 @@ input[type="date"]{
     padding: 4px;
 }
 
-.create_form_input:last-child{
+.create_form_input:last-child,.edit_form_input:last-child{
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.create_form_input:last-child button{
+.create_form_input:last-child button , .edit_form_input:last-child button{
     display: block;
     width: 120px;
     background-color: transparent;
@@ -376,13 +377,13 @@ input[type="date"]{
     cursor: pointer;
 }
 
-.create_form_input:last-child button:nth-child(2){
+.create_form_input:last-child button:nth-child(2) , .edit_form_input:last-child button:nth-child(2){
     border: 1px var(--main_color) solid;
     background-color: var(--main_color);
     color: #ffffff;
     margin-left: 12px;
 }
 
-.create_form_input:last-child button:hover{
+.create_form_input:last-child button:hover , .edit_form_input:last-child button:hover{
     text-decoration: underline;
 }
