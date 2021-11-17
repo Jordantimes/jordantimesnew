@@ -193,6 +193,35 @@
             SendMail($From , $To , $Subject , $Body , $Key);
         }
 
+        public function SendWaitingNoticeMail($To,$Name){
+            $From = From;
+            $Subject = "Thank you for signing up!";
+            $Body = "
+            <div style=' width: 100%;min-height: 600px;display: flex;align-items: center;justify-content: center;'>
+                <div style='width: 385px;background-color: #faf8f3;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
+                    <div style='text-align: center;'>
+                        <img src='https://cdn.discordapp.com/attachments/796055415364386896/888477028096045056/JT_Logo75.png' alt='JordanTimesLogo'>
+                    </div>
+                    <h2 style='text-align: left;font-size:24px;padding-top: 24px;'>
+                        Dears at ".$Name.".
+                    </h2>
+            
+                    <div style='text-align: left;font-size:16px;margin: 12px 0px 24px 0px;'>Your company account has been created and is pending for the governemnt confirmation.
+                        This may take some time.
+                    </div>
+            
+                    <div>
+                        <p style='font-size: 16px;'>This email was sent automatically, if you have any questions please send us an email on the E-mail link below, we wish you the best.</p>
+                        <a href='mailto:mail@mail.com' style='background-color:rgba(240, 93, 94,1); color:#ffffff; padding: 4px; text-decoration: none; font-size: 16px;'>mail@mail.com</a>
+                    </div>
+                </div>
+            </div>
+            ";
+            $Key = SendGridKey;
+        
+            SendMail($From , $To , $Subject , $Body , $Key);
+        }
+
         public function GetRecoveryPasswordCodeData($Code){
             $Code = str_replace(" ", "+", $Code);
             $RawCode = CodeDecrypt($Code, EncryptionKey);
