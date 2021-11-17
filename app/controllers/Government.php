@@ -4,6 +4,7 @@
 
         public function __construct(){
             $this->GovernmentRepo = $this->Repository("Government");
+            $this->UserRepo = $this->Repository("User");
         }
 
         public function index($ViewBox = "Trips"){
@@ -54,6 +55,18 @@
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
             $data = json_decode(file_get_contents("php://input"));
+
+            $user = $this->UserRepo->GetUserByEmail($data->Email);
+            $Notification = [
+                $user["id"],
+                "Account Notice",
+                "Your account as a company has been accepted, you can now create and post your trips.",
+                "company",
+                0,
+                date("Y-m-d"),
+                date("Y-m-d")
+            ];
+            $this->UserRepo->InsertNotification($Notification);
 
             if($this->GovernmentRepo->AcceptCompany($data->Email)){
                 $JSON = [
