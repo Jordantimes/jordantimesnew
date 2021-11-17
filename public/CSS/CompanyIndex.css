@@ -182,7 +182,13 @@
     margin-top: 12px;
 }
 
-.check_in{
+.edit_trip_container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.edit_trip{
     display: block;
     padding: 7px 28px;
     border-radius: 50px;
@@ -195,7 +201,7 @@
     cursor: pointer;
 }
 
-.check_in:hover{
+.edit_trip:hover{
     text-decoration: underline;
 }
 
