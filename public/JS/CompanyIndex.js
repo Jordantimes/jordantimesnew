@@ -186,7 +186,7 @@ const site_pop_up = document.querySelector(".pop_up_site_details_container");
             document.querySelector(".site_start_date_popedup").innerText = document.querySelectorAll(".site_start_date")[i].innerText;
             document.querySelector(".site_end_date_popedup").innerText = document.querySelectorAll(".site_end_date")[i].innerText;
             document.querySelector(".passengers_wrapper_popedup").innerHTML = document.querySelectorAll(".passengers_wrapper")[i].innerHTML;
-            //document.querySelector(".check_in").value = document.querySelectorAll(".site")[i].value;
+            document.querySelector(".edit_trip").value = i;
 
             let images = document.querySelectorAll(".site_image_wrapper")[i].children;
             let images_container = document.querySelector(".controlled_slider");
