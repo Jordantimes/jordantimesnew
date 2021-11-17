@@ -178,6 +178,7 @@
 
 
                     if($this->UserRepo->InsertCompany($this->CompanySignUpModel)){
+                        $this->UserRepo->SendWaitingNoticeMail($this->CustomerSignUpModel->Email,$this->CustomerSignUpModel->Name);
                         header("location:".URLROOT."/User/LogIn");
                         exit;
                     }
