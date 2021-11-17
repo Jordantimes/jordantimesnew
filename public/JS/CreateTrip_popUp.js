@@ -24,7 +24,7 @@ var dest_selections = document.querySelectorAll(".dest_selection");
 var dest_checkboxs = document.querySelectorAll(".dest_checkbox");
 var dest_names = document.querySelectorAll(".destination_name");
 var remove_dest = document.querySelectorAll(".remove_destination_button");
-const add_dest = document.querySelector(".add_destination");
+const add_dest = document.querySelector("#create_add_destination");
 
 for (let i = 0; i < dest_buttons    .length; ++i){
     dest_buttons[i].addEventListener("click" , function(){
