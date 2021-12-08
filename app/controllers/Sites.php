@@ -65,10 +65,14 @@ class Sites extends Controller{
             }
         }
 
-        if(isset($_GET["end_location"]) && $start_location !== "" && isset($_GET["start_location"])){
-            if($_GET["end_location"] >= 0 && $_GET["end_location"] <= 12 && $_GET["end_location"] != $start_location){
-                $end_location = $_GET["end_location"];
-            }
+        // if(isset($_GET["end_location"]) && $start_location !== "" && isset($_GET["start_location"])){
+        //     if($_GET["end_location"] >= 0 && $_GET["end_location"] <= 12 && $_GET["end_location"] != $start_location){
+        //         $end_location = $_GET["end_location"];
+        //     }
+        // }
+
+        if(isset($_GET["end_location"])){
+            $end_location = $_GET["end_location"];
         }
 
         $data = [
