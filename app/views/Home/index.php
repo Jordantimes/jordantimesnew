@@ -8,11 +8,18 @@
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\Base.css";?>">
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\home.css";?>">
 </head>
-<body>
+<body style="<?php if(!empty($data["trip"])){ echo "overflow:hidden";} ?>">
     <div class="main_view">
         <?php if(!empty($data["trip"])){ ?>
-            <div>
-                <a href="<?php echo URLROOT."/Customer/Book?trip=".$data["trip"]."&passengers=".$data["passengers"]?>">Continue</a>
+            <div class="booking_link_popup">
+                <div class="booking_link_container">
+                    <p>A booking seasion is stored would you like to continue?</p>
+
+                    <div>
+                        <a href="<?php echo URLROOT."/Customer/Book?trip=".$data["trip"]."&passengers=".$data["passengers"]?>">Continue</a>
+                        <button id="cancel_booking">Cancel</button>
+                    </div>
+                </div>
             </div>
         <?php } ?>
 
@@ -34,11 +41,11 @@
                 <p>A place that aims to ease the trip search proccess in jordan by making contracts with trip companys available in jordan to post their trips so you find it all in one page.</p>
             
                 <p>Where would your next destination in jordan be?</p>
-                <button>See destinations</button>
+                <a href="#destinations_container">See destinations</a>
             </div>
         </div>
 
-        <div class="destinations_container">
+        <div class="destinations_container" id="destinations_container">
             <div class="destination" id="C1" style="background-image:url('<?php echo URLROOT."/public/Images/Citys/aqaba.jpg"?>')">
                 <a href="<?php echo URLROOT."/sites?end_location=11";?>">
                     <span>Al Aqaba</span>
@@ -59,7 +66,7 @@
 
             <div class="destination" id="C4" style="background-image:url('<?php echo URLROOT."/public/Images/Citys/zarqa.jpg"?>')">
                 <a href="<?php echo URLROOT."/sites?end_location=1";?>">
-                    <span>Al Zarqa</span>
+                    <span>Al Zarqa'</span>
                 </a>
             </div>
 
@@ -111,6 +118,74 @@
                 </a>
             </div>
         </div>
+
+        
+        <div class="ask_sites">
+            <div>
+                <div class="bck_tri" id="bck_tri_1">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_2">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_3">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_4">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_5">
+                    <div></div>
+                    <div></div>
+                </div>
+
+
+                <div class="bck_tri" id="bck_tri_6">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_7">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_8">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_9">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="bck_tri" id="bck_tri_10">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <p>Have a specific options for your trip?</p>
+            <a href="<?php echo URLROOT."/Sites"; ?>">Search sites</a>
+        </div>
+
+        <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
+
+    <script>
+        document.querySelector("#cancel_booking").addEventListener("click" , function(){
+            document.querySelector(".booking_link_popup").remove();
+            document.querySelector("body").style.overflow = "auto";
+        } , false);
+    </script>
 </body>
 </html>
