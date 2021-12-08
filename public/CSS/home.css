@@ -1,3 +1,69 @@
+.booking_link_popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0,0.6);
+    z-index: 10;
+}
+
+.booking_link_container{
+    width: 480px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.booking_link_container p{
+    font-family: inherit;
+    font-size: inherit;
+    text-align: center;
+    margin: 24px;
+}
+
+.booking_link_container div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 24px 12px 12px 12px;
+}
+
+.booking_link_container div a{
+    display: block;
+    padding:7px 28px;
+    border-radius: 50px;
+    background-color: var(--main_color);
+    border: 1px var(--main_color) solid;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    width: 210px;
+}
+
+.booking_link_container div button{
+    display: block;
+    padding:7px 28px;
+    border: 1px #000000 solid;
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--text_main_color);
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    width: 210px;
+    cursor: pointer;
+}
+
+.booking_link_container div a:hover , .booking_link_container div button:hover{
+    text-decoration: underline;
+}
+
 .video_container{
     position: relative;
     overflow: hidden;
@@ -71,7 +137,7 @@
     margin-top: 12px;
 }
 
-.site_welcome_info button{
+.site_welcome_info a{
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -86,9 +152,10 @@
     text-decoration: none;
     width: 100%;
     cursor: pointer;
+    text-align: center;
 }
 
-.site_welcome_info button:hover{
+.site_welcome_info a:hover{
     text-decoration: underline;
 }
 
@@ -173,4 +240,186 @@
 
 .destination a:hover{
     text-decoration: underline;
+}
+
+.ask_sites{
+    position: relative;
+    text-align: center;
+    padding-top: 128px;
+    padding-bottom: 128px;
+    overflow: hidden;
+}
+
+.ask_sites p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.ask_sites a{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 12px;
+    display: block;
+    padding: 7px 28px;
+    border: 1px #000000 solid;
+    border-radius: 50px;
+    background-color: var(--main_color);
+    border: 1px var(--main_color) solid;
+    color: #ffffff;
+    text-decoration: none;
+    width: 480px;
+    cursor: pointer;
+    text-align: center;
+    margin: 32px auto 0px auto;
+}
+
+.ask_sites a:hover{
+    text-decoration: underline;
+}
+
+.bck_tri{
+    position: absolute;
+}
+
+.bck_tri div:nth-child(1){
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 0px;
+    height: 0px;
+    border-top: 0px transparent solid;
+    border-left: 64px transparent solid;
+    border-right: 64px transparent solid;
+    border-bottom: 64px var(--main_color) solid;
+    z-index: 2;
+}
+
+.bck_tri div:nth-child(2){
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-top: 0px transparent solid;
+    border-left: 64px transparent solid;
+    border-right: 64px transparent solid;
+    border-bottom: 64px var(--text_side_color) solid;
+    z-index: 1;
+}
+
+#bck_tri_1{
+    top: 64px;
+    left: 192px;
+    transform: rotate(180deg);
+}
+
+#bck_tri_2{
+    top: 64px;
+    left: 64px;
+    transform: rotate(90deg);
+}
+
+#bck_tri_3{
+    top: 0px;
+    left: 96px;
+    transform: rotate(135deg);
+}
+
+#bck_tri_4{
+    top: 32px;
+    left: 320px;
+    transform: rotate(180deg);
+}
+
+#bck_tri_5{
+    top: 192px;
+    left: 32px;
+    transform: rotate(90deg);
+}
+
+#bck_tri_6{
+    bottom: 64px;
+    right: 192px;
+    transform: rotate(0deg);
+}
+
+#bck_tri_7{
+    bottom: 64px;
+    right: 64px;
+    transform: rotate(270deg);
+}
+
+#bck_tri_8{
+    bottom: 0px;
+    right: 96px;
+    transform: rotate(315deg);
+}
+
+#bck_tri_9{
+    bottom: 32px;
+    right: 320px;
+    transform: rotate(0deg);
+}
+
+#bck_tri_10{
+    bottom: 192px;
+    right: 32px;
+    transform: rotate(270deg);
+}
+
+@media only screen and (max-width: 1560px) {
+    .video_container video{
+        height: 560px;
+    }
+
+    .site_welcome_info{
+        width: 410px;
+    }
+
+    .site_welcome_info .site_logo svg{
+        width: calc(137.767px * 1.2);
+    }
+    
+    .site_welcome_info p{
+        font-size: 14px;
+    }
+    
+    .site_welcome_info a{
+        font-size: 14px;
+    }
+
+    .destination a{
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .video_container video{
+        height: 480px;
+    }
+
+    .site_welcome_info{
+        width: 320px;
+    }
+
+    .site_welcome_info .site_logo svg{
+        width: calc(137.767px * 0.8);
+    }
+    
+    .site_welcome_info p{
+        font-size: 11px;
+    }
+    
+    .site_welcome_info a{
+        font-size: 11px;
+    }
+
+    .ask_sites p{
+        font-size: 32px;
+    }
+    
+    .ask_sites a{
+        font-size: inherit;
+        width: 360px;
+    }
 }
