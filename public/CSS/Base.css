@@ -79,5 +79,23 @@ body{
 }
 
 .footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    padding: 4px 24px;
+    background-color: var(--text_side_color);
 }
+
+.footer .links a,.footer p{
+    font-family: inherit;
+    font-size: 14px;
+    color: #4e4e4e;
+    padding: 7px;
+    text-decoration: none;
+}
+
+.footer a:hover{
+    text-decoration: underline  ;
+}
+
