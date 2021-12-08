@@ -22,7 +22,7 @@
                     </div>
                     
                     <div class="contact_header_image_wrapper">
-                        <img src="../../Assets/Images/Index/other/CustomerService.png" alt="">
+                        <img src="<?php echo URLROOT."/public/Images/other/CustomerService.png"; ?>" alt="">
                     </div>
                 </div>
 
@@ -115,9 +115,7 @@
             </div>
         </div>
 
-        <!-- <div class="footer">
-
-        </div> -->
+        <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
 </body>
 </html>
