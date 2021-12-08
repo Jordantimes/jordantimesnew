@@ -114,6 +114,8 @@
                 </div>
             <?php } ?>
         </div>
+
+        <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
 </body>
 </html>
