@@ -66,9 +66,7 @@
             </div>
         </div>
 
-        <!-- <div class="footer">
-
-        </div> -->
+        <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
 </body>
 </html>
