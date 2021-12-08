@@ -660,3 +660,7 @@
     text-align: center;
     margin-top: 12px;
 }
+
+.filter_form{
+    flex: 1;
+}
