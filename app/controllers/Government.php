@@ -5,6 +5,8 @@
         public function __construct(){
             $this->GovernmentRepo = $this->Repository("Government");
             $this->UserRepo = $this->Repository("User");
+            $this->SitesRepo = $this->Repository("Sites");
+            $this->CompanyRepo = $this->Repository("Company");
         }
 
         public function index($ViewBox = "Trips"){
@@ -25,11 +27,23 @@
                 exit;
             }
 
+            $sites = $this->SitesRepo->GetAllSites();
+            $passengers = [];
+
+            for($i = 0 ; $i < count($sites) ; ++$i){
+                array_push($passengers,$this->SitesRepo->GetPassengersByTripID($sites[$i]["id"]));
+            }
+
+            $companys = $this->CompanyRepo->GetAllCompanys();
+
             $ViewBox = trim(ucwords(strtolower($ViewBox)));
 
             $data = [
                 "ViewBox" => $ViewBox,
-                "USER" => $USER
+                "USER" => $USER,
+                "Sites" => $sites,
+                "Passengers" => $passengers,
+                "Companys" => $companys
             ];
             
             $this->view("Government/index" , $data);
