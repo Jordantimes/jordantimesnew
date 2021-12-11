@@ -53,4 +53,19 @@
             
             return Insert($table,$columns,$values);
         }
+
+        public function GetAllCompanys(){
+            $table = "users";
+            $columns = "company_ID,company_Number,image,name,email,phone";
+            $expression = "role = 'company' AND verified = true AND isDeleted = false";
+
+            $data = [];
+
+            $result =  SelectByCondition($table,$columns,$expression);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                array_push($data , $row);
+            }
+
+            return $data;
+        }
     }
