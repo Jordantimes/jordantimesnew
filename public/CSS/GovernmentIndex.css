@@ -31,7 +31,7 @@
     border: 1px var(--side_color) solid;
 }
 
-.search_input{
+.gov_search_input{
     display: block;
     width: 95%;
     padding: 7px;
@@ -41,11 +41,7 @@
     border: none;
 }
 
-.search_button::placeholder{
-    color: #eeeeee;
-}
-
-.search_button{
+.gov_search_button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,7 +52,7 @@
     cursor: pointer;
 }
 
-.search_button svg{
+.gov_search_button svg{
     display: block;
     width: 18px;
     height: 18px;
@@ -136,4 +132,96 @@
 
 .view_more_button:hover{
     text-decoration: underline;
+}
+
+.companys_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.company{
+    height: 300px;
+    width: calc((100% / 4) - 8px);
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    margin: 4px;
+}
+
+.company_image_wrapper img{
+    display: block;
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    margin: auto;
+    border-radius: 50%;
+    transform: translateY(-20px);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.company_name_wrapper{
+    font-family: "Poppins" , "sans-serif";
+    font-size: 18px;
+    text-align: center;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.company_info_wrapper{
+    margin: 14px;
+}
+
+.company_info{
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 7px;
+    color: var(--text_main_color);
+}
+
+.company_info a{
+    color: var(--text_main_color);
+}
+
+.company_info span{
+    color: var(--main_color);
+}
+
+.passengers_container{
+    border-top: 1px var(--side_color) solid;
+    margin-top: 16px;
+}
+
+.passengers_container h3{
+    font-family: inherit;
+    font-size: 18px;
+    color: var(--text_side_color);
+    font-weight: 500;
+}
+
+.passengers_wrapper_popedup table{
+    margin-top: 16px;
+    width: 100%;
+}
+
+.passengers_wrapper_popedup table tr{
+    text-align: left;
+}
+
+.passengers_wrapper_popedup table tr th{
+    color: var(--text_side_color);
+}
+
+.passengers_wrapper_popedup table tr th , .passengers_wrapper_popedup table tr td{
+    padding-bottom: 8px;
+    font-weight: 500;
+}
+
+.passengers_wrapper_popedup table tr td:nth-child(1){
+    color: var(--text_side_color);
 }
