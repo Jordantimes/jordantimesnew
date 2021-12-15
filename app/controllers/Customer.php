@@ -8,15 +8,72 @@
             $this->UserRepo = $this->Repository("User");
         }
 
-        public function index(){
+        public function index($ViewBox = "Trips"){
             session_start();
-            
-            if(empty($_SESSION["USER"])){
+            $USER;
+
+            if(!empty($_SESSION["USER"])){
+                $USER= unserialize($_SESSION["USER"]);
+            }  else{
                 header("location:".URLROOT."/User/LogIn");
                 exit;
             }
-            
-            $this->view("Customer/index");
+
+            $ViewBox = trim(ucwords(strtolower($ViewBox)));
+
+            $data = [
+                "ViewBox" => $ViewBox,
+                "USER" => $USER
+            ];
+
+            // $data["Sites"] = $this->SitesRepo->GetSiteByTripUserID((int)$data['USER']["ID"]);
+
+            $this->view("Customer/index" , $data);
+        }
+
+        public function edit_profile(){
+            if($_SERVER["REQUEST_METHOD"] === "POST"){
+                session_start();
+                $USER = unserialize($_SESSION["USER"]);
+                $ID = $USER["ID"];
+
+                $Data = [
+                    "ID" => $ID,
+                    "Name" => trim(ucwords(strtolower($_POST["name"]))),
+                    "Email" => trim(strtolower($_POST["email"])),
+                    "Phone" => trim($_POST["phone"]),
+                ];
+
+                
+
+                //update profile when data is ready
+                if($this->CustomerRepo->update_profile($Data)){
+                    //update the session variable with the new data
+                    $Company = [
+                        "ID" => $USER["ID"],
+                        "Name" => $Data["Name"],
+                        "Email" => $Data["Email"],
+                        "Phone_Number" => $Data["Phone"],
+                    ];
+
+                  
+                    
+                    $_SESSION["USER"] = serialize($Company);
+
+                    header("location:".URLROOT."/Customer/Profile");
+                    exit;
+                }
+
+                else{
+                    $this->view("Customer/index" , $data = ["Message" => "something went wrong", "ViewBox" => "profile", "USER" => $USER]);
+                    exit;
+                }
+            }
+
+            else{
+                header("location:".URLROOT."/Customer");
+                exit;
+            }
         }
 
         public function book(){
