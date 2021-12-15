@@ -16,8 +16,9 @@
                 <a class="header_option" id="signup_anchor" href="<?php echo URLROOT; ?>/User/SignUp">Sign up</a>
             <?php
             }
-            else{ 
+            else{
             ?>
+                <a class="header_option" href="<?php echo URLROOT."/".ucwords(strtolower($data["USER"]["Role"])); ?>">Profile</a>
                 <a class="header_option" href="<?php echo URLROOT; ?>/User/LogOut">Log out</a>
             <?php
             }
