@@ -16,13 +16,15 @@ class Home extends Controller{
         ];
 
         if(!empty($_SESSION["trip"])){
-            if($USER["Role"] === "customer"){
-                $data["trip"] = $_SESSION["trip"];
-                $data["passengers"] = $_SESSION["passengers"];   
+            if(!empty($USER["Role"])){
+                if($USER["Role"] === "customer"){
+                    $data["trip"] = $_SESSION["trip"];
+                    $data["passengers"] = $_SESSION["passengers"];   
+                }
+    
+                $_SESSION["trip"] = "";
+                $_SESSION["passengers"] = "";
             }
-
-            $_SESSION["trip"] = "";
-            $_SESSION["passengers"] = "";
         }
 
         $this->view("Home/index" , $data);
