@@ -173,7 +173,7 @@ function CreateUnMarkedMessage(){
 function CreateNotificationDeleteMessage(){
     let Message="<div class='alert' style='opcaity:0;'>"+
                     "<div class='alert_info_container'>"+
-                        "<div class='alert_title'>Notifications marked</div>"+
+                        "<div class='alert_title'>Notifications Deleted</div>"+
 
                         "<div class='alert_icon_container'>"+
                             "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' viewBox='0 0 489.7 489.7' style='enable-background:new 0 0 489.7 489.7;' xml:space='preserve'>"+
@@ -186,6 +186,75 @@ function CreateNotificationDeleteMessage(){
                                             "<path d='M186.1,396.6V180.9c0-9.5-7.7-17.1-17.2-17.1s-17.1,7.7-17.1,17.1v215.7c0,9.5,7.7,17.1,17.1,17.1     C178.4,413.7,186.1,406.1,186.1,396.6z'/>"+
                                             "<path d='M337.8,396.6V180.9c0-9.5-7.7-17.1-17.1-17.1s-17.1,7.7-17.1,17.1v215.7c0,9.5,7.7,17.1,17.1,17.1     S337.8,406.1,337.8,396.6z'/>"+
                                         "</g>"+
+                                    "</g>"+
+                                "</g>"+
+                            "</svg>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>";
+
+    document.querySelector(".alert_container").innerHTML= Message;
+
+    let alerts = document.querySelectorAll(".alert");
+
+    setTimeout(function(){
+        alerts[alerts.length - 1].style.opacity = "1";
+    } , 50);
+
+    setTimeout(function(){
+        alerts[alerts.length - 1].style.opacity = "0";
+    } , 3000);
+
+    setTimeout(function(){
+        alerts[alerts.length - 1].remove();
+    } , 3200);
+}
+
+
+function CreateTripAcceptMessage(){
+    let Message="<div class='alert' style='opcaity:0;'>"+
+                    "<div class='alert_info_container'>"+
+                        "<div class='alert_title'>Trip accepted</div>"+
+
+                        "<div class='alert_icon_container'>"+
+                            "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Layer_1' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'>"+
+                                "<g>"+
+                                    "<g>"+
+                                        "<path d='M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0    c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7    C514.5,101.703,514.499,85.494,504.502,75.496z'/>"+
+                                    "</g>"+
+                                "</g>"+
+                            "</svg>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>";
+
+    document.querySelector(".alert_container").innerHTML= Message;
+
+    let alerts = document.querySelectorAll(".alert");
+
+    setTimeout(function(){
+        alerts[alerts.length - 1].style.opacity = "1";
+    } , 50);
+
+    setTimeout(function(){
+        alerts[alerts.length - 1].style.opacity = "0";
+    } , 3000);
+
+    setTimeout(function(){
+        alerts[alerts.length - 1].remove();
+    } , 3200);
+}
+
+function CreateTripDeclineMessage(){
+    let Message="<div class='alert' style='opcaity:0;'>"+
+                    "<div class='alert_info_container'>"+
+                        "<div class='alert_title'>Trip declined</div>"+
+
+                        "<div class='alert_icon_container'>"+
+                            "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Layer_1' x='0px' y='0px' viewBox='0 0 492 492' style='enable-background:new 0 0 492 492;' xml:space='preserve'>"+
+                                "<g>"+
+                                    "<g>"+
+                                        "<path d='M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z'/>"+
                                     "</g>"+
                                 "</g>"+
                             "</svg>"+
