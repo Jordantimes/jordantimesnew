@@ -6,7 +6,7 @@
             $table = "trips,users";
             $columns = "users.name as company_name,image,trips.id,trips.name,name_ar,start_location,end_location,start_date,end_date,
                         days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
-            $expression = "is_deleted = false AND users.id = company";
+            $expression = "is_deleted = false AND trips.verified = true AND users.id = company";
 
             if(!empty($filter["start_date"])){
                 $expression.= " AND start_date = '".$filter["start_date"]."'";
@@ -38,7 +38,7 @@
             $table = "trips,users";
             $columns = "users.name as company_name,image,trips.id,trips.name,name_ar,start_location,end_location,start_date,end_date,
                         days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
-            $expression = "is_deleted = false AND users.id = company";
+            $expression = "is_deleted = false AND trips.verified = true AND users.id = company";
 
             $result =  SelectByCondition($table,$columns,$expression);
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
@@ -54,11 +54,25 @@
             $table = "trips,users";
             $columns = "users.id as company_id,users.name as company_name,image,trips.name,name_ar,start_location,end_location,start_date,end_date,
                         days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
-            $expression = "trips.id = $id AND is_deleted = false AND users.id = company";
+            $expression = "trips.id = $id AND is_deleted = false AND trips.verified = true AND users.id = company";
 
             $result =  SelectByCondition($table,$columns,$expression);
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
                 $row["images"] = explode("," , $row["images"]);
+                $data= $row;
+            }
+
+            return $data;
+        }
+
+        public function GetSiteByTripID_unverified($id){
+            $data = null;
+            $table = "trips,users";
+            $columns = "users.id as company_id,users.name as company_name,trips.name as trip_name,created_at";
+            $expression = "trips.id = $id AND users.id = company";
+
+            $result =  SelectByCondition($table,$columns,$expression);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
                 $data= $row;
             }
 
@@ -70,7 +84,7 @@
             $table = "trips";
             $columns = "id,name,name_ar,start_location,end_location,start_date,end_date,
                         days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
-            $expression = "company = $id AND is_deleted = false";
+            $expression = "company = $id AND verified = true AND is_deleted = false";
 
             $result =  SelectByCondition($table,$columns,$expression);
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
@@ -89,6 +103,22 @@
 
             $result =  SelectByCondition($table,$columns,$expression);
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                array_push($data , $row);
+            }
+
+            return $data;
+        }
+
+        public function GetUnverified(){
+            $data = [];
+            $table = "trips,users";
+            $columns = "users.name as company_name,image,trips.id,trips.name,name_ar,start_location,end_location,start_date,end_date,
+                        days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
+            $expression = "is_deleted = false AND trips.verified = false AND users.id = company";
+
+            $result =  SelectByCondition($table,$columns,$expression);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                $row["images"] = explode("," , $row["images"]);
                 array_push($data , $row);
             }
 
