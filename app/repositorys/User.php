@@ -126,9 +126,9 @@
             $Subject = "JordanTimes account verification";
             $Body = "
             <div style=' width: 100%;min-height: 600px;display: flex;align-items: center;justify-content: center;'>
-                <div style='width: 385px;background-color: #faf8f3;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
+                <div style='width: 385px;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
                     <div style='text-align: center;'>
-                        <img src='https://cdn.discordapp.com/attachments/796055415364386896/888477028096045056/JT_Logo75.png' alt='JordanTimesLogo'>
+                        <img src='https://cdn.discordapp.com/attachments/769197988362452992/920755792511139870/Logo_Wrapper48px.png' alt='JordanTimesLogo'>
                     </div>
                     <h2 style='text-align: left;font-size:24px;padding-top: 24px;'>
                         Hello ".$Name.".
@@ -162,31 +162,31 @@
             $Subject = "JordanTimes password reset request";
             $Body = "
             <div style=' width: 100%;min-height: 600px;display: flex;align-items: center;justify-content: center;'>
-            <div style='width: 385px;background-color: #faf8f3;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
-                <div style='text-align: center;'>
-                    <img src='https://cdn.discordapp.com/attachments/796055415364386896/888477028096045056/JT_Logo75.png' alt='JordanTimesLogo'>
-                </div>
-                <h2 style='text-align: left;font-size:24px;padding-top: 24px;'>
-                    Hello ".$Name.".
-                </h2>
-        
-                <div style='text-align: left;font-size:16px;margin: 12px 0px 24px 0px;'>Your password reset link is ready by the button right below, please note that this link is only available for 
-                    <div style='display:inline-block;position:relative;background-color:rgba(240, 93, 94,0.3);'>
-                        30 minutes
-                    </div> 
-                    from the time that you have requested the password reset link.
-                </div>
-        
-                <div style='width: 100%;display: flex;justify-content: center;padding-bottom:72px;'>
-                    <a href='".URLROOT."/User/ChangePassword?Code=".$Code."' style='text-decoration: none; text-align: center;width: 100%;display: block;padding: 18px 12px;background-color:#f05d5e;color: #ffffff;font-size: 18px;'>Reset Password</a>
-                </div>
-        
-                <div>
-                    <p style='font-size: 16px;'>This email was sent automatically, if you have any questions please send us an email on the E-mail link below, we wish you the best.</p>
-                    <a href='mailto:mail@mail.com' style='background-color:rgba(240, 93, 94,1); color:#ffffff; padding: 4px; text-decoration: none; font-size: 16px;'>mail@mail.com</a>
+                <div style='width: 385px;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
+                    <div style='text-align: center;'>
+                        <img src='https://cdn.discordapp.com/attachments/769197988362452992/920755792511139870/Logo_Wrapper48px.png' alt='JordanTimesLogo'>
+                    </div>
+                    <h2 style='text-align: left;font-size:24px;padding-top: 24px;'>
+                        Hello ".$Name.".
+                    </h2>
+            
+                    <div style='text-align: left;font-size:16px;margin: 12px 0px 24px 0px;'>Your password reset link is ready by the button right below, please note that this link is only available for 
+                        <div style='display:inline-block;position:relative;background-color:rgba(240, 93, 94,0.3);'>
+                            30 minutes
+                        </div> 
+                        from the time that you have requested the password reset link.
+                    </div>
+            
+                    <div style='width: 100%;display: flex;justify-content: center;padding-bottom:72px;'>
+                        <a href='".URLROOT."/User/ChangePassword?Code=".$Code."' style='text-decoration: none; text-align: center;width: 100%;display: block;padding: 18px 12px;background-color:#f05d5e;color: #ffffff;font-size: 18px;'>Reset Password</a>
+                    </div>
+            
+                    <div>
+                        <p style='font-size: 16px;'>This email was sent automatically, if you have any questions please send us an email on the E-mail link below, we wish you the best.</p>
+                        <a href='mailto:mail@mail.com' style='background-color:rgba(240, 93, 94,1); color:#ffffff; padding: 4px; text-decoration: none; font-size: 16px;'>mail@mail.com</a>
+                    </div>
                 </div>
             </div>
-        </div>
             ";
             $Key = SendGridKey;
         
@@ -198,9 +198,9 @@
             $Subject = "Thank you for signing up!";
             $Body = "
             <div style=' width: 100%;min-height: 600px;display: flex;align-items: center;justify-content: center;'>
-                <div style='width: 385px;background-color: #faf8f3;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
+                <div style='width: 385px;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);margin:auto;padding:32px'>
                     <div style='text-align: center;'>
-                        <img src='https://cdn.discordapp.com/attachments/796055415364386896/888477028096045056/JT_Logo75.png' alt='JordanTimesLogo'>
+                        <img src='https://cdn.discordapp.com/attachments/769197988362452992/920755792511139870/Logo_Wrapper48px.png' alt='JordanTimesLogo'>
                     </div>
                     <h2 style='text-align: left;font-size:24px;padding-top: 24px;'>
                         Dears at ".$Name.".
