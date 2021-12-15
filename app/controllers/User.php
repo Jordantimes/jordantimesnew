@@ -225,7 +225,7 @@
                     if($user["role"] === "customer"){
                         $this->UserRepo->SendVerificationMail($Data["Email"],$user["name"]);
                     }
-                    $this->view("User/LogIn" , $Error = ["Message" => "User not verified"]);
+                    $this->view("User/LogIn" , $Error = ["Message" => "User not verified, an Email was sent to ".$Data["Email"]]);
                     exit;
                 }
 
