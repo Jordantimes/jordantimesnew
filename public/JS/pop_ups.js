@@ -352,3 +352,159 @@ function CreateDeleteNotificationsPopUp(JSON_DATA,indexes,Values){
         }
     } , true);
 }
+
+function CreateAcceptTripPopup(siteID,siteIndex){
+    let pop_up_actions_div = document.querySelector(".pop_up_actions");
+
+    document.querySelector(".pop_up_information").innerHTML = "Confirm accept trip?";
+
+    let confirm_button =document.createElement("button");
+    confirm_button.className = "confirm_pop_up";
+
+    let confirm = document.createTextNode("Confirm");
+
+    let cancel_button =document.createElement("button");
+    cancel_button.className="cancel_pop_up";
+    let cancel = document.createTextNode("Cancel");
+
+
+    confirm_button.appendChild(confirm);
+    cancel_button.appendChild(cancel);
+    
+    pop_up_actions_div.appendChild(confirm_button);
+    pop_up_actions_div.appendChild(cancel_button);
+
+    document.querySelector(".pop_ups_container").style.display= "block";
+    document.querySelector("body").style.overflow= "hidden";
+
+
+    document.querySelector(".confirm_pop_up").addEventListener("click" , function(){
+        var Request = new XMLHttpRequest();
+        var URL = URLROOT+"/Admin/AcceptTrip";
+        var data = {
+            "ID" : siteID
+        }
+
+        Request.open("POST" , URL , true);
+        Request.send(JSON.stringify(data));
+
+        Request.onreadystatechange = function(){
+            if (this.status === 200) {
+                if(this.readyState === 4){
+                    let res = JSON.parse(Request.response);
+                    
+                    if(res["message"] === "Accepted"){
+                        CreateTripAcceptMessage();
+                        document.querySelector("#site"+siteIndex).remove();
+
+                        document.querySelector("#trips_counter").innerText = parseInt(document.querySelector("#trips_counter").innerText) - 1;
+
+                        if(document.querySelector("#trips_counter").innerText === "0"){
+                            document.querySelector("#trips_counter").innerText = "";
+                        }
+
+                        document.querySelector(".pop_up_site_details_container").style.display= "none";
+                        document.querySelector(".pop_up_site_details_container").setAttribute("condition" , "hidden");
+
+                        document.querySelector(".pop_ups_container").style.display= "none";
+                        document.querySelector(".pop_up_information").innerHTML = "";
+                        document.querySelector(".pop_up_actions").innerHTML = "";
+                        document.querySelector("body").style.overflow= "auto";
+                    }
+
+                    else{
+                        CreateErrorMessage();
+                        document.querySelector(".pop_ups_container").style.display= "none";
+                        document.querySelector(".pop_up_information").innerHTML = "";
+                        document.querySelector(".pop_up_actions").innerHTML = "";
+                    }
+                }
+            }
+
+            else{
+                CreateErrorMessage();
+                document.querySelector(".pop_ups_container").style.display= "none";
+                document.querySelector(".pop_up_information").innerHTML = "";
+                document.querySelector(".pop_up_actions").innerHTML = "";
+            }
+        }
+    } , true);
+}
+
+function CreateDeclineTripPopup(siteID,siteIndex){
+    let pop_up_actions_div = document.querySelector(".pop_up_actions");
+
+    document.querySelector(".pop_up_information").innerHTML = "Confirm decline trip?";
+
+    let confirm_button =document.createElement("button");
+    confirm_button.className = "confirm_pop_up";
+
+    let confirm = document.createTextNode("Confirm");
+
+    let cancel_button =document.createElement("button");
+    cancel_button.className="cancel_pop_up";
+    let cancel = document.createTextNode("Cancel");
+
+
+    confirm_button.appendChild(confirm);
+    cancel_button.appendChild(cancel);
+    
+    pop_up_actions_div.appendChild(confirm_button);
+    pop_up_actions_div.appendChild(cancel_button);
+
+    document.querySelector(".pop_ups_container").style.display= "block";
+    document.querySelector("body").style.overflow= "hidden";
+
+
+    document.querySelector(".confirm_pop_up").addEventListener("click" , function(){
+        var Request = new XMLHttpRequest();
+        var URL = URLROOT+"/Admin/DeclineTrip";
+        var data = {
+            "ID" : siteID
+        }
+
+        Request.open("POST" , URL , true);
+        Request.send(JSON.stringify(data));
+
+        Request.onreadystatechange = function(){
+            if (this.status === 200) {
+                if(this.readyState === 4){
+                    let res = JSON.parse(Request.response);
+                    
+                    if(res["message"] === "Declined"){
+                        CreateTripDeclineMessage();
+                        document.querySelector("#site"+siteIndex).remove();
+
+                        document.querySelector("#trips_counter").innerText = parseInt(document.querySelector("#trips_counter").innerText) - 1;
+
+                        if(document.querySelector("#trips_counter").innerText === "0"){
+                            document.querySelector("#trips_counter").innerText = "";
+                        }
+
+                        document.querySelector(".pop_up_site_details_container").style.display= "none";
+                        document.querySelector(".pop_up_site_details_container").setAttribute("condition" , "hidden");
+
+                        document.querySelector(".pop_ups_container").style.display= "none";
+                        document.querySelector(".pop_up_information").innerHTML = "";
+                        document.querySelector(".pop_up_actions").innerHTML = "";
+                        document.querySelector("body").style.overflow= "auto";
+                    }
+
+                    else{
+                        CreateErrorMessage();
+                        document.querySelector(".pop_ups_container").style.display= "none";
+                        document.querySelector(".pop_up_information").innerHTML = "";
+                        document.querySelector(".pop_up_actions").innerHTML = "";
+                    }
+                }
+            }
+
+            else{
+                CreateErrorMessage();
+                document.querySelector(".pop_ups_container").style.display= "none";
+                document.querySelector(".pop_up_information").innerHTML = "";
+                document.querySelector(".pop_up_actions").innerHTML = "";
+            }
+        }
+    } , true);
+}
