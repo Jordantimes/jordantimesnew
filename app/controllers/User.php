@@ -277,6 +277,19 @@
                     header("location:".URLROOT."/Government/Trips");
                     exit;
                 }
+
+                elseif($user["role"] === "admin"){
+                    $Gov = [
+                        "ID" => $user["id"],
+                        "Email" => $user["email"],
+                        "Role" => $user["role"]
+                    ];
+
+                    $_SESSION["USER"] = serialize($Gov);
+                    
+                    header("location:".URLROOT."/Admin");
+                    exit;
+                }
             }
 
             else{
@@ -330,7 +343,17 @@
             }
 
             else{
-                $this->view("User/PasswordUpdate");
+                $USER = [];
+                
+                if(isset($_SESSION["USER"])){
+                    $USER = unserialize($_SESSION["USER"]);
+                }
+
+                $data = [
+                "USER" => $USER
+                ];
+
+                $this->view("User/PasswordUpdate" , $data);
             }
         }
 
@@ -383,7 +406,17 @@
             }
 
             else{
-                $this->view("User/ChangePassword");
+                $USER = [];
+                
+                if(isset($_SESSION["USER"])){
+                    $USER = unserialize($_SESSION["USER"]);
+                }
+
+                $data = [
+                "USER" => $USER
+                ];
+                
+                $this->view("User/ChangePassword" , $data);
             }
         }
 
