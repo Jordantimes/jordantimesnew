@@ -19,6 +19,17 @@
 
         }
 
+        public function update_profile($Data){
+            $Date = date("Y-m-d");
+
+            $table = "users";
+            $columns = "name = '".$Data["Name"]."' , email = '".$Data["Email"]."' , phone = '".$Data["Phone"]."', UpdatedAt = '$Date'";
+            $expression = "id = ".$Data["ID"]." AND isDeleted = false";
+
+
+            return Update($table,$columns,$expression);
+        }
+
         public function book_customer($Data){
             $table = "booked";
             $columns = "trip,user,name,phone,age,nationID,created_at,updated_at,is_deleted";
