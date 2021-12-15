@@ -6,11 +6,14 @@ class Home extends Controller{
 
     public function index(){
         session_start();
+        $USER = [];
+        
         if(isset($_SESSION["USER"])){
             $USER = unserialize($_SESSION["USER"]);
         }
 
         $data = [
+            "USER" => $USER,
             "trip" => "",
             "passengers" => ""
         ];
