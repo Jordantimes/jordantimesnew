@@ -35,11 +35,31 @@ class Home extends Controller{
 
     public function contact(){
         session_start();
-        $this->view("Home/contact");
+        $USER = [];
+        
+        if(isset($_SESSION["USER"])){
+            $USER = unserialize($_SESSION["USER"]);
+        }
+
+        $data = [
+            "USER" => $USER,
+        ];
+
+        $this->view("Home/contact" , $data);
     }
 
     public function about(){
         session_start();
-        $this->view("Home/about");
+        $USER = [];
+        
+        if(isset($_SESSION["USER"])){
+            $USER = unserialize($_SESSION["USER"]);
+        }
+
+        $data = [
+            "USER" => $USER,
+        ];
+
+        $this->view("Home/about" , $data);
     }
 }
