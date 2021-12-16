@@ -54,6 +54,7 @@
                         "Name" => $Data["Name"],
                         "Email" => $Data["Email"],
                         "Phone_Number" => $Data["Phone"],
+                        "Role" => $USER["Role"]
                     ];
 
                   
