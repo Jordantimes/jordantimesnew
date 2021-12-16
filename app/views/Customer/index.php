@@ -264,8 +264,8 @@ $sql3 = "SELECT * FROM booked where user=$userid and trip= $tid ";
                 </div>
             </div>
         </div>
-
         
+        <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
 
     <script src="<?php echo URLROOT."\public\JS\config.js";?>"></script>
