@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SITENAME?> - Customer</title>
+    <title><?php echo SITENAME?> - Admin</title>
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\Base.css";?>">
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\sites.css";?>">
     <link rel="stylesheet" href="<?php echo URLROOT."\public\CSS\Navigators.css";?>">
@@ -33,6 +33,22 @@
             background-color: transparent;
             color: #000000;
             border: 1px #000000 solid
+        }
+
+        .content_view_box {
+            display: none;
+        }
+
+        .chart_wrapper{
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: 0px 0px 14px rgba(0,0,0,0.1)
+        }
+
+        .chart_header{
+            font-family:"Poppins","san-serif";
+            font-size: inherent;
+            margin-bottom:24px;
         }
     </style>
 </head>
@@ -120,14 +136,25 @@
             <div class="alert_container"></div>
 
             <div class="navigation_bar">
+                <button class="navigation_button" <?php if($data["ViewBox"] === "Overview"){ echo "DisplayByURL='true'"; }?>>
+                    <div class="navigation_button_text">Site Overview</div>
+                    <div class="navigation_button_counter"></div>
+                </button>
+
                 <button class="navigation_button" <?php if($data["ViewBox"] === "Trips"){ echo "DisplayByURL='true'"; }?>>
                     <div class="navigation_button_text">UnVerified Trips</div>
                     <div class="navigation_button_counter" id="trips_counter"></div>
                 </button>
-
             </div>
 
             <div class="content_view_container">
+                <div class="content_view_box" id="overview_view_box">
+                    <div class="chart_wrapper">
+                        <h1 class="chart_header">New companys data per day</h1>
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                    </div>
+                </div>
+
                 <div class="content_view_box" id="trips_view_box">
                 </div>
             </div>
@@ -136,11 +163,48 @@
         <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
 
+
+
+
+
+    <script>
+        window.onload = function (){
+        
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: ""
+            },
+            axisX: {
+                valueFormatString: "YYYY MMM"
+            },
+            axisY: {
+                title: "Number Of New Companys",
+                includeZero: true,
+                maximum: 25
+            },
+            data: [{
+                type: "splineArea",
+                color: MAIN_COLOR,
+                xValueType: "dateTime",
+                xValueFormatString: "YYYY MMM",
+                yValueFormatString: "#,##0 New company(s)",
+                dataPoints: <?php echo json_encode($data["SignUpCount"]); ?>
+            }]
+        });
+        
+        chart.render();
+        
+        }
+    </script>
+
     <script src="<?php echo URLROOT."\public\JS\config.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\pop_ups.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\UserMessages.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\admin.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\Navigators.js";?>"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     
 </body>
 </html>
