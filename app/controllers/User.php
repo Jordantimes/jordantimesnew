@@ -311,6 +311,11 @@
                         header("location:".URLROOT);
                         exit;
                     }
+                    
+                    elseif($Role === "admin"){
+                        header("location:".URLROOT."/Company/Admin");
+                        exit;
+                    }
                 }
                 
                 $this->view("User/LogIn");
