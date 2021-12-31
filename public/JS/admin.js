@@ -30,56 +30,77 @@ function GetUnverified(){
 
                 if(Data.length === 0){
                     document.querySelector("#trips_counter").innerText = "";
+
+                    document.querySelector('#trips_view_box').innerHTML = 
+                    "<div class='empty_sites'>"+
+                        "<div class='empty_sites_icon'>"+
+                            "<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 330 330' style='enable-background:new 0 0 330 330;' xml:space='preserve'>"+
+                                "<g>"+
+                                    "<g>"+
+                                        "<g>"+
+                                            "<path d='M165,0.008C74.019,0.008,0,74.024,0,164.999c0,90.977,74.019,164.992,165,164.992s165-74.015,165-164.992     C330,74.024,255.981,0.008,165,0.008z M165,299.992c-74.439,0-135-60.557-135-134.992S90.561,30.008,165,30.008     s135,60.557,135,134.991C300,239.436,239.439,299.992,165,299.992z'/>"+
+                                            "<path d='M165,130.008c-8.284,0-15,6.716-15,15v99.983c0,8.284,6.716,15,15,15s15-6.716,15-15v-99.983     C180,136.725,173.284,130.008,165,130.008z'/>"+
+                                            "<path d='M165,70.011c-3.95,0-7.811,1.6-10.61,4.39c-2.79,2.79-4.39,6.66-4.39,10.61s1.6,7.81,4.39,10.61     c2.79,2.79,6.66,4.39,10.61,4.39s7.81-1.6,10.609-4.39c2.79-2.8,4.391-6.66,4.391-10.61s-1.601-7.82-4.391-10.61     C172.81,71.61,168.95,70.011,165,70.011z'/>"+
+                                        "</g>"+
+                                    "</g>"+
+                                "</g>"+
+                            "</svg>"+
+                        "</div>"+
+                        "<span>Nothing is here...</span>"+
+                    "</div>";
                 }
 
-                for (let i = 0; i < Data.length; i++) {
-                    CreateSite(i,Data[i]);
-                }
+                else{
+
+                    for (let i = 0; i < Data.length; i++) {
+                        CreateSite(i,Data[i]);
+                    }
 
 
-                const site_pop_up = document.querySelector(".pop_up_site_details_container");
-                const site = document.querySelectorAll(".site"); 
-                    for(let i = 0 ; i < site.length ; ++i){
-                        site[i].addEventListener("click" , function(){
-                            siteID = document.querySelector("#site"+i).value;
-                            siteIndex = i;
-                            open_popUp(i);
+                    const site_pop_up = document.querySelector(".pop_up_site_details_container");
+                    const site = document.querySelectorAll(".site"); 
+                        for(let i = 0 ; i < site.length ; ++i){
+                            site[i].addEventListener("click" , function(){
+                                siteID = document.querySelector("#site"+i).value;
+                                siteIndex = i;
+                                open_popUp(i);
+                            } , true);
+                        }
+
+                
+                    const site_popup_close_button = document.querySelector("#pop_up_close");
+                        site_popup_close_button.addEventListener("click" , function(){
+                            close_popUp();
+                            siteID = null;
+                        } , true);
+                
+                    site_pop_up.addEventListener("click" , function(event){
+                        if(event.target.className === "pop_up_site_details_container"){
+                            close_popUp();
+                            siteID = null;
+                        }
+                    } , true);
+
+
+                    const full_screen_container = document.querySelector(".pop_up_site_image_full_screen_view_container");
+                    const full_screen_image = document.querySelector(".full_screen_image");
+                    const preview_image_button = document.querySelectorAll(".preview_image_container");
+                    const preview_image = document.querySelectorAll(".preview_image");
+
+                    for(let i = 0 ; i < preview_image_button.length ; ++i){
+                        preview_image_button[i].addEventListener("click" , function(){
+                            let image_src = preview_image[i].getAttribute("src");
+                            open_image_full_preview(full_screen_container,full_screen_image,image_src);
                         } , true);
                     }
 
-            
-                const site_popup_close_button = document.querySelector("#pop_up_close");
-                    site_popup_close_button.addEventListener("click" , function(){
-                        close_popUp();
-                        siteID = null;
-                    } , true);
-            
-                site_pop_up.addEventListener("click" , function(event){
-                    if(event.target.className === "pop_up_site_details_container"){
-                        close_popUp();
-                        siteID = null;
-                    }
-                } , true);
-
-
-                const full_screen_container = document.querySelector(".pop_up_site_image_full_screen_view_container");
-                const full_screen_image = document.querySelector(".full_screen_image");
-                const preview_image_button = document.querySelectorAll(".preview_image_container");
-                const preview_image = document.querySelectorAll(".preview_image");
-
-                for(let i = 0 ; i < preview_image_button.length ; ++i){
-                    preview_image_button[i].addEventListener("click" , function(){
-                        let image_src = preview_image[i].getAttribute("src");
-                        open_image_full_preview(full_screen_container,full_screen_image,image_src);
+                    const body = document.querySelector("body");
+                    body.addEventListener("click" , function(event){
+                        if(!event.target.closest(".full_screen_image")){
+                            close_image_full_preview();
+                        }
                     } , true);
                 }
-
-                const body = document.querySelector("body");
-                body.addEventListener("click" , function(event){
-                    if(!event.target.closest(".full_screen_image")){
-                        close_image_full_preview();
-                    }
-                } , true);
             }
         }
     }
