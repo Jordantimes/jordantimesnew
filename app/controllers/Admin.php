@@ -8,9 +8,10 @@
             $this->UserRepo = $this->Repository("User");
         }
 
-        public function index($ViewBox = "Trips"){
+        public function index($ViewBox = "Overview"){
             session_start();
             $USER;
+            $ViewBox = trim(ucwords(strtolower($ViewBox)));
 
             if(!empty($_SESSION["USER"])){
                 $USER= unserialize($_SESSION["USER"]);
@@ -26,11 +27,20 @@
                 exit;
             }
 
-            $ViewBox = trim(ucwords(strtolower($ViewBox)));
+            $SignUpCount = $this->AdminRepo->GetSignUpCountPerMonth();
+
+            for ($i = 0 ; $i < count($SignUpCount) ; ++$i) { 
+                $phpDate = date($SignUpCount[$i]["x"]);
+                $phpTimestamp = strtotime($phpDate);
+                $SignUpCount[$i]["x"] = $phpTimestamp * 1000;
+
+                $SignUpCount[$i]["y"] = intval($SignUpCount[$i]["y"]);
+            }
 
             $data = [
                 "ViewBox" => $ViewBox,
                 "USER" => $USER,
+                "SignUpCount" => $SignUpCount
             ];
 
             $this->view("Admin/index" , $data);
