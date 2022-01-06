@@ -311,7 +311,7 @@
                         header("location:".URLROOT);
                         exit;
                     }
-                    
+
                     elseif($Role === "admin"){
                         header("location:".URLROOT."/Company/Admin");
                         exit;
@@ -329,6 +329,16 @@
         }
 
         public function PasswordUpdate(){
+            $USER = [];
+                
+            if(isset($_SESSION["USER"])){
+                $USER = unserialize($_SESSION["USER"]);
+            }
+
+            $data = [
+            "USER" => $USER
+            ];
+
             if($_SERVER["REQUEST_METHOD"] === "POST"){
                 if(empty($_POST["email"])){
                     $this->view("User/PasswordUpdate" , $Error = ["Message" => "Empty input"]);
@@ -343,26 +353,28 @@
                 }
 
                 $this->UserRepo->SendPasswordRecoveryMail($_POST["email"],$user["id"],$user["name"]);
-                $this->view("User/PasswordUpdate");
+                $this->view("User/PasswordUpdate", $data);
                 exit;
             }
 
             else{
-                $USER = [];
-                
-                if(isset($_SESSION["USER"])){
-                    $USER = unserialize($_SESSION["USER"]);
-                }
-
-                $data = [
-                "USER" => $USER
-                ];
-
                 $this->view("User/PasswordUpdate" , $data);
             }
         }
 
         public function ChangePassword(){
+            $USER = [];
+                
+            if(isset($_SESSION["USER"])){
+                $USER = unserialize($_SESSION["USER"]);
+            }
+
+            $data = [
+            "USER" => $USER,
+            "Message" => "",
+            "Code" => ""
+            ];
+            
             if($_SERVER["REQUEST_METHOD"] === "POST"){
                 $Data = [
                     "Code" => $_POST["Code"],
@@ -372,13 +384,17 @@
 
                 foreach ($Data as $Value){
                     if(empty($Value)){
-                        $this->view("User/ChangePassword" , $Error = ["Message" => "Empty input" , "Code" => $Data["Code"]]);
+                        $data["Message"] = "Empty input";
+                        $data["Code"] = $Data["Code"];
+                        $this->view("User/ChangePassword" , $data);
                         exit;
                     }
                 }
 
                 if($Data["Password"] !== $Data["Repeat_Password"]){
-                    $this->view("User/ChangePassword" , $Error = ["Message" => "Password mismatch" , "Code" => $Data["Code"]]);
+                    $data["Message"] = "Password mismatch";
+                    $data["Code"] = $Data["Code"];
+                    $this->view("User/ChangePassword" , $data);
                     exit;
                 }
 
@@ -388,7 +404,8 @@
                 $CodeData = $this->UserRepo->GetRecoveryPasswordCodeData($Data["Code"]);
 
                 if($CodeData === false){
-                    $this->view("User/ChangePassword" , $Error = ["Message" => "Something went wrong"]);
+                    $data["Message"] = "Something went wrong";
+                    $this->view("User/ChangePassword" , $data);
                     exit;
                 }
 
@@ -399,28 +416,20 @@
                     }
 
                     else{
-                        $this->view("User/ChangePassword" , $Error = ["Message" => "Something went wrong"]);
+                        $data["Message"] = "Something went wrong";
+                        $this->view("User/ChangePassword" , $data = ["Message" => "Something went wrong"]);
                         exit;
                     }
                 }
 
                 else{
-                    $this->view("User/ChangePassword" , $Error = ["Message" => "Time exceeded"]);
+                    $data["Message"] = "Something went wrong";
+                    $this->view("User/ChangePassword" , $data);
                     exit;
                 }
             }
 
-            else{
-                $USER = [];
-                
-                if(isset($_SESSION["USER"])){
-                    $USER = unserialize($_SESSION["USER"]);
-                }
-
-                $data = [
-                "USER" => $USER
-                ];
-                
+            else{                
                 $this->view("User/ChangePassword" , $data);
             }
         }
