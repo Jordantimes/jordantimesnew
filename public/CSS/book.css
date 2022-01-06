@@ -104,6 +104,14 @@ table tr th,table tr td{
     padding: 14px;
 }
 
+table tr th::after{
+    content: "*";
+}
+
+table tr th:last-child::after , table tr th:first-child::after{
+    content: "";
+}
+
 table tr td input{
     width: 100%;
     padding: 4px;
