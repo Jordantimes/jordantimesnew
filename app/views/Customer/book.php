@@ -97,7 +97,7 @@
                                     <td><?php echo $i+1; ?></td>
                                     <td><input type="text" name="name<?php echo $i+1; ?>"></td>
                                     <td><input type="text" name="age<?php echo $i+1; ?>"></td>
-                                    <td><input type="text" name="phone<?php echo $i+1; ?>"></td>
+                                    <td><input type="text" name="phone<?php echo $i+1; ?>" value="+962-"></td>
                                     <td><input type="text" name="id<?php echo $i+1; ?>"></td>
                                 </tr>
                             <?php } ?>
