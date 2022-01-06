@@ -88,7 +88,7 @@
                                 <td><?php echo 1; ?></td>
                                 <td><input type="text" name="name<?php echo 1; ?>" value="<?php echo $data["USER"]["Name"]; ?>"></td>
                                 <td><input type="text" name="age<?php echo 1; ?>"></td>
-                                <td><input type="text" name="phone<?php echo 1; ?>" value="+962-<?php echo $data["USER"]["Phone_Number"]; ?>"></td>
+                                <td><input type="text" name="phone<?php echo 1; ?>" value="<?php echo $data["USER"]["Phone_Number"]; ?>"></td>
                                 <td><input type="text" name="id<?php echo 1; ?>"></td>
                             </tr>
 
@@ -97,7 +97,7 @@
                                     <td><?php echo $i+1; ?></td>
                                     <td><input type="text" name="name<?php echo $i+1; ?>"></td>
                                     <td><input type="text" name="age<?php echo $i+1; ?>"></td>
-                                    <td><input type="text" name="phone<?php echo $i+1; ?>" value="+962-"></td>
+                                    <td><input type="text" name="phone<?php echo $i+1; ?>"></td>
                                     <td><input type="text" name="id<?php echo $i+1; ?>"></td>
                                 </tr>
                             <?php } ?>
