@@ -68,4 +68,15 @@
 
             return $data;
         }
+
+
+        public function UpdateTripPrivecy($id , $is_hidden){
+            $Date = date("Y-m-d");
+
+            $table = "trips";
+            $columns = "is_hidden = $is_hidden , updated_at = '$Date'";
+            $expression = "id = $id";
+
+            return Update($table,$columns,$expression);
+        }
     }
