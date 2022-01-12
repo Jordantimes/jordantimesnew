@@ -6,7 +6,7 @@
             $table = "trips,users";
             $columns = "users.name as company_name,image,trips.id,trips.name,name_ar,start_location,end_location,start_date,end_date,
                         days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
-            $expression = "is_deleted = false AND trips.verified = true AND users.id = company";
+            $expression = "is_hidden = false AND is_deleted = false AND trips.verified = true AND users.id = company";
 
             if(!empty($filter["start_date"])){
                 $expression.= " AND start_date = '".$filter["start_date"]."'";
@@ -83,7 +83,7 @@
             $data = [];
             $table = "trips";
             $columns = "id,name,name_ar,start_location,end_location,start_date,end_date,
-                        days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,created_at";
+                        days,nights,description,description_ar,price,breakfast,breakfast_price,lunch,lunch_price,dinner,dinner_price,images,is_hidden,created_at";
             $expression = "company = $id AND verified = true AND is_deleted = false";
 
             $result =  SelectByCondition($table,$columns,$expression);
