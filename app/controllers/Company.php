@@ -232,4 +232,25 @@
                 exit;
             }
         }
+
+        public function UpdateTripPrivecy(){
+            header('Access-Control-Allow-Origin:'.URLROOT);
+            header('Vary: Origin');
+            header('Content-Type: application/JSON');
+            header('Access-Control-Allow-Methods: UPDATE');
+            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+            $data = json_decode(file_get_contents("php://input"));
+
+            //invert the is_hidden value
+            $data->is_hidden = $data->is_hidden == 1 ? 0 : 1;
+
+            if($this->CompanyRepo->UpdateTripPrivecy($data->id , $data->is_hidden)){
+                echo json_encode(["Message" => "Updated"]);
+            }
+
+            else{
+                echo json_encode(["Message" => "Error"]);
+            }
+        }
     }
