@@ -47,7 +47,7 @@
         }
 
         public function GetUnverified(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: GET');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
@@ -57,7 +57,7 @@
         }
 
         public function AcceptTrip(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: POST');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
@@ -89,7 +89,7 @@
         }
 
         public function DeclineTrip(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: POST');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
