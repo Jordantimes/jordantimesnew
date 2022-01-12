@@ -1,6 +1,22 @@
 <div class="header">
     <!-- <div class="empty_area_spacer"></div> -->
 
+    <div id="google_translate_element"></div> 
+        <script type="text/javascript"> 
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en',
+                    autoDisplay: 'true',
+                    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+                    }, 
+                    'google_translate_element'
+                ); 
+            } 
+        </script> 
+        
+        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+        </script> 
+
     <div class="logo">
         <a href="<?php echo URLROOT."/JordanTimes"?>">
             <svg width="139" height="47" viewBox="0 0 139 47" fill="none" xmlns="http://www.w3.org/2000/svg">
