@@ -182,14 +182,15 @@
     margin-top: 12px;
 }
 
-.edit_trip_container{
+.site_options{
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.edit_trip{
+.site_privecy{
     display: block;
+    width: 180px;
     padding: 7px 28px;
     border-radius: 50px;
     background-color: #f05d5e;
@@ -201,7 +202,7 @@
     cursor: pointer;
 }
 
-.edit_trip:hover{
+.site_privecy:hover{
     text-decoration: underline;
 }
 
