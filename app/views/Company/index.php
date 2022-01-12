@@ -78,8 +78,8 @@
                         <div class="total"></div>
                     </div>
 
-                    <div class="edit_trip_container">
-                        <button class="edit_trip">Edit</button>
+                    <div class="site_options">
+                        <button class="site_privecy"></button>
                     </div>
 
                     <div class="passengers_container">
@@ -156,6 +156,7 @@
                                                 <span class="site_end_date"><?php echo $data["Sites"][$i]["end_date"]?></span>
                                                 <span class="site_days"><?php echo $data["Sites"][$i]["days"]?></span>
                                                 <span class="site_nights"><?php echo $data["Sites"][$i]["nights"]?></span>
+                                                <span class="is_hidden"><?php echo $data["Sites"][$i]["is_hidden"]?></span>
 
                                                 <div class="passengers_wrapper">
                                                     <table>
@@ -613,189 +614,7 @@
             </div>
         </div>
 
-        <div class="edit_trip_pop_up_container">
-            <div class="edit_trip_pop_up">
-                <h2>Edit trip</h2>
-                <!-- <form action="<?php echo URLROOT;?>/Company/CreateTrip" method="POST"> -->
-                    <div class="edit_form_input">
-                        <label>Destinations</label>
-
-                        <div id="edit_destination_list"></div>
-
-                        <button type="button" class="edit_add_destination">
-                            <span>Add destination</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="plusIconTitle" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                <path d="M20 12L4 12M12 4L12 20"></path>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="edit_form_input">
-                        <input type="date" class="start_date_input" name="start_date">
-                        <input type="date" class="end_date_input" name="end_date">
-
-                        <label>Trip date</label>
-
-                        <button class="date_button" id="trip_date_holder" type="button">
-                            <span>
-                                <span class="selected_start_date_holder">----/--/--</span> To <span class="selected_end_date_holder">----/--/--</span>
-                            </span>
-
-                            <div class="holder_arrow_nav">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
-                                    <g>
-                                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
-                                    </g>
-                                </svg>
-                            </div>
-                        </button>
-                        
-                        <div class="date_list" id="trip_date_list" visibility="hidden" calender_type="start">
-                            <div class="calender_container">
-                                <div class="calender_header">
-                                    <div class="calender_name">Start date</div>
-                                
-                                <div class="nav_month_container">
-                                    <button class="month_nav_left_wrapper" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
-                                            <g>
-                                                <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
-                                            </g>
-                                        </svg>
-                                    </button>
-
-                                    <div class="month_year_wrapper">
-                                        <div class="month_year" id="start_date_month_year"></div>
-                                    </div>
-
-                                    <button class="month_nav_right_wrapper" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
-                                            <g>
-                                                <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
-                                            </g>
-                                        </svg>
-                                    </button>
-                                </div>
-                                </div>
-
-                                <div class="days_names_wrapper">
-                                    <div class="day_name">Su</div>
-                                    <div class="day_name">Mo</div>
-                                    <div class="day_name">Tu</div>
-                                    <div class="day_name">We</div>
-                                    <div class="day_name">Th</div>
-                                    <div class="day_name">Fr</div>
-                                    <div class="day_name">Sa</div>
-                                </div>
-
-                                <div class="days_wrapper" id="start_date_days_wrapper"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="edit_form_input">
-                        <label>Nights</label>
-                        <input type="text" name="nights" class="nights_checkbox">
-
-                        <button class="nights_button" type="button">
-                                <span class="nights_holder">- days, - nights</span>
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    width="451.847px" height="451.847px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
-                                    xml:space="preserve">
-                                    <g>
-                                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
-                                            c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
-                                            c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
-                                    </g>
-                                </svg>
-                            </button>
-                    
-                        
-                        <div class="nights_list" visibile="false"></div>
-                    </div>
-
-
-                    <div class="edit_form_input">
-                        <label>Description</label>
-                        <textarea name="description" class="description" rows="4"></textarea>
-                    </div>
-
-                    <div class="edit_form_input">
-                        <label>Base price (USD)</label>
-                        <input name="price" class="price_input"></input>
-                    </div>
-
-                    <div class="edit_form_input">
-                        <label>Aditional</label>
-                        
-                        <div class="aditional_input_wrapper">
-                        <input type="checkbox" name="breakfast" id="breakfast" class="additional_checkbox">
-                            <label for="breakfast">    
-                                <div class="custom_checkbox">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                        <g>
-                                            <g>
-                                                <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
-                                                    c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
-                                                    C514.5,101.703,514.499,85.494,504.502,75.496z"/>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                Breakfast(USD)
-                            </label>
-                            <input type="text" class="aditional_input" name="breakfast_price" disabled>
-                        </div>
-
-                        <div class="aditional_input_wrapper">
-                            <input type="checkbox" name="lunch" id="lunch" class="additional_checkbox">
-                            <label for="lunch">    
-                                    <div class="custom_checkbox">
-                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                            <g>
-                                                <g>
-                                                    <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
-                                                        c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
-                                                        C514.5,101.703,514.499,85.494,504.502,75.496z"/>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    Lunch(USD)
-                                </label>
-                            <input type="text" class="aditional_input" name="lunch_price" disabled>
-                        </div>
-
-                        <div class="aditional_input_wrapper">
-                            <input type="checkbox" name="dinner" id="dinner" class="additional_checkbox">
-                            <label for="dinner">    
-                                <div class="custom_checkbox">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                        <g>
-                                            <g>
-                                                <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0
-                                                    c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7
-                                                    C514.5,101.703,514.499,85.494,504.502,75.496z"/>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                Dinner(USD)
-                            </label>
-                            <input type="text" class="aditional_input" name="dinner_price" disabled>
-                        </div>
-                    </div>
-
-                    <div class="edit_form_input">
-                        <button type="button" id="cancel_edit">Cancel</button>
-                        <button>Create</button>
-                    </div>
-                <!-- </form>-->
-            </div>
-        </div>
+        <?php require_once APPROOT."\Views\INCLUDES\Footer.php"; ?>
     </div>
 
     <script src="<?php echo URLROOT."\public\JS\config.js";?>"></script>
@@ -803,7 +622,6 @@
     <script src="<?php echo URLROOT."\public\JS\Navigators.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\pop_ups.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\CreateTrip_popUp.js";?>"></script>
-    <script src="<?php echo URLROOT."\public\JS\EditTrip_popUp.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\UserMessages.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\Notifications.js";?>"></script>
     <script src="<?php echo URLROOT."\public\JS\calender.js";?>"></script>
