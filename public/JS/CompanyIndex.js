@@ -175,6 +175,63 @@ const site_pop_up = document.querySelector(".pop_up_site_details_container");
             }
         } , true);
 
+    const site_privecy = document.querySelector(".site_privecy");
+        site_privecy.addEventListener("click" , function(){
+            var privecy_condition = parseInt(site_privecy.value);
+            var id = parseInt(site_privecy.getAttribute("trip_selector"));
+            var site_index = parseInt(site_privecy.getAttribute("site_view_index"));
+
+            var data = {
+                "id" : id,
+                "is_hidden" : privecy_condition
+            };
+
+            var Request = new XMLHttpRequest();
+            var URL = URLROOT+"/Company/UpdateTripPrivecy";
+
+            Request.open("UPDATE" , URL , true);
+            Request.send(JSON.stringify(data));
+
+            Request.onreadystatechange = function(){
+                if (this.status === 200) {
+                    if(this.readyState === 4){
+                        var Response = JSON.parse(this.response);
+                        
+                        if(Response["Message"] === "Updated"){
+                            CreateTripUpdateMessage();
+
+                            if(privecy_condition){
+                                site_privecy.innerText = "Hide this trip"
+                                site_privecy.value = 0;
+                                document.querySelectorAll(".is_hidden")[site_index].innerText  = 0;
+                            }
+
+                            else{
+                                site_privecy.innerText = "Publish this trip"
+                                site_privecy.value = 1;
+                                document.querySelectorAll(".is_hidden")[site_index].innerText = 1;
+                            }
+                        }
+
+                        else{
+                            CreateErrorMessage();
+                        }
+                    }
+
+                    else{
+                        CreateErrorMessage();
+                    }
+                }
+
+                else{
+                    CreateErrorMessage();
+                }
+            };
+        } , false);
+
+
+
+
         function open_popUp(i){
             document.querySelector(".site_name_popedup").innerText = document.querySelectorAll(".site_name")[i].innerText;
             document.querySelector(".site_price_popedup").innerText = document.querySelectorAll(".site_price")[i].innerText;
@@ -185,8 +242,11 @@ const site_pop_up = document.querySelector(".pop_up_site_details_container");
             document.querySelector(".site_base_price_popedup").innerText = "- Trip base price "+document.querySelectorAll(".site_base_price")[i].innerText +"USD";
             document.querySelector(".site_start_date_popedup").innerText = document.querySelectorAll(".site_start_date")[i].innerText;
             document.querySelector(".site_end_date_popedup").innerText = document.querySelectorAll(".site_end_date")[i].innerText;
+            document.querySelector(".site_privecy").innerText = document.querySelectorAll(".is_hidden")[i].innerHTML == 1 ? "Publish this trip" : "Hide this trip";
+            document.querySelector(".site_privecy").value = document.querySelectorAll(".is_hidden")[i].innerHTML == 1 ? 1 : 0;
+            document.querySelector(".site_privecy").setAttribute("trip_selector" , document.querySelectorAll(".site")[i].value);
+            document.querySelector(".site_privecy").setAttribute("site_view_index" , i);
             document.querySelector(".passengers_wrapper_popedup").innerHTML = document.querySelectorAll(".passengers_wrapper")[i].innerHTML;
-            document.querySelector(".edit_trip").value = i;
 
             let images = document.querySelectorAll(".site_image_wrapper")[i].children;
             let images_container = document.querySelector(".controlled_slider");
@@ -243,6 +303,8 @@ const site_pop_up = document.querySelector(".pop_up_site_details_container");
             }
                 
         }
+
+
         function close_popUp(){
             let site_pop_up_condition = site_pop_up.getAttribute("condition");
 
