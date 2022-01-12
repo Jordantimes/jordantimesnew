@@ -51,7 +51,7 @@
 
         //JSON HTTP Request
         public function GetRequests(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: GET');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
@@ -63,7 +63,7 @@
 
         //JSON HTTP Request
         public function Accept(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: POST');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
@@ -101,7 +101,7 @@
 
         //JSON HTTP Request
         public function Decline(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: POST');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
@@ -127,7 +127,7 @@
 
         //HTTP Request
         public function SearchRequests(){
-            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Origin:'.URLROOT);
             header('Content-Type: application/JSON');
             header('Access-Control-Allow-Methods: POST');
             header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
