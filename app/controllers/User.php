@@ -52,6 +52,20 @@
                         exit;
                     }
 
+                    $containsLetter  = preg_match('/[a-zA-Z]/',    $Data["Password"]);
+                    $containsDigit   = preg_match('/\d/',          $Data["Password"]);
+                    $containsSpecial = preg_match('/[^a-zA-Z\d]/', $Data["Password"]);
+                    $PassValidate = $containsLetter && $containsDigit && $containsSpecial;
+
+                    if(!$PassValidate){
+                        $data["Error"]["type"] = "Password";
+                        $data["Error"]["message"] = "Password must contain at least one number, one capital letter and one sign";
+
+                        $this->view("User/SignUp" , $data);
+                        exit;
+                    }
+
+
                     if($Data["Password"] !== $Data["Repeat_Password"]){
                         $data["Error"]["type"] = "Password";
                         $data["Error"]["message"] = "Password mismatch";
@@ -119,6 +133,19 @@
                     if(strlen($Data["Phone"]) !== 14){
                         $data["Error"]["type"] = "C-Phone";
                         $data["Error"]["message"] = "Invalid phone number";
+
+                        $this->view("User/SignUp" , $data);
+                        exit;
+                    }
+
+                    $containsLetter  = preg_match('/[a-zA-Z]/',    $Data["Password"]);
+                    $containsDigit   = preg_match('/\d/',          $Data["Password"]);
+                    $containsSpecial = preg_match('/[^a-zA-Z\d]/', $Data["Password"]);
+                    $PassValidate = $containsLetter && $containsDigit && $containsSpecial;
+
+                    if(!$PassValidate){
+                        $data["Error"]["type"] = "C-Password";
+                        $data["Error"]["message"] = "Password must contain at least one number, one capital letter and one sign";
 
                         $this->view("User/SignUp" , $data);
                         exit;
