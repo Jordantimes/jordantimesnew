@@ -18,7 +18,7 @@
                 <div class="contact_header_container">
                     <div class="contact_header_text">
                         <h1>Get in touch.</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos iure dolor inventore perferendis fuga recusandae voluptatem.</p>
+                        <p></p>
                     </div>
                     
                     <div class="contact_header_image_wrapper">
@@ -46,11 +46,11 @@
                             </div>
     
                             <div class="contact_para_wrapper">
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, sapiente. Esse rem iusto ipsam sed natus. Est, porro sunt soluta nisi debitis culpa.</p>
+                                <p>For anything urgent, you can call us 24/7 at a local or international phone number.</p>
                             </div>
     
                             <div class="contact_data_wrapper">
-                                <h3>+962 056673044</h3>
+                                <h3>+962 790725626</h3>
                             </div>
                         </div>
     
@@ -72,11 +72,11 @@
                             </div>
     
                             <div class="contact_para_wrapper">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora commodi ex dolore fugiat id, mollitia at praesentium.</p>
+                                <p>The fastest way to talk to one of our Customer Service agents about your bookings.</p>
                             </div>
     
                             <div class="contact_data_wrapper">
-                                <h3>+962 056673044</h3>
+                                <h3>+962 56673044</h3>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="contact_para_wrapper">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora commodi ex dolore fugiat id, mollitia at praesentium.</p>
+                            <p>The easiest and fastest way to contact us is via email.</p>
                         </div>
 
                         <div class="contact_data_wrapper">
