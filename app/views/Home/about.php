@@ -22,16 +22,18 @@
                 <div class="about_details_container">
                     <div class="about_info_wrapper">
                         <div class="about_header">
-                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam facere praesentium, fugiat velit corrupti ex.</h3>
+                            <h3>In jordantimes© we aim to satisfy all of our costumers who are planning to visit jordan and give them the best experience in the country.</h3>
                         </div>
 
                         <div class="about_para">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, cum dolorum perferendis a nesciunt amet ex omnis illo enim culpa aspernatur voluptatum corporis beatae totam tempore qui. Odit, ad maxime. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi sed consequatur cumque voluptas expedita modi inventore sunt assumenda minus cum, libero porro maiores mollitia, quibusdam aliquid voluptatum impedit alias deleniti?</p>
+                            <p>JordanTimes© is a Jordanian online tourism trip organizer that helps you find the best trips on the market.
+                                It is headquarted in Jordan. JordanTimes© was made in 2021.
+                            </p>
                         </div>
 
                         
                         <div class="about_para">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, dolorem officiis. Iste rem minima eaque molestias! Laborum aut perspiciatis eum placeat natus atque, eos doloribus omnis maxime sunt? Voluptatum, ratione?</p>
+                            <p>We made booking a tourism trip in jordan as easy as clikcing a button, so what's stopping you from booking your next trip? </p>
                         </div>
                     </div>
 
