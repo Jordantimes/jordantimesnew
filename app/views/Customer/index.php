@@ -21,7 +21,7 @@ ini_set('display_errors', "On");
 
 $servername = "localhost";
 $username = "root";
-$password = "bruhbruh";
+$password = "";
 $dbname = "jordantimes";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
