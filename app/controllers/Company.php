@@ -166,7 +166,7 @@
                     "nights" => $_POST["nights"],
                     "image" => "",
                     "description" => $_POST["description"],
-                    "descriptionAr" => $_POST["description_ar"],
+//                     "descriptionAr" => $_POST["description_ar"],
                     "price" => $_POST["price"],
                     "breakfast" => isset($_POST["breakfast"]) ? 1 : 0,
                     "breakfast_price" => isset($_POST["breakfast"]) ? $_POST["breakfast_price"] : "",
