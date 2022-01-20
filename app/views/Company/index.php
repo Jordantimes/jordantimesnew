@@ -532,10 +532,10 @@
                         <textarea name="description" class="description" rows="4"></textarea>
                     </div>
 
-                    <div class="create_form_input">
+<!--                     <div class="create_form_input">
                         <label>Description(العربية)</label>
                         <textarea name="description_ar" class="description description_ar" rows="4"></textarea>
-                    </div>
+                    </div> -->
 
                     <div class="create_form_input">
                         <label>Base price (USD)</label>
